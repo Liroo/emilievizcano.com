@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-blog-cms-sanity-v3",
+  "name": "emilievizcano.com",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -11,42 +11,64 @@
     "type-check": "tsc --noEmit"
   },
   "prettier": {
-    "semi": false,
-    "singleQuote": true
+    "importOrder": [
+      "^components/(.*)$",
+      "^icons/(.*)$",
+      "^images/(.*)$",
+      "^flux/(.*)$",
+      "^types/(.*)$",
+      "^hooks/(.*)$",
+      "^services/(.*)$",
+      "^utils/(.*)$",
+      "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
+    "jsxSingleQuote": false,
+    "plugins": [
+      "prettier-plugin-tailwindcss"
+    ],
+    "printWidth": 80,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false
   },
   "dependencies": {
     "@portabletext/react": "3.0.11",
-    "@sanity/client": "6.5.0",
+    "@sanity/client": "6.12.3",
     "@sanity/image-url": "1.0.2",
-    "@sanity/vision": "3.18.0",
-    "@vercel/og": "0.5.17",
-    "classnames": "2.3.2",
+    "@sanity/orderable-document-list": "^1.2.1",
+    "@sanity/overlays": "2.3.9",
+    "@sanity/preview-url-secret": "1.5.5",
+    "@sanity/vision": "3.27.1",
+    "@vercel/og": "0.6.2",
+    "classnames": "2.5.1",
     "date-fns": "2.30.0",
     "intl-segmenter-polyfill": "0.4.4",
-    "next": "13.5.4",
-    "next-sanity": "5.5.6",
-    "next-sanity-image": "6.1.0",
+    "next": "14.1.0",
+    "next-sanity": "7.0.17",
+    "next-sanity-image": "6.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sanity": "3.18.0",
-    "sanity-plugin-asset-source-unsplash": "1.1.1",
-    "sanity-plugin-iframe-pane": "2.5.8",
-    "styled-components": "5.3.11",
+    "sanity": "3.27.1",
+    "sanity-plugin-asset-source-unsplash": "1.1.2",
+    "sanity-plugin-iframe-pane": "3.1.3",
+    "styled-components": "6.1.8",
     "swr": "2.2.4"
   },
   "devDependencies": {
-    "@types/react": "18.2.28",
-    "@types/styled-components": "5.1.28",
-    "autoprefixer": "10.4.16",
-    "eslint": "8.51.0",
-    "eslint-config-next": "13.5.4",
+    "@types/react": "18.2.51",
+    "@types/styled-components": "5.1.34",
+    "autoprefixer": "10.4.17",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
-    "postcss": "8.4.31",
-    "prettier": "3.0.3",
-    "prettier-plugin-packagejson": "2.4.6",
-    "prettier-plugin-tailwindcss": "0.5.5",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
+    "postcss": "8.4.33",
+    "prettier": "3.2.4",
+    "prettier-plugin-packagejson": "2.4.10",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=16"

@@ -1,7 +1,7 @@
-import { getAllPosts, getClient } from 'lib/sanity.client'
+import { getAllProjects, getClient } from 'lib/sanity.client';
 
 type SitemapLocation = {
-  url: string
+  url: string;
   changefreq?:
     | 'always'
     | 'hourly'
@@ -9,10 +9,10 @@ type SitemapLocation = {
     | 'weekly'
     | 'monthly'
     | 'yearly'
-    | 'never'
-  priority: number
-  lastmod?: Date
-}
+    | 'never';
+  priority: number;
+  lastmod?: Date;
+};
 
 // Use this to manually add routes to the sitemap
 const defaultUrls: SitemapLocation[] = [
@@ -24,10 +24,10 @@ const defaultUrls: SitemapLocation[] = [
   },
   //   { url: '/about', priority: 0.5 },
   //   { url: '/blog', changefreq: 'weekly', priority: 0.7 },
-]
+];
 
 const createSitemap = (locations: SitemapLocation[]) => {
-  const baseUrl = process.env.NEXT_PUBLIC_URL // Make sure to configure this
+  const baseUrl = process.env.NEXT_PUBLIC_URL; // Make sure to configure this
   return `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       ${locations
@@ -40,43 +40,43 @@ const createSitemap = (locations: SitemapLocation[]) => {
                         ? `<lastmod>${location.lastmod.toISOString()}</lastmod>`
                         : ''
                     }
-                  </url>`
+                  </url>`;
         })
         .join('')}
   </urlset>
-  `
-}
+  `;
+};
 
 export default function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
 
 export async function getServerSideProps({ res }) {
-  const client = getClient()
+  const client = getClient();
 
   // Get list of Post urls
-  const [posts = []] = await Promise.all([getAllPosts(client)])
-  const postUrls: SitemapLocation[] = posts
+  const [projects = []] = await Promise.all([getAllProjects(client)]);
+  const projectUrls: SitemapLocation[] = projects
     .filter(({ slug = '' }) => slug)
-    .map((post) => {
+    .map((project) => {
       return {
-        url: `/posts/${post.slug}`,
+        url: `/projetcs/${project.slug}`,
         priority: 0.5,
-        lastmod: new Date(post._updatedAt),
-      }
-    })
+        lastmod: new Date(project._updatedAt),
+      };
+    });
 
   // ... get more routes here
 
   // Return the default urls, combined with dynamic urls above
-  const locations = [...defaultUrls, ...postUrls]
+  const locations = [...defaultUrls, ...projectUrls];
 
   // Set response to XML
-  res.setHeader('Content-Type', 'text/xml')
-  res.write(createSitemap(locations))
-  res.end()
+  res.setHeader('Content-Type', 'text/xml');
+  res.write(createSitemap(locations));
+  res.end();
 
   return {
     props: {},
-  }
+  };
 }

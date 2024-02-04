@@ -1,45 +1,31 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
-import { readToken } from 'lib/sanity.api'
-import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
-import { Post, Settings } from 'lib/sanity.queries'
-import { GetStaticProps } from 'next'
-import type { SharedPageProps } from 'pages/_app'
+import { getAllProjects, getClient } from 'lib/sanity.client';
+import { Project } from 'lib/sanity.queries';
+import { GetStaticProps } from 'next';
 
-interface PageProps extends SharedPageProps {
-  posts: Post[]
-  settings: Settings
+interface PageProps {
+  projects: Project[];
 }
 
 interface Query {
-  [key: string]: string
+  [key: string]: string;
 }
 
 export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
+  const { projects } = props;
 
-  if (draftMode) {
-    return <PreviewIndexPage posts={posts} settings={settings} />
-  }
+  console.log(projects);
 
-  return <IndexPage posts={posts} settings={settings} />
+  return <div />;
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const { draftMode = false } = ctx
-  const client = getClient(draftMode ? { token: readToken } : undefined)
+  const client = getClient();
 
-  const [settings, posts = []] = await Promise.all([
-    getSettings(client),
-    getAllPosts(client),
-  ])
+  const [projects = []] = await Promise.all([getAllProjects(client)]);
 
   return {
     props: {
-      posts,
-      settings,
-      draftMode,
-      token: draftMode ? readToken : '',
+      projects,
     },
-  }
-}
+  };
+};

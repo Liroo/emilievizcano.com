@@ -1,27 +1,14 @@
-/**
- * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
- */
-
+import { BillIcon } from '@sanity/icons'
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
+import { debugSecrets } from '@sanity/preview-url-secret/sanity-plugin-debug-secrets'
 import { visionTool } from '@sanity/vision'
-import {
-  apiVersion,
-  dataset,
-  DRAFT_MODE_ROUTE,
-  previewSecretId,
-  projectId,
-} from 'lib/sanity.api'
-import { previewDocumentNode } from 'plugins/previewPane'
-import { settingsPlugin, settingsStructure } from 'plugins/settings'
+import { apiVersion, dataset, projectId } from 'lib/sanity.api'
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
-import authorType from 'schemas/author'
-import postType from 'schemas/post'
-import settingsType from 'schemas/settings'
+import { structureTool } from 'sanity/structure'
+import projectType from 'schemas/project'
 
-const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Emilie Vizcano'
 
 export default defineConfig({
   basePath: '/studio',
@@ -29,27 +16,31 @@ export default defineConfig({
   dataset,
   title,
   schema: {
-    // If you want more content types, you can add them to this array
-    types: [authorType, postType, settingsType],
+    types: [projectType],
   },
   plugins: [
-    deskTool({
-      structure: settingsStructure(settingsType),
-      // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
-      defaultDocumentNode: previewDocumentNode(),
+    structureTool({
+      structure: (S, context) => {
+        return S.list()
+          .title('Content')
+          .items([
+            // Minimum required configuration
+            orderableDocumentListDeskItem({
+              type: 'project',
+              title: 'Projects',
+              icon: BillIcon,
+              id: 'orderable-projects',
+              S,
+              context,
+            }),
+          ])
+      },
     }),
-    // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    settingsPlugin({ type: settingsType.name }),
-    // Add the "Open preview" action
-    previewUrl({
-      base: DRAFT_MODE_ROUTE,
-      urlSecretId: previewSecretId,
-      matchTypes: [postType.name, settingsType.name],
-    }),
-    // Add an image asset source for Unsplash
     unsplashImageAsset(),
-    // Vision lets you query your content with GROQ in the studio
+    // The remaining plugins are only loaded in dev mode
+    process.env.NODE_ENV !== 'production' && debugSecrets(),
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({ defaultApiVersion: apiVersion }),
+    process.env.NODE_ENV !== 'production' &&
+      visionTool({ defaultApiVersion: apiVersion }),
   ],
 })
