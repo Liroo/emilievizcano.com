@@ -1,3 +1,4 @@
+import HomeView from 'components/views/home';
 import { getAllProjects, getClient } from 'lib/sanity.client';
 import { Project } from 'lib/sanity.queries';
 import { GetStaticProps } from 'next';
@@ -13,9 +14,7 @@ interface Query {
 export default function Page(props: PageProps) {
   const { projects } = props;
 
-  console.log(projects);
-
-  return <div />;
+  return <HomeView projects={projects} />;
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
@@ -27,5 +26,6 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
     props: {
       projects,
     },
+    revalidate: 60,
   };
 };

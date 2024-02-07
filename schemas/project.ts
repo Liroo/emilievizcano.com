@@ -1,10 +1,10 @@
-import { BillIcon } from '@sanity/icons'
+import { BillIcon } from '@sanity/icons';
 import {
   orderRankField,
   orderRankOrdering,
-} from '@sanity/orderable-document-list'
-import { isUniqueAcrossAllDocuments } from 'lib/isUniqueAcrossAllDocuments'
-import { defineField, defineType } from 'sanity'
+} from '@sanity/orderable-document-list';
+import { isUniqueAcrossAllDocuments } from 'lib/isUniqueAcrossAllDocuments';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export default defineType({
   name: 'project',
@@ -30,6 +30,13 @@ export default defineType({
       description: 'The title of the project',
     }),
     defineField({
+      name: 'titleSs01Map',
+      title: 'Title s01 Map',
+      type: 'string',
+      description:
+        'A map of the title where capslock means activating ss01 feature',
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
@@ -46,19 +53,20 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [defineArrayMember({ type: 'block', name: 'block' })],
     }),
     defineField({
       name: 'gallery',
       title: 'Gallery',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'image',
+          name: 'image',
           options: {
             hotspot: true,
           },
-        },
+        }),
       ],
     }),
     defineField({
@@ -71,7 +79,7 @@ export default defineType({
       name: 'tags',
       title: 'Tags',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [defineArrayMember({ type: 'string', name: 'tag' })],
       description: 'Tags for the project',
     }),
 
@@ -115,7 +123,7 @@ export default defineType({
         title: title,
         subtitle: `${archive ? 'Archived' : ''}`,
         media: gallery,
-      }
+      };
     },
   },
-})
+});
