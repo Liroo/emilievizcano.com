@@ -1,9 +1,11 @@
+import useMousePosition from 'hooks/useMousePosition';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import InfosJpg from 'images/infos.jpg';
 import ProjectsJpg from 'images/projects.jpg';
 import TypefacesJpg from 'images/typefaces.jpg';
+import { urlForImage } from 'lib/sanity.image';
 import { Project } from 'lib/sanity.queries';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import { useEffect, useState } from 'react';
 
 export type HomeNavProps = {
@@ -32,10 +34,32 @@ const typefaces = [
 
 export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
   const [navIndexOpen, setNavIndexOpen] = useState<number>(-1);
+  const [imageUrl, setImageUrl] = useState<string>(null);
+  const [showPreview, setShowPreview] = useState<boolean>(false);
+  const mousePosition = useMousePosition();
+
+  const notArchivedProjects = projects.filter((project) => !project.archive);
 
   useEffect(() => {
     setNavOpen(navIndexOpen !== -1);
   }, [navIndexOpen]);
+
+  const onMouseEnter = async (url: string) => {
+    if (!url) return;
+    // load image and wait for it to be loaded
+    setImageUrl(url);
+    const img = new Image();
+    img.src = url;
+    img.onload = () => {
+      setShowPreview(true);
+    };
+  };
+  const onMouseLeave = () => {
+    setShowPreview(false);
+  };
+
+  const generateUrl = (index: number) =>
+    urlForImage(notArchivedProjects[index].gallery[0]).width(500).url();
 
   return (
     <nav className="laptop:px-[30px] w-full max-w-[600px] select-none px-[16px]">
@@ -51,7 +75,7 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
               navIndexOpen === 0 ? '!w-[60px]' : ''
             }`}
           >
-            <Image
+            <NextImage
               src={ProjectsJpg}
               alt="projects"
               className="h-[60px] w-[60px] min-w-[60px]"
@@ -77,10 +101,12 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
         <div className="overflow-hidden">
           <div className="h-px w-full bg-white" />
           <div className="my-[24px] w-full max-w-[426px] columns-2">
-            {projects.map((project, index) => (
+            {notArchivedProjects.map((project, index) => (
               <div
                 key={index}
                 className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white"
+                onMouseEnter={() => onMouseEnter(generateUrl(index))}
+                onMouseLeave={() => onMouseLeave()}
               >
                 <div className="w-[21px]">
                   <p>{(index + 1).toString().padStart(2, '0')}</p>
@@ -90,7 +116,9 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
             ))}
             <div className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white">
               <div className="w-[21px]">
-                <p>{(projects.length + 1).toString().padStart(2, '0')}</p>
+                <p>
+                  {(notArchivedProjects.length + 1).toString().padStart(2, '0')}
+                </p>
               </div>
               <p className="laptop:ml-[18px] ml-[12px]">Archives</p>
             </div>
@@ -110,7 +138,7 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
               navIndexOpen === 1 ? '!w-[60px]' : ''
             }`}
           >
-            <Image
+            <NextImage
               src={TypefacesJpg}
               alt="projects"
               className={`h-[60px] w-[60px] min-w-[60px] ${
@@ -156,7 +184,7 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
       <div className="laptop:mb-[11px] group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between">
         <div className="flex">
           <div className="laptop:block mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px]">
-            <Image
+            <NextImage
               src={InfosJpg}
               alt="projects"
               className="h-[60px] w-[60px] min-w-[60px]"
@@ -167,6 +195,28 @@ export default function HomeNav({ projects, setNavOpen }: HomeNavProps) {
           </p>
         </div>
         <RightArrowSvg className="w-[17px] rotate-45 fill-current text-white transition-all group-hover:-rotate-45" />
+      </div>
+      <div
+        className={`pointer-events-none fixed left-0 top-0 z-50 h-[140px] w-[140px] overflow-hidden`}
+        style={{
+          transform: `translate(${mousePosition.x + 40}px, ${
+            mousePosition.y - 70
+          }px)`,
+        }}
+      >
+        <div
+          className={`h-full overflow-hidden ${
+            showPreview ? 'w-[140px]' : 'w-0'
+          } transition-all`}
+        >
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt="preview"
+              className="h-[140px] w-[140px] min-w-[140px]"
+            />
+          )}
+        </div>
       </div>
     </nav>
   );
