@@ -4,6 +4,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
     './intro-template/**/*.{js,ts,jsx,tsx}',
     './pages/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
     './plugins/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -11,12 +12,6 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-brut)'],
         romie: ['var(--font-romie)'],
-      },
-      height: {
-        screen: 'calc(var(--vh) * 100)',
-      },
-      minHeight: {
-        screen: 'calc(var(--vh) * 100)',
       },
       zIndex: {
         60: 60,

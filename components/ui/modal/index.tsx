@@ -1,129 +1,55 @@
-import {
-  MouseEvent,
-  Ref,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useImperativeHandle,
-  useState,
-} from 'react';
+import { MouseEvent, useCallback } from 'react';
 
-import UIOverlayFullscreen from 'components/ui/overlay/fullscreen';
 import UIPortal from 'components/ui/portal';
+
+import { AnimatePresence, motion } from 'framer-motion';
 
 export interface UIModalProps {
   /** Modal component children */
   children: React.ReactNode;
-  /** If animated:
-   * - the background will have an opacity animation
-   * - the children will come from the bottom
-   * */
-  animated?: boolean;
-  /** Disable the hide() when you click on the background so you can handle it yourself */
-  onClickBackground?(): void;
-  /** className for the background, generally to change the color */
-  backgroundClassName?: string;
-  /** className for the foreground */
-  foregroundClassName?: string;
+  /** onClickBackground function */
+  onClickBackground?: () => void;
+  /** Show modal */
+  show?: boolean;
 }
 
-const UIModal = (
-  {
-    children,
-    animated,
-    onClickBackground,
-    backgroundClassName,
-    foregroundClassName,
-  }: UIModalProps,
-  ref: Ref<any>
-) => {
-  const [isShown, setIsShown] = useState<boolean>(false);
-  const [animationRunning, setAnimationRunning] = useState<boolean>(false);
-  const showModal = useCallback(() => {
-    setIsShown(true);
-  }, []);
-  const hideModal = useCallback(() => {
-    setIsShown(false);
-  }, []);
-  useImperativeHandle(
-    ref,
-    () => ({
-      show: showModal,
-      hide: hideModal,
-    }),
-    []
-  );
-
-  useEffect(() => {
-    const timeout = setTimeout(
-      () => setAnimationRunning(isShown),
-      // That 10ms is to avoid a bug where the animation is not triggered
-      isShown ? 10 : animated ? 300 : 0
-    );
-    return () => clearTimeout(timeout);
-  }, [isShown]);
-
-  useEffect(() => {
-    if (isShown) {
-      const scrollY = window.scrollY;
-
-      document.documentElement.style.position = 'fixed';
-      document.documentElement.style.top = `-${scrollY}px`;
-      document.documentElement.style.overflow = 'hidden';
-      return () => {
-        const scrollY = document.documentElement.style.top;
-
-        document.documentElement.style.overflow = null;
-        document.documentElement.style.position = '';
-        document.documentElement.style.top = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      };
-    }
-  }, [isShown]);
-
+const UIModal = ({ children, onClickBackground, show }: UIModalProps) => {
   const stopPropagation = useCallback((evt: MouseEvent) => {
     evt.stopPropagation();
   }, []);
 
-  const onMouseDown = useCallback(
-    (event: MouseEvent) => {
-      if (event.target !== event.currentTarget) return;
-      if (onClickBackground) onClickBackground();
-      else hideModal();
-    },
-    [onClickBackground, hideModal]
-  );
+  const onMouseDown = (event: MouseEvent) => {
+    if (event.target !== event.currentTarget) return;
+    if (onClickBackground) onClickBackground();
+  };
 
-  if (!isShown && !animationRunning) return null;
   return (
-    <UIPortal>
-      <UIOverlayFullscreen
-        className={`
-        bg-black/60 flex z-50
-        ${backgroundClassName}
-        ${animated ? 'transition-opacity duration-300 ease-in-out' : ''}
-        ${animationRunning && isShown ? 'opacity-60' : 'opacity-0'}
-        `}
-      />
-      <UIOverlayFullscreen
-        className={`
-        flex justify-center items-end z-50
-        ${foregroundClassName}
-        ${animated ? 'transition-all duration-300 ease-in-out' : ''}
-        ${
-          animationRunning && isShown
-            ? 'opacity-1'
-            : 'translate-y-full opacity-0'
-        }
-        `}
-        onMouseDown={onMouseDown}
-      >
-        <section className="contents" onClick={stopPropagation}>
-          {children}
-        </section>
-      </UIOverlayFullscreen>
-    </UIPortal>
+    <AnimatePresence>
+      {show && (
+        <UIPortal>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: 'easeInOut' }}
+            className="fixed left-0 top-0 z-50 flex h-dvh w-screen bg-black/60"
+            onClick={onClickBackground}
+          />
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ ease: 'easeInOut' }}
+            className="z-60 fixed right-0 top-0 flex h-dvh justify-end"
+          >
+            <section className="contents" onClick={stopPropagation}>
+              {children}
+            </section>
+          </motion.div>
+        </UIPortal>
+      )}
+    </AnimatePresence>
   );
 };
 
-export default forwardRef(UIModal);
+export default UIModal;

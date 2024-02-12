@@ -1,31 +1,27 @@
-import HomeView from 'components/views/home';
-import { getAllProjects, getClient } from 'lib/sanity.client';
-import { Project } from 'lib/sanity.queries';
-import { GetStaticProps } from 'next';
+import LayoutHome from 'components/layouts/home';
+import { getProjects } from 'flux/project/action';
+import { wrapper } from 'flux/store';
+import { ReactElement } from 'react';
 
-interface PageProps {
-  projects: Project[];
+export default function Index() {
+  return <></>;
 }
 
-interface Query {
-  [key: string]: string;
-}
-
-export default function Page(props: PageProps) {
-  const { projects } = props;
-
-  return <HomeView projects={projects} />;
-}
-
-export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
-  const client = getClient();
-
-  const [projects = []] = await Promise.all([getAllProjects(client)]);
-
-  return {
-    props: {
-      projects,
-    },
-    revalidate: 60,
-  };
+Index.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <>
+      <LayoutHome />
+      {page}
+    </>
+  );
 };
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    await store.dispatch<any>(getProjects()).unwrap();
+
+    return {
+      props: {},
+    };
+  },
+);

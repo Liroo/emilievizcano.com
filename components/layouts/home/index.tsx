@@ -1,22 +1,19 @@
+'use client';
+
 import EmilieVizcanoSvg from 'icons/emilievizcano.svg';
 import RomieArtDirectorSvg from 'icons/romie/art-director.svg';
 import RomieDesignerSvg from 'icons/romie/designer.svg';
 import RomieGraphicSvg from 'icons/romie/graphic.svg';
 import RomieTypeSvg from 'icons/romie/type.svg';
-import { Project } from 'lib/sanity.queries';
 import { useState } from 'react';
 import HomeFooter from './footer';
 import HomeNav from './nav';
 
-export type HomeViewProps = {
-  projects: Project[];
-};
-
-export default function HomeView({ projects }: HomeViewProps) {
+export default function LayoutHome() {
   const [navOpen, setNavOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex h-screen w-full flex-col overflow-y-scroll bg-black text-white">
+    <div className="flex h-dvh min-h-full w-full flex-col overflow-y-scroll bg-black text-white">
       <div className="laptop:p-[32px] p-[16px]">
         <EmilieVizcanoSvg className=" laptop:w-[717px] w-[72%]" />
       </div>
@@ -38,7 +35,7 @@ export default function HomeView({ projects }: HomeViewProps) {
           <RomieDesignerSvg className="laptop:h-[73px] h-[9vw] fill-current text-white" />
         </div>
       </div>
-      <HomeNav projects={projects} setNavOpen={setNavOpen} />
+      <HomeNav setNavOpen={setNavOpen} />
       <HomeFooter />
     </div>
   );

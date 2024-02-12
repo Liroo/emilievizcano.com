@@ -60,7 +60,7 @@ export async function getServerSideProps({ res }) {
     .filter(({ slug = '' }) => slug)
     .map((project) => {
       return {
-        url: `/projetcs/${project.slug}`,
+        url: `/projects/${project.slug}`,
         priority: 0.5,
         lastmod: new Date(project._updatedAt),
       };
