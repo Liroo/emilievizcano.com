@@ -13,7 +13,7 @@ export default function LayoutHome() {
   const [navOpen, setNavOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex h-dvh min-h-full w-full flex-col overflow-y-scroll bg-black text-white">
+    <div className="flex h-dvh min-h-full w-full flex-col overflow-y-scroll bg-black font-light text-white">
       <div className="laptop:p-[32px] p-[16px]">
         <EmilieVizcanoSvg className=" laptop:w-[717px] w-[72%]" />
       </div>

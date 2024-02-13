@@ -11,19 +11,24 @@ import 'tailwindcss/tailwind.css';
 const brutGrotesque = localFont({
   src: [
     {
-      path: '../fonts/Brut_Grotesque_WEB-Book.woff2',
+      path: '../fonts/BrutGrotesque-Light.otf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/BrutGrotesque-LightItalic.otf',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/BrutGrotesque-Regular.otf',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../fonts/Brut_Grotesque_WEB-Regular.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/Brut_Grotesque_WEB-Medium.woff2',
-      weight: '600',
-      style: 'normal',
+      path: '../fonts/BrutGrotesque-Italic.otf',
+      weight: '400',
+      style: 'italic',
     },
   ],
   variable: '--font-brut',
@@ -68,6 +73,8 @@ export default function MyApp({
         className={`${brutGrotesque.variable} ${romieGrotesque.variable} h-full font-sans`}
       >
         {getLayout(<Component {...props.pageProps} />)}
+
+        <div id="portal-root"></div>
         <UIModalList />
       </main>
     </Provider>
