@@ -1,5 +1,5 @@
 import { selectNotArchivedProjects } from 'flux/project/selector';
-import { useAppDispatch, useAppSelector } from 'flux/store';
+import { useAppSelector } from 'flux/store';
 import useMousePosition from 'hooks/useMousePosition';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import InfosJpg from 'images/infos.jpg';
@@ -8,7 +8,6 @@ import TypefacesJpg from 'images/typefaces.jpg';
 import { urlForImage } from 'lib/sanity.image';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 export type HomeNavProps = {
@@ -40,8 +39,6 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
   const [showPreview, setShowPreview] = useState<boolean>(false);
   const mousePosition = useMousePosition();
   const projects = useAppSelector(selectNotArchivedProjects);
-  const dispatch = useAppDispatch();
-  const router = useRouter();
 
   useEffect(() => {
     setNavOpen(navIndexOpen !== -1);
@@ -105,7 +102,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
           <div className="h-px w-full bg-white" />
           <div className="my-[24px] w-full max-w-[426px] columns-2">
             {projects.map((project, index) => (
-              <Link href={`/projects/${project.slug}`} key={index}>
+              <Link href={`/projects/${project.slug}`} key={index} prefetch>
                 <div
                   className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white"
                   onMouseEnter={() => onMouseEnter(generateUrl(index))}
@@ -118,7 +115,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
                 </div>
               </Link>
             ))}
-            <Link href="/infos">
+            <Link href="/archives" prefetch>
               <div className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white">
                 <div className="w-[21px]">
                   <p>{(projects.length + 1).toString().padStart(2, '0')}</p>
@@ -171,7 +168,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
           <div className="h-px w-full bg-white" />
           <div className="grid-flow-rows my-[24px] grid w-full max-w-[426px] grid-cols-1">
             {typefaces.map(({ label }, index) => (
-              <Link href="/typefaces" key={index}>
+              <Link href="/typefaces" key={index} prefetch>
                 <div className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white">
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
@@ -184,7 +181,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         </div>
       </div>
       <div className="h-px w-full bg-white" />
-      <Link href="/infos">
+      <Link href="/infos" prefetch>
         <div className="laptop:mb-[11px] group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between">
           <div className="flex">
             <div className="laptop:block mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px]">
@@ -202,7 +199,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         </div>
       </Link>
       <div
-        className={`pointer-events-none fixed left-0 top-0 z-50 h-[140px] w-[140px] overflow-hidden`}
+        className={`pointer-events-none fixed left-0 top-0 z-50 h-[140px] w-[140px] overflow-hidden drop-shadow`}
         style={{
           transform: `translate(${mousePosition.x + 40}px, ${
             mousePosition.y - 70
