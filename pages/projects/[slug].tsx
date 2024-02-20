@@ -1,9 +1,8 @@
-import LayoutHome from 'components/layouts/home';
 import { closeModal, openModal } from 'flux/modal/reducer';
 import { getProjects } from 'flux/project/action';
 import { useAppDispatch, wrapper } from 'flux/store';
 import { useRouter } from 'next/router';
-import { ReactElement, useEffect } from 'react';
+import { useEffect } from 'react';
 import { ModalEnum } from 'types/modal';
 
 export default function Project() {
@@ -20,15 +19,6 @@ export default function Project() {
 
   return <></>;
 }
-
-Project.getLayout = function getLayout(page: ReactElement) {
-  return (
-    <>
-      <LayoutHome />
-      {page}
-    </>
-  );
-};
 
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) =>

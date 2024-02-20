@@ -7,8 +7,7 @@ type ProjectViewProps = {
 
 export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
-
   console.log(project);
 
-  return <div className="h-full w-[800px] bg-[#252527]"></div>;
+  return <></>;
 }

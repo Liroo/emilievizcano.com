@@ -1,5 +1,7 @@
+import LayoutHome from 'components/layouts/home';
 import UIModalList from 'components/ui/modal/list';
 import { wrapper } from 'flux/store';
+import { AnimatePresence } from 'framer-motion';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
@@ -61,18 +63,21 @@ interface PageProps {
 
 export default function MyApp({
   Component,
+  router,
   ...rest
 }: Omit<AppPropsWithLayout, 'pageProps'> & PageProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
-
-  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
     <Provider store={store}>
       <main
         className={`${brutGrotesque.variable} ${romieGrotesque.variable} h-full font-sans`}
       >
-        {getLayout(<Component {...props.pageProps} />)}
+        <LayoutHome />
+
+        <AnimatePresence mode="wait">
+          <Component key={router.pathname} {...props.pageProps} />
+        </AnimatePresence>
 
         <div id="portal-root"></div>
         <UIModalList />
