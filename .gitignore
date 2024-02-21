@@ -20,7 +20,6 @@
 # misc
 .DS_Store
 *.pem
-.vscode
 *.iml
 .idea
 
