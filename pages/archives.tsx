@@ -1,17 +1,21 @@
+import { closeModal, openModal } from 'flux/modal/reducer';
 import { getProjects } from 'flux/project/action';
-import { wrapper } from 'flux/store';
-import { motion } from 'framer-motion';
+import { useAppDispatch, wrapper } from 'flux/store';
+import { useEffect } from 'react';
+import { ModalEnum } from 'types/modal';
 
 export default function Archives() {
-  return (
-    <motion.div
-      className="fixed left-0 top-0 z-50 h-screen w-screen bg-black"
-      initial={{ y: '100%' }}
-      animate={{ y: 0 }}
-      exit={{ y: '100%' }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
-    ></motion.div>
-  );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(openModal(ModalEnum.Archives));
+
+    return () => {
+      dispatch(closeModal(ModalEnum.Archives));
+    };
+  }, []);
+
+  return <></>;
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(

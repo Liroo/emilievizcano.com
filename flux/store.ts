@@ -17,11 +17,9 @@ const makeStore = ({ reduxWrapperMiddleware }: any) =>
     reducer,
     devTools: true,
     middleware: (getDefaultMiddleware) =>
-      [
-        ...getDefaultMiddleware(),
-        // typeof window ? logger : null,
-        reduxWrapperMiddleware,
-      ].filter(Boolean) as any,
+      [...getDefaultMiddleware(), reduxWrapperMiddleware].filter(
+        Boolean,
+      ) as any,
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

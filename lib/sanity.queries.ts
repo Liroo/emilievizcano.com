@@ -3,6 +3,7 @@ import { groq } from 'next-sanity';
 const projectFields = groq`
   _id,
   title,
+  titleSs01Map,
   _updatedAt,
   description,
   gallery,
@@ -34,6 +35,7 @@ export interface Project {
   _id: string;
   _updatedAt: string;
   title?: string;
+  titleSs01Map?: string;
   slug?: any;
   description?: any;
   gallery?: any[];

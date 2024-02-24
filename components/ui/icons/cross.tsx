@@ -3,9 +3,14 @@ import { twMerge } from 'tailwind-merge';
 export interface UIIconsCrossProps {
   /** Tailwind CSS classes */
   className?: string;
+  /** Tailwind Lines CSS classes */
+  classNameLines?: string;
 }
 
-export default function UIIconsCross({ className }: UIIconsCrossProps) {
+export default function UIIconsCross({
+  className,
+  classNameLines,
+}: UIIconsCrossProps) {
   return (
     <div
       className={twMerge(
@@ -13,8 +18,12 @@ export default function UIIconsCross({ className }: UIIconsCrossProps) {
         className,
       )}
     >
-      <div className="absolute h-px w-full bg-white" />
-      <div className="absolute h-full w-px bg-white" />
+      <div
+        className={twMerge('absolute h-px w-full bg-white', classNameLines)}
+      />
+      <div
+        className={twMerge('absolute h-full w-px bg-white', classNameLines)}
+      />
     </div>
   );
 }

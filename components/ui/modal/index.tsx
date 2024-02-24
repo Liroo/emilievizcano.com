@@ -11,17 +11,19 @@ export interface UIModalProps {
   onClickBackground?: () => void;
   /** Show modal */
   show?: boolean;
+  /** x or y animation */
+  animation?: 'x' | 'y';
 }
 
-const UIModal = ({ children, onClickBackground, show }: UIModalProps) => {
+const UIModal = ({
+  children,
+  onClickBackground,
+  show,
+  animation = 'x',
+}: UIModalProps) => {
   const stopPropagation = useCallback((evt: MouseEvent) => {
     evt.stopPropagation();
   }, []);
-
-  const onMouseDown = (event: MouseEvent) => {
-    if (event.target !== event.currentTarget) return;
-    if (onClickBackground) onClickBackground();
-  };
 
   return (
     <AnimatePresence>
@@ -36,11 +38,11 @@ const UIModal = ({ children, onClickBackground, show }: UIModalProps) => {
             onClick={onClickBackground}
           />
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            initial={{ [animation]: '100%' }}
+            animate={{ [animation]: 0 }}
+            exit={{ [animation]: '100%' }}
             transition={{ ease: 'easeInOut' }}
-            className="z-60 fixed right-0 top-0 flex h-dvh justify-end"
+            className="fixed right-0 top-0 z-60 flex h-dvh justify-end"
           >
             <section className="contents" onClick={stopPropagation}>
               {children}

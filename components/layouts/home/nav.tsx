@@ -62,16 +62,16 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
     urlForImage(projects[index].gallery[0]).width(500).url();
 
   return (
-    <nav className="laptop:px-[30px] w-full max-w-[600px] select-none px-[16px]">
+    <nav className="w-full max-w-[600px] select-none px-[16px] laptop:px-[30px]">
       <div
-        className="laptop:mb-[11px] group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between"
+        className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]"
         onClick={() => {
           setNavIndexOpen(navIndexOpen === 0 ? -1 : 0);
         }}
       >
         <div className="flex">
           <div
-            className={`laptop:block mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] ${
+            className={`mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] laptop:block ${
               navIndexOpen === 0 ? '!w-[60px]' : ''
             }`}
           >
@@ -81,7 +81,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               className="h-[60px] w-[60px] min-w-[60px]"
             />
           </div>
-          <p className="laptop:text-[30px] laptop:leading-[45px] text-[20px] leading-[24px]">
+          <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
             Projects
           </p>
         </div>
@@ -102,25 +102,25 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
           <div className="h-px w-full bg-white" />
           <div className="my-[24px] w-full max-w-[426px] columns-2">
             {projects.map((project, index) => (
-              <Link href={`/projects/${project.slug}`} key={index} prefetch>
+              <Link href={`/projects/${project.slug}`} key={index}>
                 <div
-                  className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white"
+                  className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px] [@media(hover:none){&}]:text-white"
                   onMouseEnter={() => onMouseEnter(generateUrl(index))}
                   onMouseLeave={() => onMouseLeave()}
                 >
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
                   </div>
-                  <p className="laptop:ml-[18px] ml-[12px]">{project.title}</p>
+                  <p className="ml-[12px] laptop:ml-[18px]">{project.title}</p>
                 </div>
               </Link>
             ))}
-            <Link href="/archives" prefetch>
-              <div className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white">
+            <Link href="/archives">
+              <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px] [@media(hover:none){&}]:text-white">
                 <div className="w-[21px]">
                   <p>{(projects.length + 1).toString().padStart(2, '0')}</p>
                 </div>
-                <p className="laptop:ml-[18px] ml-[12px]">Archives</p>
+                <p className="ml-[12px] laptop:ml-[18px]">Archives</p>
               </div>
             </Link>
           </div>
@@ -128,14 +128,14 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
       </div>
       <div className="h-px w-full bg-white" />
       <div
-        className="laptop:mb-[11px] group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between"
+        className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]"
         onClick={() => {
           setNavIndexOpen(navIndexOpen === 1 ? -1 : 1);
         }}
       >
         <div className="flex">
           <div
-            className={`laptop:block mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] ${
+            className={`mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] laptop:block ${
               navIndexOpen === 1 ? '!w-[60px]' : ''
             }`}
           >
@@ -147,7 +147,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               }`}
             />
           </div>
-          <p className="laptop:text-[30px] laptop:leading-[45px] text-[20px] leading-[24px]">
+          <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
             Typefaces
           </p>
         </div>
@@ -168,12 +168,12 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
           <div className="h-px w-full bg-white" />
           <div className="grid-flow-rows my-[24px] grid w-full max-w-[426px] grid-cols-1">
             {typefaces.map(({ label }, index) => (
-              <Link href="/typefaces" key={index} prefetch>
-                <div className="laptop:text-[17px] laptop:leading-[25px] laptop:mb-[4px] mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white [@media(hover:none){&}]:text-white">
+              <Link href="/typefaces" key={index}>
+                <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px] [@media(hover:none){&}]:text-white">
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
                   </div>
-                  <p className="laptop:ml-[18px] ml-[12px]">{label}</p>
+                  <p className="ml-[12px] laptop:ml-[18px]">{label}</p>
                 </div>
               </Link>
             ))}
@@ -181,17 +181,17 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         </div>
       </div>
       <div className="h-px w-full bg-white" />
-      <Link href="/infos" prefetch>
-        <div className="laptop:mb-[11px] group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between">
+      <Link href="/infos">
+        <div className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]">
           <div className="flex">
-            <div className="laptop:block mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px]">
+            <div className="mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] laptop:block">
               <NextImage
                 src={InfosJpg}
                 alt="infos"
                 className="h-[60px] w-[60px] min-w-[60px]"
               />
             </div>
-            <p className="laptop:text-[30px] laptop:leading-[45px] text-[20px] leading-[24px]">
+            <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
               Infos
             </p>
           </div>

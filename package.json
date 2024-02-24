@@ -34,7 +34,7 @@
     "useTabs": false
   },
   "dependencies": {
-    "@portabletext/react": "3.0.11",
+    "@portabletext/react": "^3.0.11",
     "@reduxjs/toolkit": "^2.1.0",
     "@sanity/client": "6.12.3",
     "@sanity/image-url": "1.0.2",

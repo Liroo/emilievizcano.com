@@ -1,3 +1,4 @@
+import ArchiveView from 'components/views/archive';
 import InfosView from 'components/views/infos';
 import ProjectView from 'components/views/project';
 import { selectIsOneModalOpen } from 'flux/modal/selector';
@@ -46,6 +47,15 @@ export default function UIModalList() {
         }}
       >
         <ProjectView />
+      </UIModalController>
+      <UIModalController
+        modalId={ModalEnum.Archives}
+        onClickBackground={() => {
+          router.push('/', null, { shallow: true });
+        }}
+        animation="y"
+      >
+        <ArchiveView />
       </UIModalController>
     </>
   );

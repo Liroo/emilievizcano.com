@@ -1,12 +1,21 @@
+import { twMerge } from 'tailwind-merge';
+
 type UIPillProps = {
   /** label for the pill */
   label: string;
+  /** classname */
+  className?: string;
 };
 
-export default function UIPill({ label }: UIPillProps) {
+export default function UIPill({ label, className = '' }: UIPillProps) {
   return (
-    <div className="laptop:py-[3px] rounded-full border border-white px-[10px] py-[6px]">
-      <p className="laptop:text-[15px] text-[16px]">{label}</p>
+    <div
+      className={twMerge(
+        'rounded-full border border-white px-[10px] py-[6px] text-[16px] laptop:py-[3px] laptop:text-[15px]',
+        className,
+      )}
+    >
+      <p>{label}</p>
     </div>
   );
 }
