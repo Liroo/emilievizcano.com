@@ -7,7 +7,7 @@ export default function ArchiveView() {
   const projects = useAppSelector(selectArchivedProjects);
 
   return (
-    <div className="flex h-screen w-screen flex-col bg-black text-[10px] font-light text-white laptop:text-[12px]">
+    <div className="flex h-screen w-screen flex-col bg-black text-[12px] font-light text-white">
       <ArchiveHeader />
       <ArchiveList projetcs={projects} />
     </div>

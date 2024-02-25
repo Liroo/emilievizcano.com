@@ -11,11 +11,11 @@ export default function FoundryFooter() {
       <div
         className={`absolute left-0 top-0 h-full w-full ${
           scrolled ? '-translate-x-full' : ''
-        } flex items-center justify-between px-[16px] transition-all duration-200 laptop:px-[30px]`}
+        } grid grid-rows-6 items-center justify-between gap-[30px] px-[16px] transition-all duration-200 laptop:px-[30px]`}
       >
         <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
         <div className="flex items-center">
-          <div className="flex items-center laptop:items-start">
+          <div className="flex cursor-pointer items-center laptop:items-start">
             <RightArrowSvg className="w-[10px] fill-current text-[#383838] laptop:w-[17px]" />
             <p className="pl-[8px] text-[9px] uppercase leading-[11px] underline laptop:text-[12px] laptop:leading-[15px]">
               EULA &

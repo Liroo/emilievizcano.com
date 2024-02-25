@@ -1,4 +1,4 @@
-import ArchiveView from 'components/views/archive';
+import ArchiveView from 'components/views/archives';
 import InfosView from 'components/views/infos';
 import ProjectView from 'components/views/project';
 import { selectIsOneModalOpen } from 'flux/modal/selector';
