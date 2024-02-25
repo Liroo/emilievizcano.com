@@ -29,7 +29,7 @@ const SOFTWARES = [
 
 export default function InfosView() {
   return (
-    <div className="laptop:w-[820px] laptop:text-[15px] relative h-full w-screen bg-[#252527] text-[16px] font-light text-white">
+    <div className="relative h-full w-screen bg-[#252527] text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
       <Link href="/">
         <div
           className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
@@ -39,22 +39,22 @@ export default function InfosView() {
         </div>
       </Link>
 
-      <div className="laptop:mx-[30px] laptop:mt-[30px] mx-[16px] mt-[18px] flex h-dvh flex-col">
-        <div className="laptop:h-[90px] flex h-[36px] w-full bg-[#252527]">
-          <h2 className="font-romie laptop:text-[54px] self-baseline text-[19px] font-normal text-white">
+      <div className="mx-[16px] mt-[18px] flex h-dvh flex-col laptop:mx-[30px] laptop:mt-[30px]">
+        <div className="flex h-[36px] w-full bg-[#252527] laptop:h-[90px]">
+          <h2 className="self-baseline font-romie text-[19px] font-normal text-white laptop:text-[54px]">
             Abou<span className="ss01">t</span> me
           </h2>
         </div>
 
-        <div className="laptop:pb-[46px] h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px]">
+        <div className="h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:pb-[46px]">
           <Image
             unoptimized
             src={InfosEmilieJpg}
             alt="Emilie"
-            className="laptop:hidden mt-[16px] w-full"
+            className="mt-[16px] w-full laptop:hidden"
           />
 
-          <p className="laptop:mt-[20px] laptop:leading-[20px] mr-[20px] mt-[30px] leading-[24px]">
+          <p className="mr-[20px] mt-[30px] leading-[24px] laptop:mt-[20px] laptop:leading-[20px]">
             I am a multidisciplinary graphic designer who mainly work within
             brand and art direction, with a focus on type and web. Having a
             particular interest for fashion and tech fields, it's now been 5
@@ -70,7 +70,7 @@ export default function InfosView() {
             beautiful typography and video games.
           </p>
 
-          <div className="laptop:mt-[45px] mt-[20px] flex justify-between">
+          <div className="mt-[20px] flex justify-between laptop:mt-[45px]">
             <div>
               <div className="flex items-center">
                 <RightArrowSvg className="w-[18px] fill-current text-white" />
@@ -85,12 +85,12 @@ export default function InfosView() {
                 ))}
               </div>
 
-              <div className="laptop:mt-[25px] mt-[20px] flex items-center">
+              <div className="mt-[20px] flex items-center laptop:mt-[25px]">
                 <RightArrowSvg className="w-[18px] fill-current text-white" />
                 <p className="ml-[6px] uppercase">softwares</p>
               </div>
 
-              <div className="laptop:mt-[17px] mt-[8px] flex max-w-[360px] flex-wrap">
+              <div className="mt-[8px] flex max-w-[360px] flex-wrap laptop:mt-[17px]">
                 {SOFTWARES.map((service, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
                     <UIPill label={service} />
@@ -98,7 +98,7 @@ export default function InfosView() {
                 ))}
               </div>
             </div>
-            <div className="laptop:block hidden">
+            <div className="hidden laptop:block">
               <Image
                 unoptimized
                 src={InfosEmilieJpg}

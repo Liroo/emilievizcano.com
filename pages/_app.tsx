@@ -41,7 +41,6 @@ const romieGrotesque = localFont({
     {
       path: '../fonts/Romie-Regular-Italic.otf',
       weight: '400',
-      style: 'italic',
     },
   ],
   variable: '--font-romie',
