@@ -1,4 +1,5 @@
 import { PortableText } from '@portabletext/react';
+import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { Project } from 'lib/sanity.queries';
@@ -9,9 +10,9 @@ type ArchiveProjectProps = {
 
 export default function ArchiveProject({ project }: ArchiveProjectProps) {
   return (
-    <div className="max-h-[620px] pb-[20px] text-[12px] laptop:h-[calc(100dvh-30px)] laptop:pb-0 laptop:text-[15px]">
+    <div className="flex max-h-[620px] w-full flex-col justify-between pb-[20px] text-[12px] laptop:h-[calc(100dvh-30px)] laptop:flex-row laptop:pb-0 laptop:text-[15px]">
       <div className="mx-[16px] mt-[20px] laptop:mx-[30px] laptop:mt-[30px]">
-        <h2 className="self-baseline font-romie text-[19px] font-normal text-white laptop:text-[54px]">
+        <h2 className="self-baseline font-romie text-[19px] font-normal leading-[19px] text-white laptop:text-[54px] laptop:leading-[54px]">
           {project.title.split('').map((letter, index) => {
             const isUpperCase =
               project.titleSs01Map[index] ===
@@ -70,6 +71,17 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
             </div>
           )}
         </div>
+      </div>
+
+      <div className="flex w-full overflow-auto laptop:w-[60vw] laptop:min-w-[60vw]">
+        {project.gallery.map((asset, index) => (
+          <UIImageSanity
+            key={index}
+            asset={asset}
+            className="ml-auto h-full w-auto max-w-none"
+            alt="gallery image"
+          />
+        ))}
       </div>
     </div>
   );

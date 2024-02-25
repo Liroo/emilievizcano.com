@@ -26,7 +26,7 @@ export const UIImageSanity = ({
       {...imageProps}
       className={className}
       alt={alt}
-      sizes="(max-width: 800px) 100vw, 800px"
+      sizes="(max-width: 1024px) 100vw, 1024px"
     />
   );
 };
