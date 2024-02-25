@@ -1,10 +1,12 @@
 import UIIconsCross from 'components/ui/icons/cross';
+import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
 import { selectProjectBySlug } from 'flux/project/selector';
 import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 
 import Link from 'next/link';
+import { useState } from 'react';
 
 type ProjectViewProps = {
   slug?: string;
@@ -15,9 +17,28 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
   console.log(project);
 
+  const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+
   return (
     <>
-      <div className="relative h-full w-screen bg-[#252527] text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
+      <div
+        className={`hidden overflow-hidden bg-black transition-all duration-300 desktop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
+      >
+        <div className="h-full w-[600px] min-w-[600px]">
+          {project.gallery.map((asset, index) => (
+            <UIImageSanity
+              key={index}
+              asset={asset}
+              className=""
+              alt="gallery image"
+            />
+          ))}
+        </div>
+      </div>
+      <div
+        onClick={() => setGalleryOpen(!galleryOpen)}
+        className="relative grid h-full w-screen overflow-auto bg-[#252527] text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]"
+      >
         <Link href="/">
           <div
             className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
@@ -27,49 +48,62 @@ export default function ProjectView({ slug }: ProjectViewProps) {
           </div>
         </Link>
 
-        <div className="">
-          <div className="">
+        <div className="mx-[16px] mt-[18px] flex h-dvh flex-col laptop:mx-[30px] laptop:mt-[30px]">
+          <div className="flex h-[36px] w-full bg-[#252527] laptop:h-[90px]">
             <h2 className="self-baseline font-romie text-[19px] font-normal text-white laptop:text-[54px]">
               {project.title}
             </h2>
           </div>
 
-          <div>{/* <Image /> */}</div>
-        </div>
+          <div className="mt-[20px] w-full laptop:h-[420px] laptop:w-[322px] ">
+            {project.gallery.map((asset, index) => (
+              <UIImageSanity
+                key={index}
+                asset={asset}
+                className=""
+                alt="gallery image"
+              />
+            ))}
+          </div>
 
-        <div>{/* <p>{project.description(0).children(0).text}</p> */}</div>
+          <div>
+            {project.description.map((array, index) => (
+              <p key={index}>{array.children[0].text}</p>
+            ))}
+          </div>
 
-        <div className="mt-[8px] flex max-w-[360px] flex-wrap">
-          {project.tags.map((tags, index) => (
-            <div key={index} className="mr-[8px] mt-[8px]">
-              <UIPill label={tags} />
+          <div className="mt-[8px] flex max-w-[360px] flex-wrap">
+            {project.tags.map((tags, index) => (
+              <div key={index} className="mr-[8px] mt-[8px]">
+                <UIPill label={tags} />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+            <RightArrowSvg className="w-[18px] fill-current text-white" />
+            <div className="">
+              <p className="ml-[6px] text-[6px] uppercase">project</p>
+              <p className="ml-[6px] text-[12px] uppercase">{project.title}</p>
             </div>
-          ))}
-        </div>
-
-        <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
-          <RightArrowSvg className="w-[18px] fill-current text-white" />
-          <div className="">
-            <p className="ml-[6px] text-[6px] uppercase">project</p>
-            <p className="ml-[6px] text-[12px] uppercase">{project.title}</p>
           </div>
-        </div>
 
-        <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
-          <RightArrowSvg className="w-[18px] fill-current text-white" />
-          <div className="">
-            <p className="ml-[6px] text-[6px] uppercase">role</p>
-            <p className="ml-[6px] text-[12px] uppercase">{project.role}</p>
+          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+            <RightArrowSvg className="w-[18px] fill-current text-white" />
+            <div className="">
+              <p className="ml-[6px] text-[6px] uppercase">role</p>
+              <p className="ml-[6px] text-[12px] uppercase">{project.role}</p>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
-          <RightArrowSvg className="w-[18px] fill-current text-white" />
-          <div className="">
-            <p className="ml-[6px] text-[6px] uppercase">worked as</p>
-            <p className="ml-[6px] text-[12px] uppercase">
-              {project.workingAs}
-            </p>
+          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+            <RightArrowSvg className="w-[18px] fill-current text-white" />
+            <div className="">
+              <p className="ml-[6px] text-[6px] uppercase">worked as</p>
+              <p className="ml-[6px] text-[12px] uppercase">
+                {project.workingAs}
+              </p>
+            </div>
           </div>
         </div>
       </div>
