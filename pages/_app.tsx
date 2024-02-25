@@ -5,7 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
-import { ReactElement, ReactNode } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import 'styles/globals.css';
 import 'tailwindcss/tailwind.css';
@@ -67,20 +67,32 @@ export default function MyApp({
 }: Omit<AppPropsWithLayout, 'pageProps'> & PageProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
 
+  useEffect(() => {
+    const onUnload = () => {
+      window.sessionStorage.clear();
+    };
+    window.addEventListener('beforeunload', onUnload);
+    return () => {
+      window.removeEventListener('beforeunload', onUnload);
+    };
+  }, []);
+
   return (
     <Provider store={store}>
-      <main
-        className={`${brutGrotesque.variable} ${romieGrotesque.variable} h-full font-sans`}
-      >
-        <LayoutHome />
+      <AnimatePresence mode="wait" initial={false}>
+        <main
+          className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans`}
+        >
+          <LayoutHome />
 
-        <AnimatePresence mode="wait">
-          <Component key={router.pathname} {...props.pageProps} />
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+            <Component key={router.pathname} {...props.pageProps} />
+          </AnimatePresence>
 
-        <div id="portal-root"></div>
-        <UIModalList />
-      </main>
+          <div id="portal-root"></div>
+          <UIModalList />
+        </main>
+      </AnimatePresence>
     </Provider>
   );
 }

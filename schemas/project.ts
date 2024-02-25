@@ -30,6 +30,12 @@ export default defineType({
       description: 'The title of the project',
     }),
     defineField({
+      name: 'short-title',
+      title: 'Short Title',
+      type: 'string',
+      description: 'Short title of the project',
+    }),
+    defineField({
       name: 'titleSs01Map',
       title: 'Title s01 Map',
       type: 'string',
