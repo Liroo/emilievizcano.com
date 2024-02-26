@@ -12,21 +12,21 @@ export default function FoundryFooter() {
       <div
         className={`absolute left-0 top-0 h-full w-full ${
           scrolled ? '-translate-x-full' : ''
-        } grid grid-cols-6 items-center justify-between gap-[30px] px-[16px] transition-all duration-200 laptop:px-[30px]`}
+        } grid grid-cols-6 items-center justify-between gap-[30px] px-[16px] transition-all duration-200 laptop:gap-[20px] laptop:px-[30px]`}
       >
         <Link href="/">
           <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
         </Link>
-        <div className="flex cursor-pointer items-center laptop:items-start">
-          <RightArrowSvg className="w-[10px] fill-current text-[#383838] laptop:w-[17px]" />
+        <div className="col-span-2 col-start-2 flex cursor-pointer items-center laptop:col-auto laptop:items-start">
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] underline laptop:text-[12px] laptop:leading-[15px]">
             EULA &
             <br />
             Font Licenses
           </p>
         </div>
-        <div className="flex items-center laptop:items-start">
-          <RightArrowSvg className="w-[10px] fill-current text-[#383838] laptop:w-[17px]" />
+        <div className="hidden items-center laptop:flex laptop:items-start">
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             Custom
             <br />
@@ -34,7 +34,7 @@ export default function FoundryFooter() {
           </p>
         </div>
         <div className="hidden items-center laptop:flex laptop:items-start">
-          <RightArrowSvg className="w-[10px] fill-current text-[#383838] laptop:w-[17px]" />
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             Custom
             <br />
@@ -42,10 +42,10 @@ export default function FoundryFooter() {
           </p>
         </div>
 
-        <div></div>
+        <div className="hidden laptop:block"></div>
 
-        <div className="hidden items-center justify-end laptop:flex laptop:items-start">
-          <RightArrowSvg className="w-[10px] fill-current text-[#383838] laptop:w-[17px]" />
+        <div className="col-span-2 col-start-4 flex items-center laptop:col-auto laptop:items-start laptop:justify-end">
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             <a href="https://www.instagram.com/emilievizcano" target="_blank">
               Instagram

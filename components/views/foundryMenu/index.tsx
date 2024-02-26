@@ -9,7 +9,7 @@ export default function FoundryMenuView() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="relative h-full w-screen bg-[#CBCBCB] text-[16px] font-light text-[#898989] tablet:max-w-[350px] laptop:text-[15px]">
+    <div className="relative h-full w-screen overflow-y-scroll bg-[#CBCBCB] text-[16px] font-light text-[#898989] tablet:max-w-[350px] laptop:text-[15px]">
       <div
         className="absolute right-[12px] top-[20px] -m-[10px] cursor-pointer p-[10px]"
         onClick={() => {
