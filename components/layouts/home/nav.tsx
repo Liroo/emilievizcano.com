@@ -27,10 +27,6 @@ const typefaces = [
     label: 'Lapicide',
     id: 'lapicide',
   },
-  {
-    label: 'Tubular',
-    id: 'tubular',
-  },
 ];
 
 export default function HomeNav({ setNavOpen }: HomeNavProps) {
@@ -167,8 +163,8 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         <div className="overflow-hidden">
           <div className="h-px w-full bg-white" />
           <div className="grid-flow-rows my-[24px] grid w-full max-w-[426px] grid-cols-1">
-            {typefaces.map(({ label }, index) => (
-              <Link href="/foundry" key={index}>
+            {typefaces.map(({ label, id }, index) => (
+              <Link href={`/foundry/${id}`} key={index}>
                 <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
@@ -177,6 +173,14 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
                 </div>
               </Link>
             ))}
+            <Link href={`/foundry`}>
+              <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
+                <div className="w-[21px]">
+                  <p>{(typefaces.length + 1).toString().padStart(2, '0')}</p>
+                </div>
+                <p className="ml-[12px] laptop:ml-[18px]">All</p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

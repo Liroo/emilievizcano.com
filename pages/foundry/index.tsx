@@ -11,7 +11,8 @@ export default function Foundry() {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      if (!url.startsWith('/foundry')) animate(scope.current, { x: '100%' });
+      if (!url.startsWith('/foundry'))
+        animate(scope.current, { x: '100%' }, { ease: 'easeInOut' });
     };
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {
