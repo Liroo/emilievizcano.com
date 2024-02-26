@@ -5,16 +5,26 @@ import RomieArtDirectorSvg from 'icons/romie/art-director.svg';
 import RomieDesignerSvg from 'icons/romie/designer.svg';
 import RomieGraphicSvg from 'icons/romie/graphic.svg';
 import RomieTypeSvg from 'icons/romie/type.svg';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import HomeFooter from './footer';
 import HomeNav from './nav';
 
 export default function LayoutHome() {
   const [navOpen, setNavOpen] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
-    window.sessionStorage.setItem('ev', new Date().getTime().toString());
-  }, []);
+    const handleRouteChange = () => {
+      window.sessionStorage.setItem('ev', router.pathname);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router]);
 
   return (
     <div className="fixed left-0 top-0 flex h-dvh min-h-full w-full flex-col overflow-y-scroll bg-black font-light text-white">

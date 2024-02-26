@@ -78,7 +78,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
             <NextImage
               src={ProjectsJpg}
               alt="projects"
-              className="h-[60px] w-[60px] min-w-[60px]"
+              className="h-[60px] w-[60px] min-w-[60px] object-cover"
             />
           </div>
           <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
@@ -144,7 +144,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               alt="projects"
               className={`h-[60px] w-[60px] min-w-[60px] ${
                 navIndexOpen === 1 ? '!w-[60px]' : ''
-              }`}
+              } object-cover`}
             />
           </div>
           <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
@@ -168,7 +168,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
           <div className="h-px w-full bg-white" />
           <div className="grid-flow-rows my-[24px] grid w-full max-w-[426px] grid-cols-1">
             {typefaces.map(({ label }, index) => (
-              <Link href="/typefaces" key={index}>
+              <Link href="/foundry" key={index}>
                 <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px] [@media(hover:none){&}]:text-white">
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>

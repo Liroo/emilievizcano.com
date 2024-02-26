@@ -34,7 +34,7 @@ const UIModal = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ ease: 'easeInOut' }}
-            className="fixed left-0 top-0 z-50 flex h-dvh w-screen bg-black/60"
+            className="fixed left-0 top-0 z-50 flex h-dvh w-screen bg-black/30"
             onClick={onClickBackground}
           />
           <motion.div

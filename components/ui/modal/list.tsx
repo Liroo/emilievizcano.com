@@ -1,4 +1,6 @@
 import ArchiveView from 'components/views/archives';
+import FoundryCartView from 'components/views/foundryCart';
+import FoundryMenuView from 'components/views/foundryMenu';
 import InfosView from 'components/views/infos';
 import ProjectView from 'components/views/project';
 import { selectIsOneModalOpen } from 'flux/modal/selector';
@@ -56,6 +58,12 @@ export default function UIModalList() {
         animation="y"
       >
         <ArchiveView />
+      </UIModalController>
+      <UIModalController modalId={ModalEnum.FoundryMenu}>
+        <FoundryMenuView />
+      </UIModalController>
+      <UIModalController modalId={ModalEnum.FoundryCart}>
+        <FoundryCartView />
       </UIModalController>
     </>
   );
