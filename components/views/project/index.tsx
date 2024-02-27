@@ -101,7 +101,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
           <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
             <RightArrowSvg className="w-[18px] fill-current text-white" />
             <div className="">
-              <p className="ml-[6px] text-[6px] uppercase">worked as</p>
+              <p className="ml-[6px] text-[6px] uppercase">worked</p>
               <p className="ml-[6px] text-[12px] uppercase">
                 {project.workingAs}
               </p>
