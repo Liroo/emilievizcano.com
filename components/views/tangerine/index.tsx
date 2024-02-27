@@ -2,15 +2,19 @@ import LayoutFoundryFooterTypeface from 'components/layouts/foundry/footerTypefa
 import SharedTypefaceGlyphs from 'components/shared/typeface/glyphs';
 import SharedTypefaceSpecimen from 'components/shared/typeface/specimen';
 import SharedTypefaceTester from 'components/shared/typeface/tester';
+import { openModal } from 'flux/modal/reducer';
+import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import KorosuJpg from 'images/foundry/korosu.jpg';
 import LapicideJpg from 'images/foundry/lapicide.jpg';
 import TangerineJpg from 'images/foundry/tangerine.jpg';
 import { useRef } from 'react';
+import { ModalEnum } from 'types/modal';
 
 export default function TangerineView() {
   const specimenRef = useRef<HTMLDivElement>(null);
   const glyphRef = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -72,7 +76,13 @@ export default function TangerineView() {
           </div>
         </div>
       </div>
-      <LayoutFoundryFooterTypeface typeface="Tangerine" glyphNumber={396} />
+      <LayoutFoundryFooterTypeface
+        typeface="Tangerine"
+        glyphNumber={396}
+        onClickBuyTheFont={() => {
+          dispatch(openModal(ModalEnum.FoundryProduct));
+        }}
+      />
     </>
   );
 }

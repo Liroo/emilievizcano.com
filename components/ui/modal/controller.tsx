@@ -15,15 +15,21 @@ interface UIModalControllerProps {
   children: any;
   /** When modal is closing */
   onClickBackground?: () => void;
-  /** x or y animation */
-  animation?: 'x' | 'y';
+  /** className */
+  className?: string;
+  /** background className */
+  backgroundClassName?: string;
+  /** animation */
+  animation?: { initial: any; animate: any; exit: any };
 }
 
 export default function UIModalController({
   modalId,
   children,
   onClickBackground,
-  animation = 'x',
+  className,
+  backgroundClassName,
+  animation,
 }: UIModalControllerProps) {
   const modal = useAppSelector(selectModalById(modalId));
   const dispatch = useAppDispatch();
@@ -37,6 +43,8 @@ export default function UIModalController({
     <UIModal
       onClickBackground={onClickBackgroundUIModal}
       show={modal?.show}
+      className={className}
+      backgroundClassName={backgroundClassName}
       animation={animation}
     >
       {cloneElement(children, {

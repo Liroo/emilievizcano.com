@@ -4,4 +4,5 @@ export enum ModalEnum {
   Archives = 'archives',
   FoundryMenu = 'foundry-menu',
   FoundryCart = 'foundry-cart',
+  FoundryProduct = 'foundry-product',
 }

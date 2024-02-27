@@ -5,11 +5,13 @@ import Link from 'next/link';
 type LayoutFoundryFooterTypefaceProps = {
   typeface: string;
   glyphNumber: number;
+  onClickBuyTheFont: any;
 };
 
 export default function LayoutFoundryFooterTypeface({
   typeface,
   glyphNumber,
+  onClickBuyTheFont,
 }: LayoutFoundryFooterTypefaceProps) {
   return (
     <>
@@ -47,7 +49,10 @@ export default function LayoutFoundryFooterTypeface({
             </p>
           </div>
 
-          <div className="col-span-3 flex laptop:col-span-1">
+          <div
+            className="col-span-3 flex laptop:col-span-1"
+            onClick={onClickBuyTheFont}
+          >
             <div className="flex h-[24px] cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] text-white laptop:h-[28px] laptop:px-[20px]">
               <p className="font-romie text-[12px]">Buy the font</p>
               <RightArrowSvg className="ml-[15px] w-[12px] shrink-0 fill-current laptop:ml-[20px] laptop:w-[14px]" />
