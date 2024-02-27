@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 export default function FoundryLicensesEulaView() {
   return (
-    <div className="mx-auto mt-[20px] flex max-w-[740px] flex-col justify-center px-[16px] pb-[44px] text-[14px] leading-[18px] laptop:pb-[72px] laptop:text-[15px] laptop:leading-[20px]">
+    <div className="mx-auto mt-[20px] flex max-w-[720px] flex-col justify-center px-[16px] pb-[44px] text-[14px] leading-[18px] laptop:pb-[72px] laptop:text-[15px] laptop:leading-[20px]">
       <div className="flex flex-1 flex-col items-center justify-center py-[60px] text-center text-black">
         <p className="font-romie text-[40px] leading-[45px] text-[#383838] laptop:text-[55px] laptop:leading-[55px]">
           Licenses/EULA
         </p>
-        <p className="mt-[40px]">
+        <p className="mt-[40px] laptop:mt-[80px]">
           This contract concerns the usage of our typeface and its various
           fonts.
           <br />

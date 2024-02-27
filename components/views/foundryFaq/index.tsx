@@ -55,7 +55,7 @@ export default function FoundryFaqView() {
         <p className="font-romie text-[40px] leading-[45px] text-[#383838] laptop:text-[55px] laptop:leading-[55px]">
           Frequently Asked Questions
         </p>
-        <div className="mt-auto w-full max-w-[600px] select-none self-start pt-[60px] laptop:pt-[120px]">
+        <div className="mt-auto w-full max-w-[700px] select-none pt-[40px] laptop:pt-[80px]">
           {FAQ.map((faq, index) => (
             <FoundryFaqQuestion
               key={index}
