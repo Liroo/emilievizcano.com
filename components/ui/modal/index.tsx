@@ -1,4 +1,4 @@
-import { MouseEvent, useCallback } from 'react';
+import { MouseEvent } from 'react';
 
 import UIPortal from 'components/ui/portal';
 
@@ -21,9 +21,9 @@ const UIModal = ({
   show,
   animation = 'x',
 }: UIModalProps) => {
-  const stopPropagation = useCallback((evt: MouseEvent) => {
+  const stopPropagation = (evt: MouseEvent) => {
     evt.stopPropagation();
-  }, []);
+  };
 
   return (
     <AnimatePresence>

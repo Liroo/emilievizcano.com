@@ -1,4 +1,4 @@
-import { cloneElement, useCallback } from 'react';
+import { cloneElement } from 'react';
 
 import UIModal from 'components/ui/modal';
 
@@ -28,10 +28,10 @@ export default function UIModalController({
   const modal = useAppSelector(selectModalById(modalId));
   const dispatch = useAppDispatch();
 
-  const onClickBackgroundUIModal = useCallback(() => {
+  const onClickBackgroundUIModal = () => {
     dispatch(closeModal(modalId));
     onClickBackground?.();
-  }, [modalId]);
+  };
 
   return (
     <UIModal
