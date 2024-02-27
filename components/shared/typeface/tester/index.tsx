@@ -12,7 +12,7 @@ export default function SharedTypefaceTester({
     size: number;
     letterSpacing: number;
   }>({
-    size: 1,
+    size: 14,
     letterSpacing: 0,
   });
 
@@ -25,8 +25,8 @@ export default function SharedTypefaceTester({
         type="text"
         className="mt-[-12vh] w-screen overflow-hidden bg-transparent px-[16px] text-center outline-none"
         style={{
-          fontSize: `${size}em`,
-          letterSpacing: `${letterSpacing}em`,
+          fontSize: `${size}vw`,
+          letterSpacing: `${letterSpacing}vw`,
         }}
       />
 
@@ -34,8 +34,8 @@ export default function SharedTypefaceTester({
         <SharedTypefaceTesterRange
           label="Size"
           value={size}
-          min={0.2}
-          max={1.8}
+          min={8}
+          max={20}
           step={0.01}
           onChange={(event) =>
             setOptions({ ...options, size: Number(event.target.value) })
@@ -44,8 +44,8 @@ export default function SharedTypefaceTester({
         <SharedTypefaceTesterRange
           label="Spacing"
           value={letterSpacing}
-          min={-0.2}
-          max={0.2}
+          min={0}
+          max={5}
           step={0.01}
           onChange={(event) =>
             setOptions({
