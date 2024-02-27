@@ -216,8 +216,8 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         }}
       >
         <div
-          className={`h-full overflow-hidden ${
-            showPreview ? 'w-[140px]' : 'w-0'
+          className={`h-full w-[140px] overflow-hidden ${
+            showPreview ? 'block' : 'hidden'
           } transition-all`}
         >
           {imageUrl && (
