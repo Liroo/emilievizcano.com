@@ -2,7 +2,7 @@ import EVSvg from 'icons/ev.svg';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import Link from 'next/link';
 
-export default function FoundryFooter() {
+export default function LayoutFoundryFooter() {
   return (
     <div className="fixed bottom-0 left-0 h-[44px] w-full overflow-hidden bg-[#E8E8E8] laptop:h-[72px] laptop:min-h-[72px]">
       <div className="h-px w-full bg-[#383838] laptop:mx-auto laptop:w-[calc(100%-60px)]" />
