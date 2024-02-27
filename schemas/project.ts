@@ -62,6 +62,14 @@ export default defineType({
       of: [defineArrayMember({ type: 'block', name: 'block' })],
     }),
     defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'gallery',
       title: 'Gallery',
       type: 'array',

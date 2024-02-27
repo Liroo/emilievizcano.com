@@ -55,7 +55,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
   };
 
   const generateUrl = (index: number) =>
-    urlForImage(projects[index].gallery[0]).width(500).url();
+    urlForImage(projects[index].thumbnail).width(500).url();
 
   return (
     <nav className="w-full max-w-[600px] select-none px-[16px] laptop:px-[30px]">
@@ -107,7 +107,9 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
                   </div>
-                  <p className="ml-[12px] laptop:ml-[18px]">{project.title}</p>
+                  <p className="ml-[12px] laptop:ml-[18px]">
+                    {project.shortTitle}
+                  </p>
                 </div>
               </Link>
             ))}
