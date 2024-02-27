@@ -30,13 +30,18 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
           <PortableText value={project.description} />
         </div>
 
-        <div className="mt-[20px] flex max-w-[400px] flex-wrap laptop:mt-[30px]">
-          {project.tags.map((tag, index) => (
-            <div key={index} className="mr-[8px] mt-[8px]">
-              <UIPill label={tag} className="text-[12px] laptop:text-[15px]" />
-            </div>
-          ))}
-        </div>
+        {project.tags && (
+          <div className="mt-[20px] flex max-w-[400px] flex-wrap laptop:mt-[30px]">
+            {project.tags.map((tag, index) => (
+              <div key={index} className="mr-[8px] mt-[8px]">
+                <UIPill
+                  label={tag}
+                  className="text-[12px] laptop:text-[15px]"
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         <div className="mt-[20px] laptop:mt-[30px]">
           {project.project && (

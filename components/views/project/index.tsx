@@ -72,13 +72,15 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             ))}
           </div>
 
-          <div className="mt-[8px] flex max-w-[360px] flex-wrap">
-            {project.tags.map((tags, index) => (
-              <div key={index} className="mr-[8px] mt-[8px]">
-                <UIPill label={tags} />
-              </div>
-            ))}
-          </div>
+          {project.tags && (
+            <div className="mt-[8px] flex max-w-[360px] flex-wrap">
+              {project.tags.map((tags, index) => (
+                <div key={index} className="mr-[8px] mt-[8px]">
+                  <UIPill label={tags} />
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
             <RightArrowSvg className="w-[18px] fill-current text-white" />

@@ -66,12 +66,23 @@ export default function FoundryMenuView() {
 
         <Link
           href="/foundry/faq"
-          className="flex w-full cursor-pointer select-none items-center justify-between py-[15px] hover:text-[#323232] laptop:py-[20px]"
+          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
         >
           <p className="font-romie">FAQs</p>
+          <RightArrowSvg className="w-[17px] -rotate-45 fill-current" />
+        </Link>
+
+        <Link
+          href="/"
+          className="flex w-full cursor-pointer select-none items-center justify-between py-[15px] hover:text-[#323232] laptop:py-[20px]"
+          onClick={() => {
+            dispatch(closeModal(ModalEnum.FoundryMenu));
+          }}
+        >
+          <p className="font-romie">Back to site</p>
           <RightArrowSvg className="w-[17px] -rotate-45 fill-current" />
         </Link>
       </div>
