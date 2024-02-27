@@ -1,4 +1,5 @@
 import LayoutFoundry from 'components/layouts/foundry';
+import LayoutFoundryFooter from 'components/layouts/foundry/footer';
 import { motion, useAnimate } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -35,6 +36,7 @@ export default function FoundryDiscount() {
     >
       <LayoutFoundry>
         <div></div>
+        <LayoutFoundryFooter />
       </LayoutFoundry>
     </motion.div>
   );

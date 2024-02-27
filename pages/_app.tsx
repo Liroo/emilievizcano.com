@@ -46,6 +46,36 @@ const romieGrotesque = localFont({
   variable: '--font-romie',
 });
 
+const lapicide = localFont({
+  src: [
+    {
+      path: '../fonts/Lapicide-Light.woff2',
+      weight: '400',
+    },
+  ],
+  variable: '--font-lapicide',
+});
+
+const tangerine = localFont({
+  src: [
+    {
+      path: '../fonts/Tangerine-Regular.woff2',
+      weight: '400',
+    },
+  ],
+  variable: '--font-tangerine',
+});
+
+const korosu = localFont({
+  src: [
+    {
+      path: '../fonts/Korosu-Regular.woff2',
+      weight: '400',
+    },
+  ],
+  variable: '--font-korosu',
+});
+
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -81,7 +111,7 @@ export default function MyApp({
     <Provider store={store}>
       <AnimatePresence mode="wait" initial={false}>
         <main
-          className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans`}
+          className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans ${lapicide.variable} ${tangerine.variable} ${korosu.variable}`}
         >
           <LayoutHome />
 

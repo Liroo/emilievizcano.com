@@ -27,3 +27,20 @@ body,
 .ss01 {
   font-feature-settings: 'ss01';
 }
+
+.typetester-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 9px;
+  height: 9px;
+  background: #000000;
+  cursor: pointer;
+  border-radius: 100%;
+}
+.typetester-range::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  background: #000000;
+  cursor: pointer;
+  border-radius: 100%;
+}

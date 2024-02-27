@@ -4,7 +4,6 @@ import { openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import EmilieVizcanoSvg from 'icons/emilievizcano.svg';
 import { ModalEnum } from 'types/modal';
-import FoundryFooter from './footer';
 
 type LayoutFoundryProps = {
   children: React.ReactNode;
@@ -29,7 +28,6 @@ export default function LayoutFoundry({ children }: LayoutFoundryProps) {
         <div className="mt-[8px] h-px w-[20px] bg-[#383838] laptop:w-[30px]" />
       </div>
       {children}
-      <FoundryFooter />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import LayoutFoundry from 'components/layouts/foundry';
+import LayoutFoundryFooter from 'components/layouts/foundry/footer';
 import FoundryFaqView from 'components/views/foundryFaq';
 import { motion, useAnimate } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -36,6 +37,7 @@ export default function FoundryFaq() {
     >
       <LayoutFoundry>
         <FoundryFaqView />
+        <LayoutFoundryFooter />
       </LayoutFoundry>
     </motion.div>
   );

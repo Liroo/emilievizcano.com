@@ -1,4 +1,5 @@
 import LayoutFoundry from 'components/layouts/foundry';
+import LayoutFoundryFooter from 'components/layouts/foundry/footer';
 import FoundryView from 'components/views/foundry';
 
 import { motion, useAnimate } from 'framer-motion';
@@ -37,6 +38,7 @@ export default function Foundry() {
     >
       <LayoutFoundry>
         <FoundryView />
+        <LayoutFoundryFooter />
       </LayoutFoundry>
     </motion.div>
   );

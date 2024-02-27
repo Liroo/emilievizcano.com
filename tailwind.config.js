@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-brut)'],
         romie: ['var(--font-romie)'],
+        korosu: ['var(--font-korosu)'],
+        tangerine: ['var(--font-tangerine)'],
+        lapicide: ['var(--font-lapicide)'],
       },
       zIndex: {
         60: 60,
