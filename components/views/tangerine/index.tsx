@@ -1,4 +1,5 @@
 import LayoutFoundryFooterTypeface from 'components/layouts/foundry/footerTypeface';
+import SharedTypefaceGlyphs from 'components/shared/typeface/glyphs';
 import SharedTypefaceSpecimen from 'components/shared/typeface/specimen';
 import SharedTypefaceTester from 'components/shared/typeface/tester';
 import RightArrowSvg from 'icons/right-arrow.svg';
@@ -9,6 +10,7 @@ import { useRef } from 'react';
 
 export default function TangerineView() {
   const specimenRef = useRef<HTMLDivElement>(null);
+  const glyphRef = useRef<HTMLDivElement>(null);
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function TangerineView() {
             </div>
           </div>
           <div
-            className="flex min-h-full w-full snap-start snap-always"
+            className="relative flex min-h-full w-full snap-start snap-always"
             ref={specimenRef}
           >
             <SharedTypefaceSpecimen
@@ -52,8 +54,22 @@ export default function TangerineView() {
                 media.
               </p>
             </SharedTypefaceSpecimen>
+
+            <div
+              className="absolute bottom-[30px] right-[30px] hidden h-[30px] w-[30px] cursor-pointer select-none place-content-center rounded-full bg-[#383838] laptop:bottom-[50px] landscape:grid"
+              onClick={() =>
+                glyphRef.current.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
+              <RightArrowSvg className="w-[15px] shrink-0 rotate-90 fill-current text-white" />
+            </div>
           </div>
-          <div className="h-full w-full snap-end"></div>
+          <div
+            className="font-tangerine h-full w-full snap-start"
+            ref={glyphRef}
+          >
+            <SharedTypefaceGlyphs />
+          </div>
         </div>
       </div>
       <LayoutFoundryFooterTypeface typeface="Tangerine" glyphNumber={396} />

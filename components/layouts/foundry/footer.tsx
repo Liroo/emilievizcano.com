@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function LayoutFoundryFooter() {
   return (
-    <div className="fixed bottom-0 left-0 h-[44px] w-full overflow-hidden bg-[#E8E8E8] laptop:h-[72px] laptop:min-h-[72px]">
+    <footer className="fixed bottom-0 left-0 h-[44px] w-full overflow-hidden bg-[#E8E8E8] laptop:h-[72px] laptop:min-h-[72px]">
       <div className="h-px w-full bg-[#383838] laptop:mx-auto laptop:w-[calc(100%-60px)]" />
       <div
         className={`absolute left-0 top-0 grid h-full w-full grid-cols-6 items-center justify-between gap-[20px] px-[16px] transition-all duration-200 laptop:gap-[30px] laptop:px-[30px]`}
@@ -52,6 +52,6 @@ export default function LayoutFoundryFooter() {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

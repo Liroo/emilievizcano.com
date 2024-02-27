@@ -16,7 +16,7 @@ export default function SharedTypefaceSpecimen({
   const nextIndex = (galleryIndex + 1) % gallery.length;
 
   return (
-    <div className="flex w-full items-center justify-center px-[15px] pb-[40px] text-[#383838] laptop:px-[30px] laptop:py-[30px]">
+    <section className="flex w-full items-center justify-center px-[15px] pb-[40px] text-[#383838] laptop:px-[30px] laptop:py-[30px]">
       <div className="flex max-w-[1440px] flex-col items-start justify-center landscape:flex-row landscape:gap-[30px]">
         <div className="w-full pt-[30px] laptop:pt-0 landscape:flex-1">
           <div className="relative flex h-[70vw] max-h-[510px] w-full overflow-hidden">
@@ -71,6 +71,6 @@ export default function SharedTypefaceSpecimen({
         </div>
         <div className="pt-[30px] laptop:pt-0 landscape:flex-1">{children}</div>
       </div>
-    </div>
+    </section>
   );
 }

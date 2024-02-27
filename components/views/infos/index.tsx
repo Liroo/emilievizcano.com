@@ -4,28 +4,7 @@ import RightArrowSvg from 'icons/right-arrow.svg';
 import InfosEmilieJpg from 'images/infos/emilie.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const SERVICES = [
-  'Art direction',
-  'Branding 360°',
-  'Custom typefaces',
-  'Custom logotypes',
-  'UX/UI',
-  'Websites',
-  'Creative coding',
-  'Book design',
-  'Consulting',
-];
-const SOFTWARES = [
-  'Figma',
-  'Adobe Suite',
-  'Jira',
-  'Asana',
-  'Notion',
-  'Slack',
-  'Glyphs',
-  'Fontlab',
-];
+import { CONSTANTS_SERVICES, CONSTANTS_SOFTWARES } from 'utils/constants';
 
 export default function InfosView() {
   return (
@@ -78,7 +57,7 @@ export default function InfosView() {
               </div>
 
               <div className="mt-[8px] flex max-w-[360px] flex-wrap">
-                {SERVICES.map((service, index) => (
+                {CONSTANTS_SERVICES.map((service, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
                     <UIPill label={service} />
                   </div>
@@ -91,7 +70,7 @@ export default function InfosView() {
               </div>
 
               <div className="mt-[8px] flex max-w-[360px] flex-wrap laptop:mt-[17px]">
-                {SOFTWARES.map((service, index) => (
+                {CONSTANTS_SOFTWARES.map((service, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
                     <UIPill label={service} />
                   </div>

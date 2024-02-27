@@ -1,5 +1,6 @@
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { useState } from 'react';
+import { isTouchDevice } from 'utils/device';
 
 type FoundryFaqQuestionProps = {
   question: string;
@@ -21,7 +22,7 @@ export default function FoundryFaqQuestion({
           setIsOpen(!isOpen);
         }}
         onMouseEnter={() => {
-          setIsHover(true);
+          !isTouchDevice() && setIsHover(true);
         }}
         onMouseLeave={() => {
           setIsHover(false);

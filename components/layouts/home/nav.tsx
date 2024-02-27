@@ -9,6 +9,7 @@ import { urlForImage } from 'lib/sanity.image';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { isTouchDevice } from 'utils/device';
 
 export type HomeNavProps = {
   setNavOpen: (navOpen: boolean) => void;
@@ -101,7 +102,9 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               <Link href={`/projects/${project.slug}`} key={index}>
                 <div
                   className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]"
-                  onMouseEnter={() => onMouseEnter(generateUrl(index))}
+                  onMouseEnter={() =>
+                    !isTouchDevice() && onMouseEnter(generateUrl(index))
+                  }
                   onMouseLeave={() => onMouseLeave()}
                 >
                   <div className="w-[21px]">

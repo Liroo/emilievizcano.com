@@ -19,7 +19,7 @@ export default function SharedTypefaceTester({
   const { size, letterSpacing } = options;
 
   return (
-    <div className="flex h-full flex-col items-center justify-center">
+    <section className="flex h-full flex-col items-center justify-center">
       <input
         defaultValue={defaultValue}
         type="text"
@@ -55,6 +55,6 @@ export default function SharedTypefaceTester({
           }
         />
       </div>
-    </div>
+    </section>
   );
 }
