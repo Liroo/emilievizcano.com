@@ -194,7 +194,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               <NextImage
                 src={InfosJpg}
                 alt="infos"
-                className="h-[60px] w-[60px] min-w-[60px]"
+                className="h-[60px] w-[60px] min-w-[60px] object-cover"
               />
             </div>
             <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
@@ -221,7 +221,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
             <img
               src={imageUrl}
               alt="preview"
-              className="h-[140px] w-[140px] min-w-[140px]"
+              className="h-[140px] w-[140px] min-w-[140px] object-cover"
             />
           )}
         </div>
