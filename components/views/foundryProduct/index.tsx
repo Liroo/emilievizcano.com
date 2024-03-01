@@ -15,7 +15,7 @@ type FroundryProductProps = {
 };
 
 export default function FoundryProduct({ handle }: FroundryProductProps) {
-  const { linesAdd } = useCart();
+  const { lines, linesAdd } = useCart();
   const product = useAppSelector(selectProductByHandle(handle));
   const dispatch = useAppDispatch();
 
@@ -65,11 +65,16 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
     });
 
     linesAdd(
-      selectedVariants.map((variant) => {
-        return {
-          merchandiseId: variant.node.id,
-        };
-      }),
+      selectedVariants
+        .filter(
+          (variant) =>
+            !lines.some((line) => line.merchandise.id === variant.node.id),
+        )
+        .map((variant) => {
+          return {
+            merchandiseId: variant.node.id,
+          };
+        }),
     );
 
     dispatch(openModal(ModalEnum.FoundryCart));

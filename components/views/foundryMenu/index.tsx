@@ -1,3 +1,4 @@
+import { useCart } from '@shopify/hydrogen-react';
 import UIIconsCross from 'components/ui/icons/cross';
 import { closeModal, openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
@@ -7,6 +8,7 @@ import { ModalEnum } from 'types/modal';
 
 export default function FoundryMenuView() {
   const dispatch = useAppDispatch();
+  const { lines } = useCart();
 
   return (
     <div className="relative h-full w-screen overflow-y-scroll bg-[#CBCBCB] text-[16px] font-light text-[#898989] tablet:max-w-[350px] laptop:text-[15px]">
@@ -27,7 +29,12 @@ export default function FoundryMenuView() {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
         >
-          <p className="font-romie">Cart</p>
+          <p className="flex items-start font-romie">
+            Cart
+            <span className="ml-[2px] font-sans text-[15px] leading-[15px]">
+              {lines.length}
+            </span>
+          </p>
           <RightArrowSvg className="w-[17px] -rotate-45 fill-current" />
         </div>
 
