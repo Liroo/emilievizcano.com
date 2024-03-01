@@ -82,7 +82,7 @@ export default function TangerineView() {
         onClickBuyTheFont={() => {
           dispatch(
             openModal(ModalEnum.FoundryProduct, {
-              handle: 'lapicide',
+              handle: 'tangerine',
             }),
           );
         }}
