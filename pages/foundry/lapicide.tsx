@@ -1,5 +1,7 @@
 import LayoutFoundry from 'components/layouts/foundry';
-import LapicideView from 'components/views/lapicide';
+import LapicideView from 'components/views/foundryLapicide';
+import { getProductByHandle } from 'flux/product/action';
+import { wrapper } from 'flux/store';
 
 import { motion, useAnimate } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -41,3 +43,15 @@ export default function FoundryLapicide() {
     </motion.div>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    await store
+      .dispatch<any>(getProductByHandle({ handle: 'lapicide' }))
+      .unwrap();
+
+    return {
+      props: {},
+    };
+  },
+);

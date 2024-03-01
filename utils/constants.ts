@@ -1,3 +1,41 @@
+export const CONSTANTS_FORMAT_LICENSES = {
+  Print: {
+    xs: 'XS Independent & Freelance',
+    s: 'S license (1-5 employees)',
+    m: 'L license (6-9 employees)',
+    l: 'L license (10-20 employees)',
+    xl: 'XL license (> 20 employees)',
+  },
+  Web: {
+    xs: 'Up to 10k Pageviews/months',
+    s: 'Up to 25k Pageviews/months',
+    m: 'Up to 50k Pageviews/months',
+    l: 'Up to 100k Pageviews/months',
+    xl: 'Up to 250k Pageviews/months',
+  },
+  App: {
+    xs: 'Up to 10k Active users/months',
+    s: 'Up to 25k Active users/months',
+    m: 'Up to 50k Active users/months',
+    l: 'Up to 100k Active users/months',
+    xl: 'Up to 250k Active users/months',
+  },
+  'Social Media': {
+    xs: 'Up to 10k Followers/months',
+    s: 'Up to 25k Followers/months',
+    m: 'Up to 50k Followers/months',
+    l: 'Up to 100k Followers/months',
+    xl: 'Up to 250k Followers/months',
+  },
+  Logo: {
+    xs: 'XS Independent & Freelance',
+    s: 'S license (1-5 employees)',
+    m: 'L license (6-9 employees)',
+    l: 'L license (10-20 employees)',
+    xl: 'XL license (> 20 employees)',
+  },
+};
+
 export const CONSTANTS_GLYPHS = [
   'A',
   'B',

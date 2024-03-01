@@ -1,6 +1,8 @@
 import LayoutFoundry from 'components/layouts/foundry';
 
-import TangerineView from 'components/views/tangerine';
+import TangerineView from 'components/views/froundryTangerine';
+import { getProductByHandle } from 'flux/product/action';
+import { wrapper } from 'flux/store';
 import { motion, useAnimate } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -41,3 +43,15 @@ export default function FoundryTangerine() {
     </motion.div>
   );
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  (store) => async () => {
+    await store
+      .dispatch<any>(getProductByHandle({ handle: 'lapicide' }))
+      .unwrap();
+
+    return {
+      props: {},
+    };
+  },
+);

@@ -72,7 +72,11 @@ export default function KorosuView() {
         typeface="Korosu"
         glyphNumber={396}
         onClickBuyTheFont={() => {
-          dispatch(openModal(ModalEnum.FoundryProduct));
+          dispatch(
+            openModal(ModalEnum.FoundryProduct, {
+              handle: 'lapicide',
+            }),
+          );
         }}
       />
     </>

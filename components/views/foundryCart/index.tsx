@@ -1,3 +1,4 @@
+import { useCart } from '@shopify/hydrogen-react';
 import UIIconsCross from 'components/ui/icons/cross';
 import { closeModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
@@ -5,6 +6,7 @@ import { ModalEnum } from 'types/modal';
 
 export default function FoundryCartView() {
   const dispatch = useAppDispatch();
+  const { lines } = useCart();
 
   return (
     <div className="relative h-full w-screen max-w-[820px] bg-[#252527] text-[16px] font-light text-[#898989] laptop:text-[15px]">

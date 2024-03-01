@@ -29,7 +29,6 @@ const modalSlice = createSlice({
           string,
           {
             data?: any;
-            animated?: boolean;
           }
         >,
       ) => {
@@ -39,32 +38,18 @@ const modalSlice = createSlice({
           data: action.meta.data,
         };
       },
-      prepare(
-        modalId: ModalEnum,
-        { data, animated }: { data?: any; animated?: boolean } = {},
-      ) {
+      prepare(modalId: ModalEnum, data: any = {}) {
         return {
           payload: modalId,
-          meta: { data, animated },
+          meta: { data },
         };
       },
     },
-    closeModal: {
-      reducer: (
-        state,
-        action: PayloadAction<ModalEnum, string, { animated?: boolean }>,
-      ) => {
-        state[action.payload] = {
-          ...state[action.payload],
-          show: false,
-        };
-      },
-      prepare(modalId: ModalEnum, { animated }: { animated?: boolean } = {}) {
-        return {
-          payload: modalId,
-          meta: { animated },
-        };
-      },
+    closeModal: (state, action: PayloadAction<ModalEnum>) => {
+      state[action.payload] = {
+        ...state[action.payload],
+        show: false,
+      };
     },
   },
   extraReducers: (builder) => {

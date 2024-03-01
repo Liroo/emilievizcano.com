@@ -1,3 +1,8 @@
+import {
+  CartProvider,
+  ShopifyProvider,
+  useShopifyCookies,
+} from '@shopify/hydrogen-react';
 import LayoutHome from 'components/layouts/home';
 import UIModalList from 'components/ui/modal/list';
 import { wrapper } from 'flux/store';
@@ -107,22 +112,36 @@ export default function MyApp({
     };
   }, []);
 
+  useShopifyCookies();
+
   return (
-    <Provider store={store}>
-      <AnimatePresence mode="wait" initial={false}>
-        <main
-          className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans ${lapicide.variable} ${tangerine.variable} ${korosu.variable}`}
-        >
-          <LayoutHome />
+    <ShopifyProvider
+      storeDomain={process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}
+      storefrontToken={process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_TOKEN}
+      storefrontApiVersion={
+        process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION
+      }
+      languageIsoCode="EN"
+      countryIsoCode="US"
+    >
+      <CartProvider>
+        <Provider store={store}>
+          <AnimatePresence mode="wait" initial={false}>
+            <main
+              className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans ${lapicide.variable} ${tangerine.variable} ${korosu.variable}`}
+            >
+              <LayoutHome />
 
-          <AnimatePresence mode="wait">
-            <Component key={router.pathname} {...props.pageProps} />
+              <AnimatePresence mode="wait">
+                <Component key={router.pathname} {...props.pageProps} />
+              </AnimatePresence>
+
+              <div id="portal-root"></div>
+              <UIModalList />
+            </main>
           </AnimatePresence>
-
-          <div id="portal-root"></div>
-          <UIModalList />
-        </main>
-      </AnimatePresence>
-    </Provider>
+        </Provider>
+      </CartProvider>
+    </ShopifyProvider>
   );
 }

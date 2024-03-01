@@ -17,6 +17,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
       {projetcs.map((project, index) => (
         <>
           <div
+            key={project._id + 'content'}
             className={`grid w-full grid-rows-[0fr] transition-all duration-500 ${
               openIndex === index ? 'grid grid-rows-[1fr]' : ''
             }`}
@@ -27,7 +28,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
           </div>
 
           <div
-            key={project._id}
+            key={project._id + 'title'}
             className={twMerge(
               'group relative flex h-[30px] min-h-[30px] cursor-pointer items-center border-b border-white pr-[16px] hover:bg-white hover:text-black laptop:pr-[30px]',
               openIndex === index ? 'bg-white text-black' : '',

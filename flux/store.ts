@@ -3,11 +3,13 @@ import { createWrapper } from 'next-redux-wrapper';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { Action, combineReducers } from 'redux';
 import modalSlice from './modal/reducer';
+import productSlice from './product/reducer';
 import projectSlice from './project/reducer';
 
 const reducers = {
   [modalSlice.name]: modalSlice.reducer,
   [projectSlice.name]: projectSlice.reducer,
+  [productSlice.name]: productSlice.reducer,
 };
 
 const reducer = combineReducers(reducers);
