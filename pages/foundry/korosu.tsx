@@ -47,7 +47,7 @@ export default function FoundryKorosu() {
 export const getServerSideProps = wrapper.getServerSideProps(
   (store) => async () => {
     await store
-      .dispatch<any>(getProductByHandle({ handle: 'lapicide' }))
+      .dispatch<any>(getProductByHandle({ handle: 'korosu' }))
       .unwrap();
 
     return {
