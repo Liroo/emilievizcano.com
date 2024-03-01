@@ -74,7 +74,7 @@ export default function KorosuView() {
         onClickBuyTheFont={() => {
           dispatch(
             openModal(ModalEnum.FoundryProduct, {
-              handle: 'lapicide',
+              handle: 'korosu',
             }),
           );
         }}
