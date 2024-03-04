@@ -1,7 +1,7 @@
 import UIIconsCross from 'components/ui/icons/cross';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { Project } from 'lib/sanity.queries';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import ArchiveProject from './project';
 
@@ -15,9 +15,8 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
   return (
     <div className="flex flex-1 flex-col overflow-y-scroll">
       {projetcs.map((project, index) => (
-        <>
+        <Fragment key={project._id}>
           <div
-            key={project._id + 'content'}
             className={`grid w-full grid-rows-[0fr] transition-all duration-500 ${
               openIndex === index ? 'grid grid-rows-[1fr]' : ''
             }`}
@@ -28,7 +27,6 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
           </div>
 
           <div
-            key={project._id + 'title'}
             className={twMerge(
               'group relative flex h-[30px] min-h-[30px] cursor-pointer items-center border-b border-white pr-[16px] hover:bg-white hover:text-black laptop:pr-[30px]',
               openIndex === index ? 'bg-white text-black' : '',
@@ -71,7 +69,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
               />
             </div>
           </div>
-        </>
+        </Fragment>
       ))}
     </div>
   );

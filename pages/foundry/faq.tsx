@@ -2,6 +2,7 @@ import LayoutFoundry from 'components/layouts/foundry';
 import LayoutFoundryFooter from 'components/layouts/foundry/footer';
 import FoundryFaqView from 'components/views/foundryFaq';
 import { motion, useAnimate } from 'framer-motion';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -21,24 +22,27 @@ export default function FoundryFaq() {
   }, [router]);
 
   return (
-    <motion.div
-      ref={scope}
-      initial={{
-        x:
-          typeof window !== 'undefined' &&
-          window.sessionStorage.getItem('ev') &&
-          !window.sessionStorage.getItem('ev').startsWith('/foundry')
-            ? '100%'
-            : 0,
-      }}
-      animate={{ x: 0 }}
-      transition={{ ease: 'easeInOut' }}
-      className="fixed left-0 top-0 z-40 h-full w-full bg-[#E8E8E8]"
-    >
-      <LayoutFoundry>
-        <FoundryFaqView />
-        <LayoutFoundryFooter />
-      </LayoutFoundry>
-    </motion.div>
+    <>
+      <NextSeo title="Emilie Vizcano - FAQs" />
+      <motion.div
+        ref={scope}
+        initial={{
+          x:
+            typeof window !== 'undefined' &&
+            window.sessionStorage.getItem('ev') &&
+            !window.sessionStorage.getItem('ev').startsWith('/foundry')
+              ? '100%'
+              : 0,
+        }}
+        animate={{ x: 0 }}
+        transition={{ ease: 'easeInOut' }}
+        className="fixed left-0 top-0 z-40 h-full w-full bg-[#E8E8E8]"
+      >
+        <LayoutFoundry>
+          <FoundryFaqView />
+          <LayoutFoundryFooter />
+        </LayoutFoundry>
+      </motion.div>
+    </>
   );
 }

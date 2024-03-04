@@ -8,6 +8,7 @@ import UIModalList from 'components/ui/modal/list';
 import { wrapper } from 'flux/store';
 import { AnimatePresence } from 'framer-motion';
 import { NextPage } from 'next';
+import { DefaultSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 import { ReactElement, ReactNode, useEffect } from 'react';
@@ -115,33 +116,56 @@ export default function MyApp({
   useShopifyCookies();
 
   return (
-    <ShopifyProvider
-      storeDomain={process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}
-      storefrontToken={process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_TOKEN}
-      storefrontApiVersion={
-        process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION
-      }
-      languageIsoCode="EN"
-      countryIsoCode="US"
-    >
-      <CartProvider>
-        <Provider store={store}>
-          <AnimatePresence mode="wait" initial={false}>
-            <main
-              className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans ${lapicide.variable} ${tangerine.variable} ${korosu.variable}`}
-            >
-              <LayoutHome />
+    <>
+      <ShopifyProvider
+        storeDomain={process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}
+        storefrontToken={process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_TOKEN}
+        storefrontApiVersion={
+          process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_API_VERSION
+        }
+        languageIsoCode="EN"
+        countryIsoCode="US"
+      >
+        <CartProvider>
+          <Provider store={store}>
+            <AnimatePresence mode="wait" initial={false}>
+              <main
+                className={`${brutGrotesque.variable} ${romieGrotesque.variable} relative h-full font-sans ${lapicide.variable} ${tangerine.variable} ${korosu.variable}`}
+              >
+                <LayoutHome />
 
-              <AnimatePresence mode="wait">
-                <Component key={router.pathname} {...props.pageProps} />
-              </AnimatePresence>
+                <AnimatePresence mode="wait">
+                  <Component key={router.pathname} {...props.pageProps} />
+                </AnimatePresence>
 
-              <div id="portal-root"></div>
-              <UIModalList />
-            </main>
-          </AnimatePresence>
-        </Provider>
-      </CartProvider>
-    </ShopifyProvider>
+                <div id="portal-root"></div>
+                <UIModalList />
+              </main>
+            </AnimatePresence>
+          </Provider>
+        </CartProvider>
+      </ShopifyProvider>
+      <DefaultSeo
+        title="Emilie Vizcano"
+        description="I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type. In 2018, I also founded Studio PUSH with Pierre Monge, a web design studio specialized in creative coding."
+        openGraph={{
+          type: 'website',
+          locale: 'en_EN',
+          url: 'https://www.emilievizcano.com/',
+          siteName: 'Emilie Vizcano',
+          title: 'Emilie Vizcano',
+          description:
+            'I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type. In 2018, I also founded Studio PUSH with Pierre Monge, a web design studio specialized in creative coding.',
+          images: [
+            {
+              url: 'https://www.emilievizcano.com/emilie.jpg',
+              width: 966,
+              height: 1260,
+              alt: 'Emilie Vizcano',
+            },
+          ],
+        }}
+      />
+    </>
   );
 }
