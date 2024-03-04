@@ -22,7 +22,7 @@ export default function FoundryCartRow({
   return (
     <div className="w-full border-b border-white py-[20px]">
       <div className="flex items-center justify-between">
-        <p className="text-[25px]">{product.title}</p>
+        <p className="text-[20px] laptop:text-[25px]">{product.title}</p>
         <div
           className="m-[-10px] cursor-pointer select-none p-[10px]"
           onClick={onClickRemove}
@@ -31,7 +31,7 @@ export default function FoundryCartRow({
         </div>
       </div>
       <div className="flex items-end justify-between">
-        <div className="flex flex-col text-[15px] text-[#CBCBCB]">
+        <div className="flex flex-col text-[12px] text-[#CBCBCB] laptop:text-[15px]">
           {lines.map((line) => (
             <p>
               {line.merchandise.selectedOptions[0].value} -{' '}
@@ -44,7 +44,7 @@ export default function FoundryCartRow({
             </p>
           ))}
         </div>
-        <p className="text-[25px]">
+        <p className="text-[20px] laptop:text-[25px]">
           {Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'EUR',

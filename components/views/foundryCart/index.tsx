@@ -76,10 +76,12 @@ export default function FoundryCartView() {
             ))}
           </div>
           <div className="mt-[30px] flex items-center justify-between">
-            <p className="text-[25px]">Subtotal</p>
-            <p className="text-[30px]">{subtotalFormatted}</p>
+            <p className="text-[20px] laptop:text-[25px]">Subtotal</p>
+            <p className="text-[25px] laptop:text-[30px]">
+              {subtotalFormatted}
+            </p>
           </div>
-          <div className="relative mt-[30px] flex flex-col items-start">
+          <div className="relative mt-[30px] flex flex-col items-start text-[12px] laptop:text-[15px]">
             <UIFormInputRadio
               label="I aggreed the End User License Agreement (EULA)"
               name="eula"
@@ -104,7 +106,9 @@ export default function FoundryCartView() {
             ) : null}
           </div>
           <div className="mt-[30px] flex items-center justify-between">
-            <p>Taxes are calculated at checkout</p>
+            <p className="text-[12px] laptop:text-[15px]">
+              Taxes are calculated at checkout
+            </p>
             <div
               onClick={onClickCheckout}
               className="flex cursor-pointer select-none rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white"
