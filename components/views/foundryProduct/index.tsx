@@ -72,6 +72,16 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
         )
         .map((variant) => {
           return {
+            attributes: [
+              {
+                key: 'License Type',
+                value: `${variant.node.selectedOptions[0].value} - ${variant.node.selectedOptions[1].value} - ${
+                  CONSTANTS_FORMAT_LICENSES[
+                    variant.node.selectedOptions[1].value
+                  ][variant.node.selectedOptions[2].value]
+                }`,
+              },
+            ],
             merchandiseId: variant.node.id,
           };
         }),
