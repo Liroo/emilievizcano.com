@@ -147,7 +147,7 @@ export default function MyApp({
       </ShopifyProvider>
       <DefaultSeo
         title="Emilie Vizcano"
-        description="I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type. In 2018, I also founded Studio PUSH with Pierre Monge, a web design studio specialized in creative coding."
+        description="I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type."
         openGraph={{
           type: 'website',
           locale: 'en_EN',
@@ -155,7 +155,7 @@ export default function MyApp({
           siteName: 'Emilie Vizcano',
           title: 'Emilie Vizcano',
           description:
-            'I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type. In 2018, I also founded Studio PUSH with Pierre Monge, a web design studio specialized in creative coding.',
+            'I am a multidisciplinary graphic designer who mainly work within web and editorial design, with a focus on type.',
           images: [
             {
               url: 'https://www.emilievizcano.com/emilie.jpg',
