@@ -4,11 +4,33 @@ import { closeModal, openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import Link from 'next/link';
+import { useMemo } from 'react';
 import { ModalEnum } from 'types/modal';
 
 export default function FoundryMenuView() {
   const dispatch = useAppDispatch();
+
   const { lines } = useCart();
+
+  const cartEntries = useMemo(() => {
+    const hash: { [productId: string]: typeof lines } = {};
+
+    lines.forEach((line) => {
+      if (!hash[line.merchandise.product.id])
+        hash[line.merchandise.product.id] = [];
+      hash[line.merchandise.product.id].push(line);
+    });
+
+    return Object.entries(hash).map(([_, lines]) => {
+      return {
+        product: lines[0].merchandise.product,
+        lines: lines,
+        total: lines.reduce((acc, line) => {
+          return acc + ~~line.cost.totalAmount.amount;
+        }, 0),
+      };
+    });
+  }, [lines]);
 
   return (
     <div className="relative h-full w-screen overflow-y-scroll bg-[#CBCBCB] text-[16px] font-light text-[#898989] tablet:max-w-[350px] laptop:text-[15px]">
@@ -32,7 +54,7 @@ export default function FoundryMenuView() {
           <p className="flex items-start font-romie">
             Cart
             <span className="ml-[2px] font-sans text-[15px] leading-[15px]">
-              {lines.length}
+              {cartEntries.length}
             </span>
           </p>
           <RightArrowSvg className="w-[17px] -rotate-45 fill-current" />

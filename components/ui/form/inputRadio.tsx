@@ -10,10 +10,18 @@ interface UIFormInputRadioProps extends HTMLProps<HTMLInputElement> {
   label: string;
   /** On click event */
   onClick?: any;
+  /** iconProps */
+  iconProps?: any;
 }
 
 const UIFormInputRadio = (
-  { isSelected = false, label, onClick, ...props }: UIFormInputRadioProps,
+  {
+    isSelected = false,
+    label,
+    onClick,
+    iconProps = {},
+    ...props
+  }: UIFormInputRadioProps,
   ref,
 ) => {
   return (
@@ -23,7 +31,11 @@ const UIFormInputRadio = (
       onClick={onClick}
     >
       <input ref={ref} {...props} type="radio" className="hidden" />
-      {isSelected ? <UIIconsRadioSelected /> : <UIIconsRadio />}
+      {isSelected ? (
+        <UIIconsRadioSelected {...iconProps} />
+      ) : (
+        <UIIconsRadio {...iconProps} />
+      )}
       <p className="ml-[5px]">{label}</p>
     </label>
   );

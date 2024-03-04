@@ -19,8 +19,8 @@ export default function KorosuView() {
   return (
     <>
       <div className="flex-1 overflow-hidden">
-        <div className="h-full snap-y snap-mandatory overflow-y-scroll">
-          <div className="relative flex h-full w-full snap-start justify-center">
+        <div className="h-full overflow-y-scroll">
+          <div className="relative flex h-full w-full justify-center">
             <div className="font-korosu text contents text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
               <SharedTypefaceTester defaultValue="KOROSU" />
             </div>
@@ -33,10 +33,7 @@ export default function KorosuView() {
               <RightArrowSvg className="w-[15px] shrink-0 rotate-90 fill-current text-white" />
             </div>
           </div>
-          <div
-            className="relative flex min-h-full w-full snap-start snap-always"
-            ref={specimenRef}
-          >
+          <div className="relative flex min-h-full w-full" ref={specimenRef}>
             <SharedTypefaceSpecimen
               gallery={[KorosuJpg, TangerineJpg, LapicideJpg, KorosuJpg]}
             >
@@ -63,7 +60,7 @@ export default function KorosuView() {
               <RightArrowSvg className="w-[15px] shrink-0 rotate-90 fill-current text-white" />
             </div>
           </div>
-          <div className="font-korosu h-full w-full snap-start" ref={glyphRef}>
+          <div className="font-korosu h-[calc(100%-1px)] w-full" ref={glyphRef}>
             <SharedTypefaceGlyphs />
           </div>
         </div>

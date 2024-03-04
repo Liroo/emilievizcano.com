@@ -19,8 +19,8 @@ export default function LapicideView() {
   return (
     <>
       <div className="flex-1 overflow-hidden">
-        <div className="h-full snap-y snap-mandatory overflow-y-scroll">
-          <div className="relative flex h-full w-full snap-start justify-center">
+        <div className="h-full overflow-y-scroll">
+          <div className="relative flex h-full w-full justify-center">
             <div className="font-lapicide text contents text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
               <SharedTypefaceTester defaultValue="LAPICIDE" />
             </div>
@@ -33,10 +33,7 @@ export default function LapicideView() {
               <RightArrowSvg className="w-[15px] shrink-0 rotate-90 fill-current text-white" />
             </div>
           </div>
-          <div
-            className="relative flex min-h-full w-full snap-start snap-always"
-            ref={specimenRef}
-          >
+          <div className="relative flex min-h-full w-full" ref={specimenRef}>
             <SharedTypefaceSpecimen
               gallery={[KorosuJpg, TangerineJpg, LapicideJpg, KorosuJpg]}
             >
@@ -69,7 +66,7 @@ export default function LapicideView() {
             </div>
           </div>
           <div
-            className="font-lapicide h-full w-full snap-start"
+            className="font-lapicide h-[calc(100%-1px)] w-full"
             ref={glyphRef}
           >
             <SharedTypefaceGlyphs />

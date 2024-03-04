@@ -82,7 +82,7 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
   };
 
   return (
-    <div className="max-h-[calc(100dvh-60px)] w-[calc(100vw-60px)] max-w-[1100px] bg-white p-[20px] text-black laptop:p-[40px]">
+    <div className="max-h-[calc(100dvh-60px)] w-[calc(100vw-60px)] max-w-[1100px] bg-[#F4F4F4] p-[20px] text-black laptop:p-[40px]">
       <p className="text-center font-romie text-[20px] laptop:text-[25px]">
         Commercial Licences and usages
       </p>
