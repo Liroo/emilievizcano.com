@@ -91,6 +91,7 @@ export default function FoundryCartView() {
               onChange={() => {}}
               onClick={() => {
                 setEulaAccepted(!eulaAccepted);
+                setEulaNeeded(false);
               }}
               iconProps={{
                 className: 'border-white',
@@ -99,7 +100,7 @@ export default function FoundryCartView() {
                   : 'bg-transparent border-transparent',
               }}
             />
-            {eulaNeeded ? (
+            {eulaNeeded && !eulaAccepted ? (
               <div className="select-none text-[0.8em]">
                 You have to agree to EULA to proceed checkout
               </div>
