@@ -27,7 +27,7 @@ export default function UIFormInputSelect({
       <p className="whitespace-nowrap">{label}</p>
       <select
         ref={ref}
-        className="ml-[4px] w-full cursor-pointer appearance-none truncate pr-[16px] underline outline-none"
+        className="ml-[4px] w-full cursor-pointer appearance-none truncate bg-transparent pr-[16px] underline outline-none"
         {...props}
       >
         {options.map((option) => (

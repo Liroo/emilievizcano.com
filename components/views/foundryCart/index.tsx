@@ -6,12 +6,13 @@ import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { useMemo, useState } from 'react';
 import { ModalEnum } from 'types/modal';
+import FoundryCartRow from './row';
 
 export default function FoundryCartView() {
   const dispatch = useAppDispatch();
   const [eulaAccepted, setEulaAccepted] = useState<boolean>(false);
   const [eulaNeeded, setEulaNeeded] = useState<boolean>(false);
-  const { lines, linesRemove, checkoutUrl } = useCart();
+  const { lines, checkoutUrl } = useCart();
 
   const cartEntries = useMemo(() => {
     const hash: { [productId: string]: typeof lines } = {};
@@ -68,17 +69,13 @@ export default function FoundryCartView() {
           </h2>
         </div>
 
-        <div className="flex flex-1 flex-col justify-end overflow-y-scroll">
-          {cartEntries.map((entry, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <p>{entry.product.title}</p>
-              {entry.lines.map((line, index) => (
-                <p key={index}>{line.merchandise.title}</p>
-              ))}
-              <p>{entry.total}</p>
-            </div>
-          ))}
-          <div className="flex items-center justify-between">
+        <div className="flex flex-1 flex-col overflow-y-scroll pt-[20px]">
+          <div className="mt-auto border-t border-white">
+            {cartEntries.map((entry, index) => (
+              <FoundryCartRow key={index} {...entry} />
+            ))}
+          </div>
+          <div className="mt-[30px] flex items-center justify-between">
             <p className="text-[25px]">Subtotal</p>
             <p className="text-[30px]">{subtotalFormatted}</p>
           </div>
