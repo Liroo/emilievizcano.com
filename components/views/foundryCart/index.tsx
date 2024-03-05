@@ -81,7 +81,8 @@ export default function FoundryCartView() {
               {subtotalFormatted}
             </p>
           </div>
-          <div className="relative mt-[30px] flex flex-col items-start text-[12px] laptop:text-[15px]">
+
+          <div className="relative mt-[30px] flex select-none flex-col items-start text-[12px] laptop:text-[15px]">
             <UIFormInputRadio
               label="I aggreed the End User License Agreement (EULA)"
               name="eula"
@@ -111,10 +112,10 @@ export default function FoundryCartView() {
             </p>
             <div
               onClick={onClickCheckout}
-              className="flex cursor-pointer select-none rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white"
+              className="group flex cursor-pointer select-none rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white transition-all hover:bg-white hover:text-black"
             >
               <p className="text-[18px]">Checkout</p>
-              <RightArrowSvg className="ml-[30px] w-[20px] fill-current text-white" />
+              <RightArrowSvg className="ml-[30px] w-[20px] fill-current" />
             </div>
           </div>
         </div>

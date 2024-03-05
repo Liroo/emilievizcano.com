@@ -17,7 +17,7 @@ export default function FoundryFaqQuestion({
   return (
     <div className="border-b border-black text-left last:border-0">
       <div
-        className="my-[20px] flex cursor-pointer items-start justify-between"
+        className="flex cursor-pointer items-start justify-between py-[20px]"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
