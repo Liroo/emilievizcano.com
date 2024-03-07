@@ -6,7 +6,7 @@ import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ProjectViewProps = {
   slug?: string;
@@ -15,9 +15,27 @@ type ProjectViewProps = {
 export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
 
-  console.log(project);
-
   const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [carrouselImages, setCarrouselImages] = useState([]);
+
+  useEffect(() => {
+    project.gallery.map((image) => setCarrouselImages(image));
+    console.log(carrouselImages);
+  }, []);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === carrouselImages.length - 1 ? 0 : prevIndex + 1,
+    );
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? carrouselImages.length - 1 : prevIndex - 1,
+    );
+  };
 
   return (
     <>
@@ -37,7 +55,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
       </div>
       <div
         onClick={() => setGalleryOpen(!galleryOpen)}
-        className="relative grid h-full w-screen overflow-auto bg-[#252527] text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]"
+        className="relative grid h-full w-screen overflow-auto bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]"
       >
         <Link href="/">
           <div
@@ -66,42 +84,45 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             ))}
           </div>
 
-          <div>
+          <div className=" mb-[10px] mt-[10px] text-[12px] laptop:text-[15px]">
             {project.description.map((array, index) => (
-              <p key={index}>{array.children[0].text}</p>
+              <p
+                className="mt-[15px] font-[300] leading-[18px] laptop:leading-[20px] "
+                key={index}
+              >
+                {array.children[0].text}
+              </p>
             ))}
           </div>
 
-          {project.tags && (
-            <div className="mt-[8px] flex max-w-[360px] flex-wrap">
-              {project.tags.map((tags, index) => (
-                <div key={index} className="mr-[8px] mt-[8px]">
-                  <UIPill label={tags} />
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="mb-[18px] mt-[8px] flex max-w-[360px] flex-wrap">
+            {project.tags.map((tags, index) => (
+              <div key={index} className="mr-[8px] mt-[8px]">
+                <UIPill label={tags} />
+              </div>
+            ))}
+          </div>
 
-          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+          <div className="my-[10px] flex  items-center laptop:mt-[25px]">
             <RightArrowSvg className="w-[18px] fill-current text-white" />
-            <div className="">
+            <div>
               <p className="ml-[6px] text-[6px] uppercase">project</p>
               <p className="ml-[6px] text-[12px] uppercase">{project.title}</p>
             </div>
           </div>
 
-          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+          <div className="my-[10px] flex  items-center laptop:mt-[25px]">
             <RightArrowSvg className="w-[18px] fill-current text-white" />
-            <div className="">
+            <div>
               <p className="ml-[6px] text-[6px] uppercase">role</p>
               <p className="ml-[6px] text-[12px] uppercase">{project.role}</p>
             </div>
           </div>
 
-          <div className="mt-[10px] flex  items-center laptop:mt-[25px]">
+          <div className="my-[10px] flex  items-center laptop:mt-[25px]">
             <RightArrowSvg className="w-[18px] fill-current text-white" />
-            <div className="">
-              <p className="ml-[6px] text-[6px] uppercase">worked</p>
+            <div>
+              <p className="ml-[6px] text-[6px] uppercase">worked as</p>
               <p className="ml-[6px] text-[12px] uppercase">
                 {project.workingAs}
               </p>
