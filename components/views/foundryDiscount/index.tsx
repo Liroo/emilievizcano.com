@@ -1,5 +1,6 @@
 import MachinePng from 'images/foundry/discount/machine.png';
 import { useEffect, useRef, useState } from 'react';
+import FoundryDiscountColumn from './column';
 import FoundryDiscountDecoration from './decoration';
 
 export default function FoundryDiscountView() {
@@ -59,9 +60,9 @@ export default function FoundryDiscountView() {
               left: `calc(50% - ${machineWidth * 0.26}px)`,
             }}
           >
-            <div className="bg-[#FF0000] bg-opacity-50" />
-            <div className="bg-[#FF0000] bg-opacity-50" />
-            <div className="bg-[#FF0000] bg-opacity-50" />
+            <FoundryDiscountColumn />
+            <FoundryDiscountColumn />
+            <FoundryDiscountColumn />
           </div>
         </div>
         <FoundryDiscountDecoration />
