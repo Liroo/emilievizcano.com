@@ -1,5 +1,6 @@
 import ArchiveView from 'components/views/archives';
 import FoundryCartView from 'components/views/foundryCart';
+import FoundryDiscountRulesView from 'components/views/foundryDiscountRules';
 import FoundryMenuView from 'components/views/foundryMenu';
 import FoundryProduct from 'components/views/foundryProduct';
 import InfosView from 'components/views/infos';
@@ -87,6 +88,18 @@ export default function UIModalList() {
         }}
       >
         <FoundryProduct />
+      </UIModalController>
+      <UIModalController
+        modalId={ModalEnum.FoundryDiscountRules}
+        className="left-0 right-auto"
+        backgroundClassName="bg-[#E8E8E8]/30"
+        animation={{
+          initial: { x: '-100%' },
+          animate: { x: 0 },
+          exit: { x: '-100%' },
+        }}
+      >
+        <FoundryDiscountRulesView />
       </UIModalController>
     </>
   );

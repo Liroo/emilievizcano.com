@@ -1,4 +1,4 @@
-import { CONSTANTS_FAQ } from 'utils/constants';
+import { CONSTANT_FAQ } from 'utils/constants';
 import FoundryFaqQuestion from './question';
 
 export default function FoundryFaqView() {
@@ -9,7 +9,7 @@ export default function FoundryFaqView() {
           Frequently Asked Questions
         </p>
         <div className="mt-auto w-full max-w-[700px] select-none pt-[40px] laptop:pt-[80px]">
-          {CONSTANTS_FAQ.map((faq, index) => (
+          {CONSTANT_FAQ.map((faq, index) => (
             <FoundryFaqQuestion
               key={index}
               question={faq.question}

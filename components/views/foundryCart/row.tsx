@@ -1,6 +1,6 @@
 import { useCart } from '@shopify/hydrogen-react';
 import UIIconsCross from 'components/ui/icons/cross';
-import { CONSTANTS_FORMAT_LICENSES } from 'utils/constants';
+import { CONSTANT_FORMAT_LICENSES } from 'utils/constants';
 
 type FoundryCartRowProps = {
   product: ReturnType<typeof useCart>['lines'][0]['merchandise']['product'];
@@ -37,7 +37,7 @@ export default function FoundryCartRow({
               {line.merchandise.selectedOptions[0].value} -{' '}
               {line.merchandise.selectedOptions[1].value} -{' '}
               {
-                CONSTANTS_FORMAT_LICENSES[
+                CONSTANT_FORMAT_LICENSES[
                   line.merchandise.selectedOptions[1].value
                 ][line.merchandise.selectedOptions[2].value]
               }

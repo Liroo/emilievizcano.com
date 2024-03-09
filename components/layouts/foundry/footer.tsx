@@ -12,7 +12,7 @@ export default function LayoutFoundryFooter() {
         <Link href="/">
           <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
         </Link>
-        <div className="col-span-2 col-start-2 flex cursor-pointer items-center laptop:col-auto laptop:items-start">
+        <div className="col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] underline laptop:text-[12px] laptop:leading-[15px]">
             EULA &
@@ -37,9 +37,9 @@ export default function LayoutFoundryFooter() {
           </p>
         </div>
 
-        <div className="hidden laptop:block"></div>
+        <div />
 
-        <div className="col-span-2 col-start-4 flex items-center laptop:col-auto laptop:items-start laptop:justify-end">
+        <div className="col-span-2 col-start-5 flex items-center justify-end laptop:col-auto">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             <a href="https://www.instagram.com/emilievizcano" target="_blank">

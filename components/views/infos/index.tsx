@@ -4,7 +4,7 @@ import RightArrowSvg from 'icons/right-arrow.svg';
 import InfosEmilieJpg from 'images/infos/emilie.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CONSTANTS_SERVICES, CONSTANTS_SOFTWARES } from 'utils/constants';
+import { CONSTANT_SERVICES, CONSTANT_SOFTWARES } from 'utils/constants';
 
 export default function InfosView() {
   return (
@@ -34,19 +34,29 @@ export default function InfosView() {
           />
 
           <p className="mr-[20px] mt-[30px] leading-[24px] laptop:mt-[20px] laptop:leading-[20px]">
-            I am a multidisciplinary graphic designer who mainly work within
-            brand and art direction, with a focus on type and web. Having a
-            particular interest for fashion and tech fields, it's now been 5
-            years that I work as a freelancer, in design studios or enterprises
-            for several clients such as Nike, Ledger, Sony, Louis Vuitton, La
-            Bourse du Commerce, and more.
-            <br />
-            After living in Netherlands for a year, used to work in Paris for 3
-            years, and I now swing in between Bordeaux and the capital.
+            Emilie Vizcano is an Art Director who mainly work within a focus
+            image and strategy, from conception to expression. Having a
+            particular interest for Luxury fashion and tech fields, it's been
+            now +5 years experience working with design studios or enterprises
+            for several clients such as Nina Ricci, Ledger, Kraken, Sony, Louis
+            Vuitton, Nike, La Bourse du Commerce, Universal Music, and many
+            more.
             <br />
             <br />
-            FYI : I'm a dog person, I like flowers, cinema, vintage things,
-            beautiful typography and video games.
+            After living in Netherlands, she used to work in Paris and now
+            swinging in between South of France and the capital.
+            <br />
+            <br />
+            From there, she works with photographers, stylists, and 3D artists.
+            She design campaigns and experiences for brands, agencies,
+            institutions and independants artists crafting images, making custom
+            typefaces, and shaping compelling narratives.
+            <br />
+            <br />
+            For projects inquiries, write at{' '}
+            <a href="mailto:contact@emilievizcano.com" className="underline">
+              contact@emilievizcano.com
+            </a>
           </p>
 
           <div className="mt-[20px] flex justify-between laptop:mt-[45px]">
@@ -57,7 +67,7 @@ export default function InfosView() {
               </div>
 
               <div className="mt-[8px] flex max-w-[360px] flex-wrap">
-                {CONSTANTS_SERVICES.map((service, index) => (
+                {CONSTANT_SERVICES.map((service, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
                     <UIPill label={service} />
                   </div>
@@ -70,7 +80,7 @@ export default function InfosView() {
               </div>
 
               <div className="mt-[8px] flex max-w-[360px] flex-wrap laptop:mt-[17px]">
-                {CONSTANTS_SOFTWARES.map((service, index) => (
+                {CONSTANT_SOFTWARES.map((service, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
                     <UIPill label={service} />
                   </div>

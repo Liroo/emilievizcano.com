@@ -8,10 +8,10 @@ import UIFormInputSelect from 'components/ui/form/inputSelect';
 import { closeModal, openModal } from 'flux/modal/reducer';
 import { ChangeEvent, FormEvent, useMemo, useState } from 'react';
 import { ModalEnum } from 'types/modal';
-import { CONSTANTS_FORMAT_LICENSES } from 'utils/constants';
+import { CONSTANT_FORMAT_LICENSES } from 'utils/constants';
 
 type FroundryProductProps = {
-  handle: string;
+  handle?: string;
 };
 
 export default function FoundryProduct({ handle }: FroundryProductProps) {
@@ -76,7 +76,7 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
               {
                 key: 'License Type',
                 value: `${variant.node.selectedOptions[0].value} - ${variant.node.selectedOptions[1].value} - ${
-                  CONSTANTS_FORMAT_LICENSES[
+                  CONSTANT_FORMAT_LICENSES[
                     variant.node.selectedOptions[1].value
                   ][variant.node.selectedOptions[2].value]
                 }`,
@@ -183,7 +183,7 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
                   return {
                     disabled: size === 'xl',
                     label:
-                      CONSTANTS_FORMAT_LICENSES[usage][size] + ' - ' + price,
+                      CONSTANT_FORMAT_LICENSES[usage][size] + ' - ' + price,
                     value: size,
                   };
                 })}

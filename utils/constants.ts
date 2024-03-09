@@ -1,4 +1,24 @@
-export const CONSTANTS_FORMAT_LICENSES = {
+import ChatPng from 'images/foundry/discount/chat.png';
+import DragonPng from 'images/foundry/discount/dragon.png';
+import GameboyPng from 'images/foundry/discount/gameboy.png';
+import PhoPng from 'images/foundry/discount/pho.png';
+import Sinnoh1Png from 'images/foundry/discount/sinnoh-1.png';
+import Sinnoh2Png from 'images/foundry/discount/sinnoh-2.png';
+import VasePng from 'images/foundry/discount/vase.png';
+
+export const CONSTANT_DISCOUNT_SETTINGS = {
+  symbols: {
+    chat: ChatPng,
+    dragon: DragonPng,
+    gameboy: GameboyPng,
+    pho: PhoPng,
+    sinnoh1: Sinnoh1Png,
+    sinnoh2: Sinnoh2Png,
+    vase: VasePng,
+  },
+};
+
+export const CONSTANT_FORMAT_LICENSES = {
   Print: {
     xs: 'XS Independent & Freelance',
     s: 'S license (1-5 employees)',
@@ -36,7 +56,7 @@ export const CONSTANTS_FORMAT_LICENSES = {
   },
 };
 
-export const CONSTANTS_GLYPHS = [
+export const CONSTANT_GLYPHS = [
   'A',
   'B',
   'C',
@@ -296,7 +316,7 @@ export const CONSTANTS_GLYPHS = [
   '#',
 ];
 
-export const CONSTANTS_FAQ = [
+export const CONSTANT_FAQ = [
   {
     question: 'Who should buy the licenses, the client or the designer?',
     answer:
@@ -344,7 +364,7 @@ export const CONSTANTS_FAQ = [
   },
 ];
 
-export const CONSTANTS_SERVICES = [
+export const CONSTANT_SERVICES = [
   'Art direction',
   'Branding 360°',
   'Custom typefaces',
@@ -356,7 +376,7 @@ export const CONSTANTS_SERVICES = [
   'Consulting',
 ];
 
-export const CONSTANTS_SOFTWARES = [
+export const CONSTANT_SOFTWARES = [
   'Figma',
   'Adobe Suite',
   'Jira',

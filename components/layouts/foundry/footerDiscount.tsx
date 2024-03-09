@@ -1,18 +1,13 @@
+import { openModal } from 'flux/modal/reducer';
+import { useAppDispatch } from 'flux/store';
 import EVSvg from 'icons/ev.svg';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import Link from 'next/link';
+import { ModalEnum } from 'types/modal';
 
-type LayoutFoundryFooterTypefaceProps = {
-  typeface: string;
-  glyphNumber: number;
-  onClickBuyTheFont: any;
-};
+export default function LayoutFoundryFooterDiscount() {
+  const dispatch = useAppDispatch();
 
-export default function LayoutFoundryFooterTypeface({
-  typeface,
-  glyphNumber,
-  onClickBuyTheFont,
-}: LayoutFoundryFooterTypefaceProps) {
   return (
     <>
       <div className="h-[44px] w-full laptop:h-[72px]" />
@@ -24,44 +19,40 @@ export default function LayoutFoundryFooterTypeface({
           <Link href="/">
             <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
           </Link>
-          <div className="col-span-2 col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start">
-            <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
-            <p className="pl-[8px] text-[9px] uppercase leading-[11px] underline laptop:text-[12px] laptop:leading-[15px]">
-              EULA &
-              <br />
-              Font Licenses
-            </p>
-          </div>
-          <div className="hidden items-center laptop:flex laptop:items-start">
+          <div className="col-span-2 col-start-2 hidden items-center laptop:col-auto laptop:flex laptop:items-start">
             <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
             <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
-              Typeface
+              Discount
               <br />
-              {typeface}
+              Page
             </p>
           </div>
-          <div className="hidden items-center laptop:flex laptop:items-start">
-            <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
-            <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
-              {glyphNumber}
-              <br />
-              Glyphs
-            </p>
-          </div>
-
-          <div
-            className="col-span-2 col-start-5 flex justify-end laptop:col-auto laptop:justify-start"
-            onClick={onClickBuyTheFont}
+          <Link
+            href="/foundry"
+            className="hidden items-center laptop:flex laptop:items-start"
           >
-            <div className="flex h-[24px] cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] text-white laptop:h-[28px] laptop:px-[20px]">
-              <p className="whitespace-nowrap font-romie text-[12px]">
-                Buy the font
-              </p>
+            <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
+            <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
+              Back to
+              <br />
+              the foundry
+            </p>
+          </Link>
+
+          <div className="col-start-3 flex laptop:col-start-4">
+            <div
+              className="flex h-[24px] cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] text-white laptop:h-[28px] laptop:px-[20px]"
+              onClick={() => {
+                dispatch(openModal(ModalEnum.FoundryDiscountRules));
+              }}
+            >
+              <p className="font-romie text-[12px]">Rules</p>
               <RightArrowSvg className="ml-[15px] w-[12px] shrink-0 fill-current laptop:ml-[20px] laptop:w-[14px]" />
             </div>
           </div>
+          <div />
 
-          <div className="col-span-2 col-start-4 hidden items-center laptop:col-auto laptop:flex laptop:items-start laptop:justify-end">
+          <div className="col-span-2 col-start-5 flex items-center justify-end laptop:col-auto">
             <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
             <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
               <a href="https://www.instagram.com/emilievizcano" target="_blank">
