@@ -22,12 +22,12 @@ export default function FoundryDiscountDecoration() {
       <Image
         src={LeafLeftPng}
         alt="chat"
-        className="absolute left-0 top-[10%] hidden w-[206px] laptop:block"
+        className="absolute left-0 top-[5%] w-[110px] laptop:top-[10%] laptop:block laptop:w-[206px]"
       />
       <Image
         src={LeafRightPng}
         alt="chat"
-        className="absolute right-0 top-[10%] hidden w-[182px] laptop:block"
+        className="absolute right-0 top-[5%] w-[90px] laptop:top-[10%] laptop:block laptop:w-[182px]"
       />
       <Image
         src={TournesolLeftPng}
