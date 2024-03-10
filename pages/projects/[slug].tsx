@@ -22,7 +22,7 @@ export default function Project() {
 
   return (
     <>
-      <NextSeo title={`Emilie Vizcano - ${project.title}`} />
+      <NextSeo title={`Emilie Vizcano - ${project?.title}`} />
     </>
   );
 }
