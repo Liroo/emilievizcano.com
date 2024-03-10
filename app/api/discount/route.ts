@@ -90,17 +90,17 @@ export async function POST(request: NextRequest) {
       id: doc.id,
       ...doc.data(),
     };
-    if (userIp.lastTry) {
-      const lastTry = new Date(userIp.lastTry);
-      const now = new Date();
-      const diff = now.getTime() - lastTry.getTime();
-      if (diff < 1000 * 60 * 60 * 24)
-        // 24 hours
-        return NextResponse.json(
-          { error: 'Too many requests' },
-          { status: 429 },
-        );
-    }
+    // if (userIp.lastTry) {
+    //   const lastTry = new Date(userIp.lastTry);
+    //   const now = new Date();
+    //   const diff = now.getTime() - lastTry.getTime();
+    //   if (diff < 1000 * 60 * 60 * 24)
+    //     // 24 hours
+    //     return NextResponse.json(
+    //       { error: 'Too many requests' },
+    //       { status: 429 },
+    //     );
+    // }
     userIp = await setDocument(ip, {
       ip: userIp.id,
       numberOfTry: (userIp.numberOfTry || 0) + 1,

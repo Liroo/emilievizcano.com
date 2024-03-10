@@ -1,4 +1,5 @@
 import { postApiDiscount } from 'flux/foundry/action';
+import { openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import ChatPng from 'images/foundry/discount/chat.png';
@@ -16,6 +17,7 @@ import TournesolLeftPng from 'images/foundry/discount/tournesol-left.png';
 import TournesolRightPng from 'images/foundry/discount/tournesol-right.png';
 import VasePng from 'images/foundry/discount/vase.png';
 import { useEffect, useRef, useState } from 'react';
+import { ModalEnum } from 'types/modal';
 import { DiscountSymbols } from 'utils/constants';
 import FoundryDiscountColumn, { FoundryDiscountColumnHandle } from './column';
 import FoundryDiscountDecoration from './decoration';
@@ -44,6 +46,7 @@ export default function FoundryDiscountView() {
   const [[machineWidth, machineHeight], setMachineSize] = useState<
     [number, number]
   >([0, 0]);
+  const [isAnimated, setIsAnimated] = useState<boolean>(false);
   const getImageSize = (img: HTMLImageElement) => {
     const ratio = img.naturalWidth / img.naturalHeight;
     let width = img.height * ratio;
@@ -74,15 +77,22 @@ export default function FoundryDiscountView() {
   }, []);
 
   const onClickPull = async () => {
+    if (isAnimated) return;
+    setIsAnimated(true);
     try {
       const res = await dispatch(postApiDiscount()).unwrap();
       let symbols;
       if (res?.discount) {
         symbols = [res.symbol, res.symbol, res.symbol];
         setTimeout(() => {
-          alert(`${res.description} with code ${res.discount}`);
+          dispatch(
+            openModal(ModalEnum.FoundryDiscountAlert, {
+              description: res.description,
+              discount: res.discount,
+            }),
+          );
+          setIsAnimated(false);
         }, 7500);
-        alert(`${res.description} with code ${res.discount}`);
       } else {
         const numberOfSymbols = Object.keys(DiscountSymbols).length - 1;
         symbols = [
@@ -97,14 +107,25 @@ export default function FoundryDiscountView() {
           ],
         ];
         setTimeout(() => {
-          alert(`You lost`);
+          dispatch(
+            openModal(ModalEnum.FoundryDiscountAlert, {
+              description:
+                'You did not win anything this time, try again tomorrow :)',
+            }),
+          );
+          setIsAnimated(false);
         }, 7500);
       }
       line1Ref.current?.setSymbol(symbols[0], 30);
       line2Ref.current?.setSymbol(symbols[1], 50);
       line3Ref.current?.setSymbol(symbols[2], 70);
     } catch (err) {
-      alert("You can't play anymore, try again tomorrow :)");
+      dispatch(
+        openModal(ModalEnum.FoundryDiscountAlert, {
+          description: 'You already played today, try again tomorrow :)',
+        }),
+      );
+      setIsAnimated(false);
     }
   };
 
@@ -137,6 +158,7 @@ export default function FoundryDiscountView() {
             <button
               className="pointer-events-auto absolute left-[calc(50vw+30vh)] top-[45%] flex h-[20px] w-[20px] select-none items-center justify-center rounded-full bg-[#B4AFAB] font-romie text-[12px] uppercase text-white outline-none laptop:h-auto laptop:w-auto laptop:px-[20px] laptop:py-[6px] portrait:left-auto portrait:right-[8vw] portrait:top-[calc(50%-7vw)]"
               onClick={onClickPull}
+              disabled={isAnimated}
             >
               <RightArrowSvg className="w-[10px] rotate-90 fill-current text-white laptop:hidden" />
               <p className="hidden laptop:block">Pull</p>

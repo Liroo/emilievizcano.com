@@ -53,7 +53,7 @@ const UIModal = ({
             exit={animation?.exit ? animation.exit : { x: '100%' }}
             transition={{ ease: 'easeInOut' }}
             className={twMerge(
-              'fixed right-0 top-0 z-60 flex h-dvh justify-end',
+              'fixed right-0 top-0 z-60 flex h-dvh justify-end shadow-md',
               className,
             )}
           >

@@ -13,7 +13,7 @@ export default function Project() {
   const project = useAppSelector(selectProjectBySlug(slug as string));
 
   useEffect(() => {
-    dispatch(openModal(ModalEnum.Project, { data: { slug } }));
+    dispatch(openModal(ModalEnum.Project, { slug }));
 
     return () => {
       dispatch(closeModal(ModalEnum.Project));
