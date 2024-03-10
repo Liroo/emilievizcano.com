@@ -10,5 +10,9 @@ export const postApiDiscount = createAsyncThunk<
   });
 
   const res = await response.json();
+
+  if (res.error) {
+    throw new Error(res.error);
+  }
   return res?.discount;
 });

@@ -43,28 +43,38 @@ export default function FoundryDiscountView() {
   }, []);
 
   const onClickPull = async () => {
-    const res = await dispatch(postApiDiscount()).unwrap();
-    let symbols;
-    if (res?.discount) {
-      symbols = [res.symbol, res.symbol, res.symbol];
-      // modal to show prize
-    } else {
-      const numberOfSymbols = Object.keys(DiscountSymbols).length - 1;
-      symbols = [
-        Object.values(DiscountSymbols)[
-          Math.floor(Math.random() * numberOfSymbols)
-        ],
-        Object.values(DiscountSymbols)[
-          Math.floor(Math.random() * numberOfSymbols)
-        ],
-        Object.values(DiscountSymbols)[
-          Math.floor(Math.random() * numberOfSymbols)
-        ],
-      ];
+    try {
+      const res = await dispatch(postApiDiscount()).unwrap();
+      let symbols;
+      if (res?.discount) {
+        symbols = [res.symbol, res.symbol, res.symbol];
+        setTimeout(() => {
+          alert(`${res.description} with code ${res.discount}`);
+        }, 7500);
+        alert(`${res.description} with code ${res.discount}`);
+      } else {
+        const numberOfSymbols = Object.keys(DiscountSymbols).length - 1;
+        symbols = [
+          Object.values(DiscountSymbols)[
+            Math.floor(Math.random() * numberOfSymbols)
+          ],
+          Object.values(DiscountSymbols)[
+            Math.floor(Math.random() * numberOfSymbols)
+          ],
+          Object.values(DiscountSymbols)[
+            Math.floor(Math.random() * numberOfSymbols)
+          ],
+        ];
+        setTimeout(() => {
+          alert(`You lost`);
+        }, 7500);
+      }
+      line1Ref.current?.setSymbol(symbols[0], 30);
+      line2Ref.current?.setSymbol(symbols[1], 50);
+      line3Ref.current?.setSymbol(symbols[2], 70);
+    } catch (err) {
+      alert("You can't play anymore, try again tomorrow :)");
     }
-    line1Ref.current?.setSymbol(symbols[0], 30);
-    line2Ref.current?.setSymbol(symbols[1], 50);
-    line3Ref.current?.setSymbol(symbols[2], 70);
   };
 
   return (
@@ -81,7 +91,7 @@ export default function FoundryDiscountView() {
             className="mx-auto h-full w-full object-contain"
           />
           <button
-            className="pointer-events-auto absolute left-[calc(50vw+30vh)] top-[45%] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#B4AFAB] font-romie text-[12px] uppercase text-white outline-none laptop:h-auto laptop:w-auto laptop:px-[20px] laptop:py-[6px] portrait:left-auto portrait:right-[8vw] portrait:top-[calc(50%-7vw)]"
+            className="pointer-events-auto absolute left-[calc(50vw+30vh)] top-[45%] flex h-[20px] w-[20px] select-none items-center justify-center rounded-full bg-[#B4AFAB] font-romie text-[12px] uppercase text-white outline-none laptop:h-auto laptop:w-auto laptop:px-[20px] laptop:py-[6px] portrait:left-auto portrait:right-[8vw] portrait:top-[calc(50%-7vw)]"
             onClick={onClickPull}
           >
             <RightArrowSvg className="w-[10px] rotate-90 fill-current text-white laptop:hidden" />

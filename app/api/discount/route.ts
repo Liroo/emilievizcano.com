@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
       id: doc.id,
       ...doc.data(),
     };
-    if (!userIp.lastTry) {
+    if (userIp.lastTry) {
       const lastTry = new Date(userIp.lastTry);
       const now = new Date();
       const diff = now.getTime() - lastTry.getTime();
