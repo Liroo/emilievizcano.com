@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { DiscountSymbols } from 'utils/constants';
 
-export const postApiDiscount = createAsyncThunk<void, void>(
-  'foundry/postApiDiscount',
-  async () => {
-    const response = await fetch('/api/discount', {
-      method: 'POST',
-    });
+export const postApiDiscount = createAsyncThunk<
+  { symbol: DiscountSymbols; discount: string; description: string } | null,
+  void
+>('foundry/postApiDiscount', async () => {
+  const response = await fetch('/api/discount', {
+    method: 'POST',
+  });
 
-    const data = await response.json();
-
-    console.log(data);
-  },
-);
+  const res = await response.json();
+  return res?.discount;
+});

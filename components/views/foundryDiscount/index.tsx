@@ -42,11 +42,29 @@ export default function FoundryDiscountView() {
     };
   }, []);
 
-  const onClickPull = () => {
-    dispatch(postApiDiscount()).unwrap();
-    line1Ref.current?.setSymbol(DiscountSymbols.Chat, 30);
-    line2Ref.current?.setSymbol(DiscountSymbols.Sinnoh1, 50);
-    line3Ref.current?.setSymbol(DiscountSymbols.Dragon, 70);
+  const onClickPull = async () => {
+    const res = await dispatch(postApiDiscount()).unwrap();
+    let symbols;
+    if (res?.discount) {
+      symbols = [res.symbol, res.symbol, res.symbol];
+      // modal to show prize
+    } else {
+      const numberOfSymbols = Object.keys(DiscountSymbols).length - 1;
+      symbols = [
+        Object.values(DiscountSymbols)[
+          Math.floor(Math.random() * numberOfSymbols)
+        ],
+        Object.values(DiscountSymbols)[
+          Math.floor(Math.random() * numberOfSymbols)
+        ],
+        Object.values(DiscountSymbols)[
+          Math.floor(Math.random() * numberOfSymbols)
+        ],
+      ];
+    }
+    line1Ref.current?.setSymbol(symbols[0], 30);
+    line2Ref.current?.setSymbol(symbols[1], 50);
+    line3Ref.current?.setSymbol(symbols[2], 70);
   };
 
   return (
