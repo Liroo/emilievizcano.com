@@ -6,15 +6,25 @@ import Sinnoh1Png from 'images/foundry/discount/sinnoh-1.png';
 import Sinnoh2Png from 'images/foundry/discount/sinnoh-2.png';
 import VasePng from 'images/foundry/discount/vase.png';
 
+export enum DiscountSymbols {
+  Chat = 'chat',
+  Dragon = 'dragon',
+  Gameboy = 'gameboy',
+  Pho = 'pho',
+  Sinnoh1 = 'sinnoh1',
+  Sinnoh2 = 'sinnoh2',
+  Vase = 'vase',
+}
+
 export const CONSTANT_DISCOUNT_SETTINGS = {
   symbols: {
-    chat: ChatPng,
-    dragon: DragonPng,
-    gameboy: GameboyPng,
-    pho: PhoPng,
-    sinnoh1: Sinnoh1Png,
-    sinnoh2: Sinnoh2Png,
-    vase: VasePng,
+    [DiscountSymbols.Chat]: ChatPng,
+    [DiscountSymbols.Dragon]: DragonPng,
+    [DiscountSymbols.Gameboy]: GameboyPng,
+    [DiscountSymbols.Pho]: PhoPng,
+    [DiscountSymbols.Sinnoh1]: Sinnoh1Png,
+    [DiscountSymbols.Sinnoh2]: Sinnoh2Png,
+    [DiscountSymbols.Vase]: VasePng,
   },
 };
 

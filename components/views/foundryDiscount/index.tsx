@@ -1,9 +1,14 @@
+import { postApiDiscount } from 'flux/foundry/action';
+import { useAppDispatch } from 'flux/store';
+import RightArrowSvg from 'icons/right-arrow.svg';
 import MachinePng from 'images/foundry/discount/machine.png';
 import { useEffect, useRef, useState } from 'react';
-import FoundryDiscountColumn from './column';
+import { DiscountSymbols } from 'utils/constants';
+import FoundryDiscountColumn, { FoundryDiscountColumnHandle } from './column';
 import FoundryDiscountDecoration from './decoration';
 
 export default function FoundryDiscountView() {
+  const dispatch = useAppDispatch();
   const machineRef = useRef<HTMLImageElement>(null);
   const [[machineWidth, machineHeight], setMachineSize] = useState<
     [number, number]
@@ -18,6 +23,9 @@ export default function FoundryDiscountView() {
     }
     setMachineSize([width, height]);
   };
+  const line1Ref = useRef<FoundryDiscountColumnHandle>(null);
+  const line2Ref = useRef<FoundryDiscountColumnHandle>(null);
+  const line3Ref = useRef<FoundryDiscountColumnHandle>(null);
 
   useEffect(() => {
     if (machineRef.current && machineRef.current.complete) {
@@ -34,8 +42,15 @@ export default function FoundryDiscountView() {
     };
   }, []);
 
+  const onClickPull = () => {
+    dispatch(postApiDiscount()).unwrap();
+    line1Ref.current?.setSymbol(DiscountSymbols.Chat, 30);
+    line2Ref.current?.setSymbol(DiscountSymbols.Sinnoh1, 50);
+    line3Ref.current?.setSymbol(DiscountSymbols.Dragon, 70);
+  };
+
   return (
-    <div className="flex-1 overflow-hidden">
+    <div className="pointer-events-none flex-1 overflow-hidden">
       <div className="relative h-full laptop:py-[30px]">
         <div className="relative h-full">
           <img
@@ -47,8 +62,12 @@ export default function FoundryDiscountView() {
             alt="chat"
             className="mx-auto h-full w-full object-contain"
           />
-          <button className="absolute left-[calc(50vw+30vh)] top-[45%] rounded-full bg-[#B4AFAB] px-[20px] py-[6px] font-romie text-[12px] uppercase text-white outline-none portrait:left-auto portrait:right-[2vw] portrait:top-[calc(50%-7vw)]">
-            Pull
+          <button
+            className="pointer-events-auto absolute left-[calc(50vw+30vh)] top-[45%] flex h-[20px] w-[20px] items-center justify-center rounded-full bg-[#B4AFAB] font-romie text-[12px] uppercase text-white outline-none laptop:h-auto laptop:w-auto laptop:px-[20px] laptop:py-[6px] portrait:left-auto portrait:right-[8vw] portrait:top-[calc(50%-7vw)]"
+            onClick={onClickPull}
+          >
+            <RightArrowSvg className="w-[10px] rotate-90 fill-current text-white laptop:hidden" />
+            <p className="hidden laptop:block">Pull</p>
           </button>
 
           <div
@@ -60,9 +79,9 @@ export default function FoundryDiscountView() {
               left: `calc(50% - ${machineWidth * 0.26}px)`,
             }}
           >
-            <FoundryDiscountColumn />
-            <FoundryDiscountColumn />
-            <FoundryDiscountColumn />
+            <FoundryDiscountColumn ref={line1Ref} />
+            <FoundryDiscountColumn ref={line2Ref} />
+            <FoundryDiscountColumn ref={line3Ref} />
           </div>
         </div>
         <FoundryDiscountDecoration />

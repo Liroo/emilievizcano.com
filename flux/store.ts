@@ -12,18 +12,11 @@ const reducers = {
   [productSlice.name]: productSlice.reducer,
 };
 
-const reducer = combineReducers(reducers);
-
-const makeStore = ({ reduxWrapperMiddleware }: any) =>
+const makeStore = () =>
   configureStore({
-    reducer,
+    reducer: combineReducers(reducers),
     devTools: true,
-    middleware: (getDefaultMiddleware) =>
-      [...getDefaultMiddleware(), reduxWrapperMiddleware].filter(
-        Boolean,
-      ) as any,
   });
-
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore['getState']>;
 export type AppDispatch = AppStore['dispatch'];
@@ -37,4 +30,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 
-export const wrapper = createWrapper<AppStore>(makeStore, { debug: true });
+export const wrapper = createWrapper<AppStore>(makeStore);

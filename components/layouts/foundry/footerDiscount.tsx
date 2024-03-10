@@ -41,12 +41,12 @@ export default function LayoutFoundryFooterDiscount() {
 
           <div className="col-start-3 flex laptop:col-start-4">
             <div
-              className="flex h-[24px] cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] text-white laptop:h-[28px] laptop:px-[20px]"
+              className="flex cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]"
               onClick={() => {
                 dispatch(openModal(ModalEnum.FoundryDiscountRules));
               }}
             >
-              <p className="font-romie text-[12px]">Rules</p>
+              <p className="font-romie text-[12px] laptop:text-[15px]">Rules</p>
               <RightArrowSvg className="ml-[15px] w-[12px] shrink-0 fill-current laptop:ml-[20px] laptop:w-[14px]" />
             </div>
           </div>

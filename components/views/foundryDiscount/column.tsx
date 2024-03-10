@@ -1,10 +1,19 @@
+import anime from 'animejs';
 import { StaticImageData } from 'next/image';
-import { useEffect, useMemo, useState } from 'react';
-import { CONSTANT_DISCOUNT_SETTINGS } from 'utils/constants';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from 'react';
+import { CONSTANT_DISCOUNT_SETTINGS, DiscountSymbols } from 'utils/constants';
 
-const symbolsEntries = Object.entries(CONSTANT_DISCOUNT_SETTINGS.symbols);
+export type FoundryDiscountColumnHandle = {
+  setSymbol: (symbolKey: DiscountSymbols, rotationCount: number) => void;
+};
 
-export default function FoundryDiscountColumn() {
+function FoundryDiscountColumn(_, ref) {
   const [order, setOrder] = useState<string[]>([]);
   const [index, setIndex] = useState<number>(0);
   const symbols: StaticImageData[] = useMemo(() => {
@@ -18,6 +27,36 @@ export default function FoundryDiscountColumn() {
       ),
     );
   }, []);
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        setSymbol: (symbolKey: DiscountSymbols, rotationCount: number) => {
+          const newSymbolIndex = order.indexOf(symbolKey);
+          if (newSymbolIndex === -1) return;
+
+          const futureIndex = rotationCount * symbols.length + newSymbolIndex;
+
+          const obj = {
+            index,
+          };
+          anime({
+            targets: obj,
+            index: futureIndex,
+            round: 100,
+            duration: rotationCount * 100,
+            delay: (rotationCount - 30) * 10,
+            easing: 'cubicBezier(0.455, 0.030, 0.000, 1.000)',
+            update: function () {
+              setIndex(obj.index % symbols.length);
+            },
+          });
+        },
+      };
+    },
+    [order, index],
+  );
 
   return (
     <div className="relative flex items-center justify-center overflow-hidden">
@@ -34,3 +73,5 @@ export default function FoundryDiscountColumn() {
     </div>
   );
 }
+
+export default forwardRef(FoundryDiscountColumn);
