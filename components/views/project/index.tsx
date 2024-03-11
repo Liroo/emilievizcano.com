@@ -6,7 +6,7 @@ import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type ProjectViewProps = {
   slug?: string;
@@ -14,28 +14,29 @@ type ProjectViewProps = {
 
 export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
+  console.log(project);
 
   const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [carrouselImages, setCarrouselImages] = useState([]);
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  // const [carrouselImages, setCarrouselImages] = useState([]);
 
-  useEffect(() => {
-    project.gallery.map((image) => setCarrouselImages(image));
-    console.log(carrouselImages);
-  }, []);
+  // useEffect(() => {
+  //   project.gallery.map((image) => setCarrouselImages(image));
+  //   console.log(carrouselImages);
+  // }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === carrouselImages.length - 1 ? 0 : prevIndex + 1,
-    );
-  };
+  // const handleNext = () => {
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === carrouselImages.length - 1 ? 0 : prevIndex + 1,
+  //   );
+  // };
 
-  const handlePrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? carrouselImages.length - 1 : prevIndex - 1,
-    );
-  };
+  // const handlePrevious = () => {
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === 0 ? carrouselImages.length - 1 : prevIndex - 1,
+  //   );
+  // };
 
   return (
     <>
