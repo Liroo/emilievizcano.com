@@ -71,9 +71,19 @@ export default function FoundryCartView() {
 
         <div className="flex flex-1 flex-col overflow-y-scroll pt-[20px]">
           <div className="mt-auto border-t border-white">
-            {cartEntries.map((entry, index) => (
-              <FoundryCartRow key={index} {...entry} />
-            ))}
+            {cartEntries.length > 0 ? (
+              cartEntries.map((entry, index) => (
+                <FoundryCartRow key={index} {...entry} />
+              ))
+            ) : (
+              <div className="w-full border-b border-white py-[20px]">
+                <div className="flex items-center justify-between">
+                  <p className="text-[20px] laptop:text-[25px]">
+                    Cart is empty
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           <div className="mt-[30px] flex items-center justify-between">
             <p className="text-[20px] laptop:text-[25px]">Subtotal</p>
@@ -110,13 +120,14 @@ export default function FoundryCartView() {
             <p className="text-[12px] laptop:text-[15px]">
               Taxes are calculated at checkout
             </p>
-            <div
+            <button
               onClick={onClickCheckout}
-              className="group flex cursor-pointer select-none rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white transition-all hover:bg-white hover:text-black"
+              disabled={cartEntries.length === 0}
+              className={`flex select-none items-center rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white outline-none transition-all ${cartEntries.length > 0 ? 'cursor-pointer hover:bg-white hover:text-black' : ' cursor-not-allowed'}`}
             >
               <p className="text-[18px]">Checkout</p>
               <RightArrowSvg className="ml-[30px] w-[20px] fill-current" />
-            </div>
+            </button>
           </div>
         </div>
       </div>
