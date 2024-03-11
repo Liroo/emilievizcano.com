@@ -7,6 +7,7 @@ import RightArrowSvg from 'icons/right-arrow.svg';
 
 import Link from 'next/link';
 import { useState } from 'react';
+import ProjectGallery from './gallery';
 
 type ProjectViewProps = {
   slug?: string;
@@ -14,29 +15,8 @@ type ProjectViewProps = {
 
 export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
-  console.log(project);
 
   const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  // const [carrouselImages, setCarrouselImages] = useState([]);
-
-  // useEffect(() => {
-  //   project.gallery.map((image) => setCarrouselImages(image));
-  //   console.log(carrouselImages);
-  // }, []);
-
-  // const handleNext = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === carrouselImages.length - 1 ? 0 : prevIndex + 1,
-  //   );
-  // };
-
-  // const handlePrevious = () => {
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === 0 ? carrouselImages.length - 1 : prevIndex - 1,
-  //   );
-  // };
 
   return (
     <>
@@ -44,14 +24,11 @@ export default function ProjectView({ slug }: ProjectViewProps) {
         className={`hidden overflow-hidden bg-black transition-all duration-300 desktop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
       >
         <div className="h-full w-[600px] min-w-[600px]">
-          {project.gallery.map((asset, index) => (
-            <UIImageSanity
-              key={index}
-              asset={asset}
-              className=""
-              alt="gallery image"
-            />
-          ))}
+          <UIImageSanity
+            asset={project.gallery}
+            className="h-full"
+            alt="gallery image"
+          />
         </div>
       </div>
       <div
@@ -74,16 +51,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             </h2>
           </div>
 
-          <div className="mt-[20px] w-full laptop:h-[420px] laptop:w-[322px] ">
-            {project.gallery.map((asset, index) => (
-              <UIImageSanity
-                key={index}
-                asset={asset}
-                className=""
-                alt="gallery image"
-              />
-            ))}
-          </div>
+          <ProjectGallery gallery={project.gallery} />
 
           <div className=" mb-[10px] mt-[10px] text-[12px] laptop:text-[15px]">
             {project.description.map((array, index) => (
