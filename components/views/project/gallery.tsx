@@ -1,3 +1,4 @@
+import { UIImageSanity } from 'components/ui/image/sanity';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { Project } from 'lib/sanity.queries';
 import { useState } from 'react';
@@ -11,7 +12,13 @@ export default function ProjectGallery({ gallery }: ProjectGalleryProps) {
 
   return (
     <div>
-      <div>Image</div>
+      <div className=" mb-[10px] h-[110vw] w-full ">
+        <UIImageSanity
+          asset={gallery[index]}
+          className="h-full w-full object-cover"
+          alt="Caroussel image"
+        />
+      </div>
       <div className="grid select-none grid-cols-3 items-center">
         <div
           className="m-[-10px] cursor-pointer p-[10px]"

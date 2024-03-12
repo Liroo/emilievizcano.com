@@ -26,7 +26,7 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
           })}
         </h2>
 
-        <div className="mt-[20px] text-[12px] leading-[24px] laptop:text-[15px] laptop:leading-[20px]">
+        <div className="mt-[20px] text-[12px] leading-[18px] laptop:text-[15px] laptop:leading-[20px]">
           <PortableText value={project.description} />
         </div>
 
