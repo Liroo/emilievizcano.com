@@ -81,6 +81,10 @@ export default defineType({
             hotspot: true,
           },
         }),
+        defineArrayMember({
+          type: 'mux.video',
+          name: 'video',
+        }),
       ],
     }),
     defineField({

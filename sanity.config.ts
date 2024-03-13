@@ -1,14 +1,15 @@
-import { BillIcon } from '@sanity/icons'
-import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
-import { debugSecrets } from '@sanity/preview-url-secret/sanity-plugin-debug-secrets'
-import { visionTool } from '@sanity/vision'
-import { apiVersion, dataset, projectId } from 'lib/sanity.api'
-import { defineConfig } from 'sanity'
-import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { structureTool } from 'sanity/structure'
-import projectType from 'schemas/project'
+import { BillIcon } from '@sanity/icons';
+import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
+import { debugSecrets } from '@sanity/preview-url-secret/sanity-plugin-debug-secrets';
+import { visionTool } from '@sanity/vision';
+import { apiVersion, dataset, projectId } from 'lib/sanity.api';
+import { defineConfig } from 'sanity';
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash';
+import { muxInput } from 'sanity-plugin-mux-input';
+import { structureTool } from 'sanity/structure';
+import projectType from 'schemas/project';
 
-const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Emilie Vizcano'
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Emilie Vizcano';
 
 export default defineConfig({
   basePath: '/studio',
@@ -33,7 +34,7 @@ export default defineConfig({
               S,
               context,
             }),
-          ])
+          ]);
       },
     }),
     unsplashImageAsset(),
@@ -42,5 +43,6 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     process.env.NODE_ENV !== 'production' &&
       visionTool({ defaultApiVersion: apiVersion }),
+    muxInput(),
   ],
-})
+});
