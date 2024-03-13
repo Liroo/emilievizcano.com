@@ -62,47 +62,57 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             </h2>
           </div>
 
-          <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-6 laptop:grid-rows-2 laptop:gap-[20px] laptop:pb-[46px]">
-            <div className="col-span-3 col-start-3 row-span-1">
+          <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-6 laptop:grid-rows-2 laptop:gap-[20px] laptop:pb-[146px]">
+            {/* j'ai changé le laptop:pb-[46px] de la ligne au dessus par laptop:pb-[146px] pour que se soit propre mais je ne comprend pas pq la hauteur est plus grande que le reste. j'ai fouillé mais aucune idée d'où ça vient */}
+            <div className="laptop:col-span-3 laptop:col-start-4 laptop:row-span-1">
               <ProjectGallery gallery={project.gallery} />
             </div>
-            <div className="col-span-6 row-span-1 mr-[20px] mt-[30px] leading-[24px] laptop:mt-[20px] laptop:leading-[20px]">
+            <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-6 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
               <PortableText value={project.description} />
             </div>
 
-            <div className="mb-[18px] mt-[8px] flex max-w-[280px] flex-wrap">
+            <div className=" mt-[8px] flex max-w-[280px] flex-wrap laptop:col-span-2 laptop:row-start-2  laptop:max-w-[500px] laptop:content-start">
               {project.tags.map((tags, index) => (
                 <div key={index} className="mr-[8px] mt-[8px]">
                   <UIPill label={tags} />
                 </div>
               ))}
             </div>
-
-            <div className="my-[10px] flex  items-center laptop:mt-[25px]">
-              <RightArrowSvg className="w-[18px] fill-current text-white" />
-              <div>
-                <p className="ml-[6px] text-[6px] uppercase">project</p>
-                <p className="ml-[6px] text-[12px] uppercase">
-                  {project.title}
-                </p>
+            <div className="laptop:col-span-2 laptop:col-start-1 laptop:row-span-1">
+              <div className="my-[10px] flex  items-center laptop:mt-[25px]">
+                <RightArrowSvg className="w-[18px] fill-current text-white" />
+                <div>
+                  <p className="ml-[6px] text-[6px] uppercase laptop:text-[8px]">
+                    project
+                  </p>
+                  <p className="ml-[6px] text-[12px] uppercase laptop:text-[15px]">
+                    {project.title}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="my-[10px] flex  items-center laptop:mt-[25px]">
-              <RightArrowSvg className="w-[18px] fill-current text-white" />
-              <div>
-                <p className="ml-[6px] text-[6px] uppercase">role</p>
-                <p className="ml-[6px] text-[12px] uppercase">{project.role}</p>
+              <div className="my-[10px] flex  items-center laptop:mt-[25px]">
+                <RightArrowSvg className="w-[18px] fill-current text-white" />
+                <div>
+                  <p className="ml-[6px] text-[6px] uppercase laptop:text-[8px]">
+                    role
+                  </p>
+                  <p className="ml-[6px] text-[12px] uppercase laptop:text-[15px]">
+                    {project.role}
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div className="my-[10px] flex  items-center laptop:mt-[25px]">
-              <RightArrowSvg className="w-[18px] fill-current text-white" />
-              <div>
-                <p className="ml-[6px] text-[6px] uppercase">worked</p>
-                <p className="ml-[6px] text-[12px] uppercase">
-                  {project.workingAs}
-                </p>
+              <div className="my-[10px] flex  items-center laptop:mt-[25px]">
+                <RightArrowSvg className="w-[18px] fill-current text-white" />
+                <div>
+                  <p className="ml-[6px] text-[6px] uppercase laptop:text-[8px]">
+                    worked
+                  </p>
+                  <p className="ml-[6px] text-[12px] uppercase laptop:ml-[6px] laptop:text-[15px]">
+                    {project.workingAs}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

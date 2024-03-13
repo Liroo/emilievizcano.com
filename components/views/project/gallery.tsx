@@ -12,14 +12,14 @@ export default function ProjectGallery({ gallery }: ProjectGalleryProps) {
 
   return (
     <div>
-      <div className=" mb-[10px] h-[110vw] w-full ">
+      <div className=" mb-[10px] h-[110vw] w-full laptop:h-[420px] ">
         <UIImageSanity
           asset={gallery[index]}
           className="h-full w-full object-cover"
           alt="Caroussel image"
         />
       </div>
-      <div className="grid select-none grid-cols-3 items-center">
+      <div className="grid select-none grid-cols-3 items-center laptop:w-[88px]">
         <div
           className="m-[-10px] cursor-pointer p-[10px]"
           onClick={() =>
