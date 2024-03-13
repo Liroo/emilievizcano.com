@@ -1,3 +1,4 @@
+import MuxPlayer from '@mux/mux-player-react';
 import { UIImageSanity } from 'components/ui/image/sanity';
 import RightArrowSvg from 'icons/right-arrow.svg';
 import { useState } from 'react';
@@ -9,17 +10,29 @@ type ProjectGalleryProps = {
 
 export default function ProjectGallery({ gallery }: ProjectGalleryProps) {
   const [index, setIndex] = useState<number>(0);
+  console.log(gallery[index]);
 
   return (
     <div>
-      <div className=" mb-[10px] h-[110vw] w-full laptop:h-[420px] ">
-        <UIImageSanity
-          asset={gallery[index]}
-          className="h-full w-full object-cover"
-          alt="Caroussel image"
-        />
+      <div className=" mb-[10px] h-[110vw] w-full laptop:h-auto ">
+        {gallery[index]._type === 'image' ? (
+          <UIImageSanity
+            asset={gallery[index]}
+            className="h-full w-full object-cover laptop:h-auto  laptop:object-none"
+            alt="Caroussel image"
+          />
+        ) : (
+          <div
+            key={index}
+            style={{
+              aspectRatio: gallery[index].data.aspect_ratio.replace(':', '/'),
+            }}
+          >
+            <MuxPlayer playbackId={gallery[index].playbackId} />
+          </div>
+        )}
       </div>
-      <div className="grid select-none grid-cols-3 items-center laptop:w-[88px]">
+      <div className="grid select-none grid-cols-3 items-center laptop:ml-auto laptop:w-[88px]">
         <div
           className="m-[-10px] cursor-pointer p-[10px]"
           onClick={() =>
