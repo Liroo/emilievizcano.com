@@ -110,7 +110,7 @@ export default function FoundryDiscountView() {
           dispatch(
             openModal(ModalEnum.FoundryDiscountAlert, {
               description:
-                'You did not win anything this time, try again tomorrow :)',
+                'Sorry! You did not win anything this time, but you can try again tomorrow!',
             }),
           );
           setIsAnimated(false);
@@ -122,7 +122,8 @@ export default function FoundryDiscountView() {
     } catch (err) {
       dispatch(
         openModal(ModalEnum.FoundryDiscountAlert, {
-          description: 'You already played today, try again tomorrow :)',
+          description:
+            'Sorry! You already played today, but you can try again tomorrow!',
         }),
       );
       setIsAnimated(false);
