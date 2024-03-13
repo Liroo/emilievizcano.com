@@ -33,8 +33,13 @@ export default function FoundryDiscountRulesView() {
             <p className="ml-[6px] text-[16px]">Objective of the Game</p>
           </div>
           <p className="mt-[25px] text-[12px] laptop:text-[15px] laptop:leading-[18px]">
-            The objective of the game is to get three identical illustrations on
-            the winline to win, winnings being discounts to use on the foundry.
+            Once the reels stop, the illustrations will be displayed. If you
+            land three identical illustrations aligned on the payline, you win
+            the promo code corresponding to that illustration.
+            <br />
+            <br />
+            In case of a win, the promotional code will appears on the screen.
+            You can then use it in the foundry, in your cart.
           </p>
 
           <div className="mt-[25px] flex items-center uppercase">
@@ -77,9 +82,16 @@ export default function FoundryDiscountRulesView() {
           </p>
 
           <p className="mt-[35px] max-w-[500px] text-[10px]">
-            *Special thanks to Erika Garcia, the incredibly talented artist
-            behind these illustrations, who brought my idea to life in an
-            extraordinary way.
+            *Special thanks to{' '}
+            <a
+              href="https://www.instagram.com/erikagrc/"
+              target="_blank"
+              className="underline"
+            >
+              Erika Garcia
+            </a>
+            , the incredibly talented artist behind these illustrations, who
+            brought my idea to life in an extraordinary way.
           </p>
         </div>
       </div>
