@@ -8,7 +8,10 @@ const projectFields = groq`
   _updatedAt,
   description,
   thumbnail,
-  gallery,
+  "gallery": gallery[] {
+    _type == 'image' => @,
+    _type == 'video' => @.asset->,
+  },
   archive,
   tags,
   type,
@@ -32,21 +35,3 @@ export const projectBySlugQuery = groq`
   ${projectFields}
 }
 `;
-
-export interface Project {
-  _id: string;
-  _updatedAt: string;
-  title?: string;
-  shortTitle?: string;
-  titleSs01Map?: string;
-  slug?: any;
-  description?: any;
-  thumbnail?: any;
-  gallery?: any[];
-  archive?: boolean;
-  tags?: any;
-  type?: any;
-  project?: any;
-  role?: any;
-  workingAs?: any;
-}

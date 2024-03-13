@@ -1,7 +1,7 @@
 import { UIImageSanity } from 'components/ui/image/sanity';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import { Project } from 'lib/sanity.queries';
 import { useState } from 'react';
+import { Project } from 'types/project';
 
 type ProjectGalleryProps = {
   gallery: Project['gallery'];

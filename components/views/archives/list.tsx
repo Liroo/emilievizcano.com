@@ -1,8 +1,8 @@
 import UIIconsCross from 'components/ui/icons/cross';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import { Project } from 'lib/sanity.queries';
 import { Fragment, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { Project } from 'types/project';
 import ArchiveProject from './project';
 
 type ArchiveListProps = {

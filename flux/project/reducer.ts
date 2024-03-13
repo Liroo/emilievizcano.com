@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { Project } from 'lib/sanity.queries';
 import { HYDRATE } from 'next-redux-wrapper';
+import { Project } from 'types/project';
 
 export type ProjectState = {
   projects: Project[];

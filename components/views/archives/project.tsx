@@ -2,13 +2,14 @@ import { PortableText } from '@portabletext/react';
 import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import { Project } from 'lib/sanity.queries';
+import { Project } from 'types/project';
 
 type ArchiveProjectProps = {
   project: Project;
 };
 
 export default function ArchiveProject({ project }: ArchiveProjectProps) {
+  console.log(project);
   return (
     <div className="flex w-full flex-col justify-between text-[12px] laptop:h-[calc(100dvh-30px)] laptop:max-h-[620px] laptop:flex-row laptop:text-[15px]">
       <div className="mx-[16px] mt-[20px] laptop:mx-[30px] laptop:mt-[30px]">
@@ -79,14 +80,18 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
       </div>
 
       <div className="mt-[20px] flex w-full overflow-auto laptop:mt-0 laptop:w-[60vw] laptop:min-w-[60vw]">
-        {project.gallery.map((asset, index) => (
-          <UIImageSanity
-            key={index}
-            asset={asset}
-            className="ml-auto h-[100vw] w-auto max-w-none tablet:h-[70vw] laptop:h-full"
-            alt="gallery image"
-          />
-        ))}
+        {project.gallery.map((asset, index) => {
+          if (asset._type === 'image')
+            return (
+              <UIImageSanity
+                key={index}
+                asset={asset}
+                className="ml-auto h-[100vw] w-auto max-w-none tablet:h-[70vw] laptop:h-full"
+                alt="gallery image"
+              />
+            );
+          return null;
+        })}
       </div>
     </div>
   );
