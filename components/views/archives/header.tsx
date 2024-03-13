@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function ArchiveHeader() {
   return (
-    <div className="relative flex h-[30px] min-h-[30px] items-center border-b border-white px-[16px] laptop:px-[30px]">
+    <div className="relative flex h-[30px] min-h-[30px] items-center border-b border-white px-[16px] text-[14px] laptop:px-[30px]">
       <div className="w-[45vw] laptop:w-[35vw]">
         <p className="uppercase">Emilie Vizcano</p>
       </div>

@@ -33,7 +33,7 @@ export default function InfosView() {
             className="mt-[16px] w-full laptop:hidden"
           />
 
-          <p className="mr-[20px] mt-[30px] leading-[24px] laptop:mt-[20px] laptop:leading-[20px]">
+          <p className="mr-[20px] mt-[30px] leading-[18px] laptop:mt-[20px] laptop:leading-[20px]">
             Emilie Vizcano is an Art Director who mainly work within a focus
             image and strategy, from conception to expression. Having a
             particular interest for Luxury fashion and tech fields, it's been

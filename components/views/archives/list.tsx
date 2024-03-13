@@ -11,9 +11,30 @@ type ArchiveListProps = {
 
 export default function ArchiveList({ projetcs }: ArchiveListProps) {
   const [openIndex, setOpenIndex] = useState<number>(-1);
+  const [animatedIndex, setAnimatedIndex] = useState<{
+    [i: number]: { animated: boolean; timeout: any };
+  }>({});
+
+  const onChangeProject = (index: number) => {
+    console.log(animatedIndex[openIndex]?.timeout);
+    if (animatedIndex[openIndex]?.timeout) return;
+
+    const timeout = setTimeout(() => {
+      setAnimatedIndex((prev) => ({
+        ...prev,
+        [openIndex]: { animated: false, timeout: null },
+      }));
+    }, 500);
+    setAnimatedIndex((prev) => ({
+      ...prev,
+      [openIndex]: { animated: true, timeout },
+    }));
+
+    setOpenIndex(index === openIndex ? -1 : index);
+  };
 
   return (
-    <div className="flex flex-1 flex-col overflow-y-scroll">
+    <div className="flex flex-1 flex-col overflow-y-scroll text-[14px]">
       {projetcs.map((project, index) => (
         <Fragment key={project._id}>
           <div
@@ -22,7 +43,9 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
             }`}
           >
             <div className="overflow-hidden">
-              {openIndex === index && <ArchiveProject project={project} />}
+              {(openIndex === index || animatedIndex[index]?.animated) && (
+                <ArchiveProject project={project} />
+              )}
             </div>
           </div>
 
@@ -31,7 +54,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
               'group relative flex h-[30px] min-h-[30px] cursor-pointer items-center border-b border-white pr-[16px] hover:bg-white hover:text-black laptop:pr-[30px]',
               openIndex === index ? 'bg-white text-black' : '',
             )}
-            onClick={() => setOpenIndex(index === openIndex ? -1 : index)}
+            onClick={() => onChangeProject(index === openIndex ? -1 : index)}
           >
             <div className="flex w-[16px] min-w-[16px] items-center justify-center laptop:w-[30px] laptop:min-w-[30px]">
               <UIIconsCross
