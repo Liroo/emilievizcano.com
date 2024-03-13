@@ -62,15 +62,15 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             </h2>
           </div>
 
-          <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-6 laptop:gap-[20px] laptop:pb-[46px]">
-            <div className="laptop:col-span-3 laptop:col-start-4 laptop:row-span-1">
+          <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
+            <div className="flex items-end overflow-hidden laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
               <ProjectGallery gallery={project.gallery} />
             </div>
-            <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-6 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
+            <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-7 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
               <PortableText value={project.description} />
             </div>
 
-            <div className=" laptop:col-span-2 laptop:row-start-2 laptop:content-start">
+            <div className=" laptop:col-span-3 laptop:row-start-2 laptop:content-start">
               <div className=" mt-[8px] flex max-w-[280px] flex-wrap laptop:max-w-[500px]">
                 {project.tags.map((tags, index) => (
                   <div key={index} className="mr-[8px] mt-[8px]">
