@@ -45,6 +45,30 @@ body,
   border-radius: 100%;
 }
 
+mux-player {
+  /* Hide all controls at once */
+  /* --controls: none; */
+
+  /* Target all sections by excluding the section prefix */
+  /* --play-button: none; */
+  --bottom-controls: none;
+  --live-button: none;
+  --seek-backward-button: none;
+  --seek-forward-button: none;
+  --mute-button: none;
+  --captions-button: none;
+  --airplay-button: none;
+  --pip-button: none;
+  --fullscreen-button: none;
+  --cast-button: none;
+  --playback-rate-button: none;
+  --volume-range: none;
+  --time-range: none;
+  --time-display: none;
+  --title-display: none;
+  --duration-display: none;
+}
+
 @keyframes animation-leaf {
   0% {
     transform: rotate(0deg);

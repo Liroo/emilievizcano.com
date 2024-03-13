@@ -1,3 +1,4 @@
+import MuxPlayer from '@mux/mux-player-react';
 import { PortableText } from '@portabletext/react';
 import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
@@ -89,6 +90,17 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
                 className="ml-auto h-[100vw] w-auto max-w-none tablet:h-[70vw] laptop:h-full"
                 alt="gallery image"
               />
+            );
+          if (asset._type === 'mux.videoAsset')
+            return (
+              <div
+                key={index}
+                style={{
+                  aspectRatio: asset.data.aspect_ratio.replace(':', '/'),
+                }}
+              >
+                <MuxPlayer playbackId={asset.playbackId} />
+              </div>
             );
           return null;
         })}

@@ -22,7 +22,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
             }`}
           >
             <div className="overflow-hidden">
-              <ArchiveProject project={project} />
+              {openIndex === index && <ArchiveProject project={project} />}
             </div>
           </div>
 
