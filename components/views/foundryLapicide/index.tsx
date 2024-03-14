@@ -5,9 +5,13 @@ import SharedTypefaceTester from 'components/shared/typeface/tester';
 import { openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import KorosuJpg from 'images/foundry/korosu.jpg';
-import LapicideJpg from 'images/foundry/lapicide.jpg';
-import TangerineJpg from 'images/foundry/tangerine.jpg';
+import Lapicide1Jpg from 'images/foundry/lapicide/lapicide1.jpg';
+import Lapicide2Jpg from 'images/foundry/lapicide/lapicide2.jpg';
+import Lapicide3Jpg from 'images/foundry/lapicide/lapicide3.jpg';
+import Lapicide4Jpg from 'images/foundry/lapicide/lapicide4.jpg';
+import Lapicide5Jpg from 'images/foundry/lapicide/lapicide5.jpg';
+import Lapicide6Jpg from 'images/foundry/lapicide/lapicide6.jpg';
+import Lapicide7Jpg from 'images/foundry/lapicide/lapicide7.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
 
@@ -21,7 +25,7 @@ export default function LapicideView() {
       <div className="flex-1 overflow-hidden">
         <div className="h-full overflow-y-scroll">
           <div className="relative flex h-full w-full justify-center">
-            <div className="font-lapicide text contents text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
+            <div className="text contents font-lapicide text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
               <SharedTypefaceTester defaultValue="LAPICIDE" />
             </div>
             <div
@@ -35,7 +39,15 @@ export default function LapicideView() {
           </div>
           <div className="relative flex min-h-full w-full" ref={specimenRef}>
             <SharedTypefaceSpecimen
-              gallery={[KorosuJpg, TangerineJpg, LapicideJpg, KorosuJpg]}
+              gallery={[
+                Lapicide1Jpg,
+                Lapicide2Jpg,
+                Lapicide3Jpg,
+                Lapicide4Jpg,
+                Lapicide5Jpg,
+                Lapicide6Jpg,
+                Lapicide7Jpg,
+              ]}
             >
               <p className="font-lapicide text-[15px] leading-[18px] subpixel-antialiased laptop:text-[20px] laptop:leading-[25px] desktop:text-[25px] desktop:leading-[30px]">
                 Introducing "Lapicide," a serif typeface that draws inspiration
@@ -66,7 +78,7 @@ export default function LapicideView() {
             </div>
           </div>
           <div
-            className="font-lapicide h-[calc(100%-1px)] w-full"
+            className="h-[calc(100%-1px)] w-full font-lapicide"
             ref={glyphRef}
           >
             <SharedTypefaceGlyphs />

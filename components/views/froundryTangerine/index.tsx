@@ -5,9 +5,11 @@ import SharedTypefaceTester from 'components/shared/typeface/tester';
 import { openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import KorosuJpg from 'images/foundry/korosu.jpg';
-import LapicideJpg from 'images/foundry/lapicide.jpg';
-import TangerineJpg from 'images/foundry/tangerine.jpg';
+import Tangerine1Jpg from 'images/foundry/tangerine/tangerine1.jpg';
+import Tangerine2Jpg from 'images/foundry/tangerine/tangerine2.jpg';
+import Tangerine3Jpg from 'images/foundry/tangerine/tangerine3.jpg';
+import Tangerine4Jpg from 'images/foundry/tangerine/tangerine4.jpg';
+import Tangerine5Jpg from 'images/foundry/tangerine/tangerine5.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
 
@@ -21,7 +23,7 @@ export default function TangerineView() {
       <div className="flex-1 overflow-hidden">
         <div className="h-full overflow-y-scroll">
           <div className="relative flex h-full w-full justify-center">
-            <div className="font-tangerine text contents text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
+            <div className="text contents font-tangerine text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
               <SharedTypefaceTester defaultValue="TANGERINE" />
             </div>
             <div
@@ -35,7 +37,13 @@ export default function TangerineView() {
           </div>
           <div className="relative flex min-h-full w-full" ref={specimenRef}>
             <SharedTypefaceSpecimen
-              gallery={[KorosuJpg, TangerineJpg, LapicideJpg, KorosuJpg]}
+              gallery={[
+                Tangerine1Jpg,
+                Tangerine2Jpg,
+                Tangerine3Jpg,
+                Tangerine4Jpg,
+                Tangerine5Jpg,
+              ]}
             >
               <p className="font-tangerine text-[15px] leading-[18px] subpixel-antialiased  laptop:text-[20px] laptop:leading-[25px] desktop:text-[25px] desktop:leading-[30px]">
                 Introducing "Lapicide," a serif typeface that draws inspiration
@@ -66,7 +74,7 @@ export default function TangerineView() {
             </div>
           </div>
           <div
-            className="font-tangerine h-[calc(100%-1px)] w-full"
+            className="h-[calc(100%-1px)] w-full font-tangerine"
             ref={glyphRef}
           >
             <SharedTypefaceGlyphs />
