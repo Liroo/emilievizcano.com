@@ -12,6 +12,7 @@ import Korosu4Jpg from 'images/foundry/korosu/korosu4.jpg';
 import Korosu5Jpg from 'images/foundry/korosu/korosu5.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
+import { CONSTANT_KOROSU_GLYPHS } from 'utils/constants';
 
 export default function KorosuView() {
   const specimenRef = useRef<HTMLDivElement>(null);
@@ -69,7 +70,7 @@ export default function KorosuView() {
             </div>
           </div>
           <div className="h-[calc(100%-1px)] w-full font-korosu" ref={glyphRef}>
-            <SharedTypefaceGlyphs />
+            <SharedTypefaceGlyphs glyphs={CONSTANT_KOROSU_GLYPHS.split('')} />
           </div>
         </div>
       </div>

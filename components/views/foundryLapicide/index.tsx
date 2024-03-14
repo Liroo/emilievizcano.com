@@ -14,6 +14,7 @@ import Lapicide6Jpg from 'images/foundry/lapicide/lapicide6.jpg';
 import Lapicide7Jpg from 'images/foundry/lapicide/lapicide7.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
+import { CONSTANT_LAPICIDE_GLYPHS } from 'utils/constants';
 
 export default function LapicideView() {
   const specimenRef = useRef<HTMLDivElement>(null);
@@ -81,7 +82,7 @@ export default function LapicideView() {
             className="h-[calc(100%-1px)] w-full font-lapicide"
             ref={glyphRef}
           >
-            <SharedTypefaceGlyphs />
+            <SharedTypefaceGlyphs glyphs={CONSTANT_LAPICIDE_GLYPHS.split('')} />
           </div>
         </div>
       </div>

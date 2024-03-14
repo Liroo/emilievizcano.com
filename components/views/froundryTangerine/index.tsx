@@ -12,6 +12,7 @@ import Tangerine4Jpg from 'images/foundry/tangerine/tangerine4.jpg';
 import Tangerine5Jpg from 'images/foundry/tangerine/tangerine5.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
+import { CONSTANT_TANGERINE_GLYPHS } from 'utils/constants';
 
 export default function TangerineView() {
   const specimenRef = useRef<HTMLDivElement>(null);
@@ -77,7 +78,9 @@ export default function TangerineView() {
             className="h-[calc(100%-1px)] w-full font-tangerine"
             ref={glyphRef}
           >
-            <SharedTypefaceGlyphs />
+            <SharedTypefaceGlyphs
+              glyphs={CONSTANT_TANGERINE_GLYPHS.split('')}
+            />
           </div>
         </div>
       </div>
