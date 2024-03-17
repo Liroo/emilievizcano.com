@@ -13,12 +13,12 @@ export default function ProjectGallery({ gallery }: ProjectGalleryProps) {
   console.log(gallery[index]);
 
   return (
-    <div>
+    <div className="w-full">
       <div className=" mb-[10px] h-[110vw] w-full laptop:h-auto ">
         {gallery[index]._type === 'image' ? (
           <UIImageSanity
             asset={gallery[index]}
-            className="h-full w-full object-cover laptop:h-auto  laptop:object-none"
+            className="h-full w-full object-cover laptop:h-auto  "
             alt="Caroussel image"
           />
         ) : (

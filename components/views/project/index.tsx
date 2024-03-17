@@ -63,7 +63,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
           </div>
 
           <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
-            <div className="flex items-end overflow-hidden laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
+            <div className="flex items-end laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
               <ProjectGallery gallery={project.gallery} />
             </div>
             <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-7 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
