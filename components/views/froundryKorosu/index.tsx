@@ -5,11 +5,14 @@ import SharedTypefaceTester from 'components/shared/typeface/tester';
 import { openModal } from 'flux/modal/reducer';
 import { useAppDispatch } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
-import KorosuJpg from 'images/foundry/korosu.jpg';
-import LapicideJpg from 'images/foundry/lapicide.jpg';
-import TangerineJpg from 'images/foundry/tangerine.jpg';
+import Korosu1Jpg from 'images/foundry/korosu/korosu1.jpg';
+import Korosu2Jpg from 'images/foundry/korosu/korosu2.jpg';
+import Korosu3Jpg from 'images/foundry/korosu/korosu3.jpg';
+import Korosu4Jpg from 'images/foundry/korosu/korosu4.jpg';
+import Korosu5Jpg from 'images/foundry/korosu/korosu5.jpg';
 import { useRef } from 'react';
 import { ModalEnum } from 'types/modal';
+import { CONSTANT_KOROSU_GLYPHS } from 'utils/constants';
 
 export default function KorosuView() {
   const specimenRef = useRef<HTMLDivElement>(null);
@@ -21,7 +24,7 @@ export default function KorosuView() {
       <div className="flex-1 overflow-hidden">
         <div className="h-full overflow-y-scroll">
           <div className="relative flex h-full w-full justify-center">
-            <div className="font-korosu text contents text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
+            <div className="text contents font-korosu text-[50px] leading-[50px] laptop:text-[150px] laptop:leading-[150px]">
               <SharedTypefaceTester defaultValue="KOROSU" />
             </div>
             <div
@@ -35,7 +38,13 @@ export default function KorosuView() {
           </div>
           <div className="relative flex min-h-full w-full" ref={specimenRef}>
             <SharedTypefaceSpecimen
-              gallery={[KorosuJpg, TangerineJpg, LapicideJpg, KorosuJpg]}
+              gallery={[
+                Korosu1Jpg,
+                Korosu2Jpg,
+                Korosu3Jpg,
+                Korosu4Jpg,
+                Korosu5Jpg,
+              ]}
             >
               <p className="font-korosu text-[15px] leading-[18px] subpixel-antialiased laptop:text-[20px] laptop:leading-[25px] desktop:text-[25px] desktop:leading-[30px]">
                 Introducing Korosu, a striking serif typeface comprising 362
@@ -60,8 +69,8 @@ export default function KorosuView() {
               <RightArrowSvg className="w-[15px] shrink-0 rotate-90 fill-current text-white" />
             </div>
           </div>
-          <div className="font-korosu h-[calc(100%-1px)] w-full" ref={glyphRef}>
-            <SharedTypefaceGlyphs />
+          <div className="h-[calc(100%-1px)] w-full font-korosu" ref={glyphRef}>
+            <SharedTypefaceGlyphs glyphs={CONSTANT_KOROSU_GLYPHS.split('')} />
           </div>
         </div>
       </div>
