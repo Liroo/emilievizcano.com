@@ -18,24 +18,25 @@ export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
 
   const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+  const [index, setIndex] = useState<number>(0);
+  const handleIndexChange = (index: number) => {
+    setIndex(index);
+  };
 
   return (
     <>
       <div
-        className={`hidden overflow-hidden bg-black transition-all duration-300 desktop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
+        className={`hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
       >
         <div className="h-full w-[600px] min-w-[600px]">
           <UIImageSanity
-            asset={project.gallery}
+            asset={project.gallery[index]}
             className="h-full"
             alt="gallery image"
           />
         </div>
       </div>
-      <div
-        onClick={() => setGalleryOpen(!galleryOpen)}
-        className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]"
-      >
+      <div className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
         <Link href="/">
           <div
             className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
@@ -64,10 +65,22 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
           <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
             <div className="flex items-end laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
-              <ProjectGallery gallery={project.gallery} />
+              <ProjectGallery
+                gallery={project.gallery}
+                IndexChange={handleIndexChange}
+              />
             </div>
             <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-7 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
               <PortableText value={project.description} />
+            </div>
+
+            <div className=" hidden laptop:block">
+              <div
+                className="absolute bottom-[30px] grid h-[30px] w-[30px] cursor-pointer select-none place-content-center rounded-full bg-white laptop:bottom-[50px]"
+                onClick={() => setGalleryOpen(!galleryOpen)}
+              >
+                <RightArrowSvg className="w-[15px] shrink-0 rotate-180 fill-current text-[#383838]" />
+              </div>
             </div>
 
             <div className=" laptop:col-span-3 laptop:row-start-2 laptop:content-start">
