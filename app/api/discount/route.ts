@@ -1,54 +1,76 @@
 import { getFirestore } from 'firebase-admin/firestore';
 import { NextRequest, NextResponse } from 'next/server';
 import initializeFirebase from 'services/firebase';
+import shopify, { session } from 'services/shopify-server';
 import { UserIp } from 'types/userIp';
 import { DiscountSymbols } from 'utils/constants';
 
 initializeFirebase();
 
-const probabilityPerTry = [0.1, 0.2, 0.3, 0.4, 0.5];
+const probabilityPerTry = [0.1, 0.15, 0.2, 0.25, 0.3];
 const discountSymbols = {
   [DiscountSymbols.Chat]: {
     symbol: DiscountSymbols.Chat,
-    discount: 'CHAT10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
   [DiscountSymbols.Dragon]: {
     symbol: DiscountSymbols.Dragon,
-    discount: 'DRAGON10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
   [DiscountSymbols.Gameboy]: {
     symbol: DiscountSymbols.Gameboy,
-    discount: 'GAMEBOY10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
   [DiscountSymbols.Pho]: { symbol: DiscountSymbols.Pho, discount: 'PHO10' },
   [DiscountSymbols.Sinnoh1]: {
     symbol: DiscountSymbols.Sinnoh1,
-    discount: 'SINNOH10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
   [DiscountSymbols.Sinnoh2]: {
     symbol: DiscountSymbols.Sinnoh2,
-    discount: 'NOHSIN10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
   [DiscountSymbols.Vase]: {
     symbol: DiscountSymbols.Vase,
-    discount: 'VASE10',
-    description: '10% off on all dragon type products',
+    description: '10% off your next order!',
   },
 };
 
-function tryDiscount(numberOfTry: number) {
+function generateRandomCoupon() {
+  const generatePart = () =>
+    Math.random().toString(36).slice(2).substr(0, 4).toUpperCase();
+
+  return `${generatePart()}-${generatePart()}-${generatePart()}`;
+}
+
+async function generateDiscount() {
+  const price_rule = new shopify.rest.PriceRule({ session });
+  price_rule.title = generateRandomCoupon();
+  price_rule.target_type = 'line_item';
+  price_rule.target_selection = 'all';
+  price_rule.allocation_method = 'across';
+  price_rule.value_type = 'percentage';
+  price_rule.value = '-10.0';
+  price_rule.customer_selection = 'all';
+  price_rule.usage_limit = 1;
+  price_rule.starts_at = new Date().toISOString();
+
+  await price_rule.save({
+    update: true,
+  });
+
+  return price_rule.title;
+}
+
+async function tryDiscount(numberOfTry: number) {
   const prob =
     probabilityPerTry[Math.min(numberOfTry, probabilityPerTry.length - 1)];
   const rand = Math.random();
   if (rand < prob) {
     const discount = Object.entries(discountSymbols);
     const index = Math.floor(Math.random() * discount.length);
-    return discount[index][1];
+    const discountCode = await generateDiscount();
+    return { ...discount[index][1], discount: discountCode };
   }
   return null;
 }
@@ -82,32 +104,33 @@ export async function POST(request: NextRequest) {
   const db = getFirestore();
   const docRef = db.collection('userIp').doc(ip);
   const doc = await docRef.get();
-  let userIp: UserIp;
+  let userIp: Partial<UserIp>;
   if (!doc.exists) {
-    userIp = await setDocument(ip, { ip, numberOfTry: 1 });
+    userIp = { id: ip, ip, numberOfTry: 0 };
   } else {
     userIp = {
       id: doc.id,
       ...doc.data(),
     };
-    // if (userIp.lastTry) {
-    //   const lastTry = new Date(userIp.lastTry);
-    //   const now = new Date();
-    //   const diff = now.getTime() - lastTry.getTime();
-    //   if (diff < 1000 * 60 * 60 * 24)
-    //     // 24 hours
-    //     return NextResponse.json(
-    //       { error: 'Too many requests' },
-    //       { status: 429 },
-    //     );
-    // }
-    userIp = await setDocument(ip, {
+    if (userIp.lastTry) {
+      const lastTry = new Date(userIp.lastTry);
+      const now = new Date();
+      const diff = now.getTime() - lastTry.getTime();
+      if (diff < 1000 * 60 * 60 * 24)
+        // 24 hours
+        return NextResponse.json(
+          { error: 'Too many requests' },
+          { status: 429 },
+        );
+    }
+    userIp = {
       ip: userIp.id,
       numberOfTry: (userIp.numberOfTry || 0) + 1,
-    });
+    };
   }
-
-  const discount = tryDiscount(userIp.numberOfTry || 0);
+  const discount = await tryDiscount(userIp.numberOfTry || 0);
+  if (discount) userIp.numberOfTry = 0;
+  await setDocument(ip, userIp);
 
   return NextResponse.json({
     discount,

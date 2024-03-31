@@ -30,10 +30,10 @@ export default function FoundryLicensesEulaView() {
           stated above and below, please refrain from purchasing, accessing,
           downloading, installing, or using our Digital Font.
         </p>
-        <div className="mt-[10px] flex">
+        <a className="mt-[10px] flex" target="_blank" href="/eula_2024.pdf">
           <RightArrowSvg className="w-[17px] fill-current" />
           <p className="ml-[6px] underline">Download EULA</p>
-        </div>
+        </a>
       </div>
     </div>
   );

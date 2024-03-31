@@ -12,14 +12,18 @@ export default function LayoutFoundryFooter() {
         <Link href="/">
           <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
         </Link>
-        <div className="col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start">
+        <a
+          className="col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start"
+          target="_blank"
+          href="/eula_2024.pdf"
+        >
           <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] underline laptop:text-[12px] laptop:leading-[15px]">
             EULA &
             <br />
             Font Licenses
           </p>
-        </div>
+        </a>
         <div className="hidden items-center laptop:flex laptop:items-start">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
