@@ -25,7 +25,7 @@ export default function LayoutFoundryFooterTypeface({
             <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
           </Link>
           <a
-            className="col-span-2 col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start"
+            className="targeting-action col-span-2 col-start-3 flex items-center laptop:col-auto laptop:items-start"
             target="_blank"
             href="/eula_2024.pdf"
           >
@@ -57,7 +57,7 @@ export default function LayoutFoundryFooterTypeface({
             className="col-span-2 col-start-5 flex justify-end laptop:col-auto laptop:justify-start"
             onClick={onClickBuyTheFont}
           >
-            <div className="flex cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]">
+            <div className="targeting-action flex select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]">
               <p className="whitespace-nowrap font-romie text-[12px] laptop:text-[15px]">
                 Buy the font
               </p>

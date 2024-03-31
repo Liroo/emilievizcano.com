@@ -24,7 +24,7 @@ export default function FoundryCartRow({
       <div className="flex items-center justify-between">
         <p className="text-[20px] laptop:text-[25px]">{product.title}</p>
         <div
-          className="m-[-10px] cursor-pointer select-none p-[10px]"
+          className="targeting-action m-[-10px] select-none p-[10px]"
           onClick={onClickRemove}
         >
           <UIIconsCross className="rotate-45" />

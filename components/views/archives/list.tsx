@@ -16,7 +16,6 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
   }>({});
 
   const onChangeProject = (index: number) => {
-    console.log(animatedIndex[openIndex]?.timeout);
     if (animatedIndex[openIndex]?.timeout) return;
 
     const timeout = setTimeout(() => {
@@ -51,7 +50,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
 
           <div
             className={twMerge(
-              'group relative flex h-[30px] min-h-[30px] cursor-pointer items-center border-b border-white pr-[16px] hover:bg-white hover:text-black laptop:pr-[30px]',
+              'targeting-action group relative flex h-[30px] min-h-[30px] items-center border-b border-white pr-[16px] hover:bg-white hover:text-black laptop:pr-[30px]',
               openIndex === index ? 'bg-white text-black' : '',
             )}
             onClick={() => onChangeProject(index === openIndex ? -1 : index)}

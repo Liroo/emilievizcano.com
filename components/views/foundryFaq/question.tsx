@@ -17,7 +17,7 @@ export default function FoundryFaqQuestion({
   return (
     <div className="border-b border-black text-left last:border-0">
       <div
-        className="flex cursor-pointer items-start justify-between py-[20px]"
+        className="targeting-action flex items-start justify-between py-[20px]"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
@@ -42,7 +42,7 @@ export default function FoundryFaqQuestion({
       >
         <div className="overflow-hidden">
           <div className="h-px w-full bg-black" />
-          <p className="my-[20px] flex cursor-pointer text-[14px] leading-[17px] transition-all laptop:text-[15px] laptop:leading-[20px]">
+          <p className="targeting-action my-[20px] flex text-[14px] leading-[17px] transition-all laptop:text-[15px] laptop:leading-[20px]">
             {answer}
           </p>
         </div>

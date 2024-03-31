@@ -4,6 +4,7 @@ import {
   useShopifyCookies,
 } from '@shopify/hydrogen-react';
 import LayoutHome from 'components/layouts/home';
+import UICursor from 'components/ui/cursor';
 import UIModalList from 'components/ui/modal/list';
 import { wrapper } from 'flux/store';
 import { AnimatePresence } from 'framer-motion';
@@ -140,6 +141,7 @@ export default function MyApp({
 
                 <div id="portal-root"></div>
                 <UIModalList />
+                <UICursor />
               </main>
             </AnimatePresence>
           </Provider>

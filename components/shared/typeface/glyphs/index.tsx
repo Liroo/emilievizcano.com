@@ -35,7 +35,7 @@ export default function SharedTypefaceGlyphs({
             key={index}
             onMouseEnter={() => !isTouchDevice() && onMouseEnter(index)}
             onClick={() => onClick(index)}
-            className={`flex h-[48px] max-h-[48px] w-[48px] cursor-pointer select-none items-center justify-center ${
+            className={`targeting-action flex h-[48px] max-h-[48px] w-[48px] select-none items-center justify-center ${
               selectedIndex === index || lockedIndex === index
                 ? 'border-black laptop:border'
                 : ''

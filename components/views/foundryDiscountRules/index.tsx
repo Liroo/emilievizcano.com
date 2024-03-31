@@ -10,7 +10,7 @@ export default function FoundryDiscountRulesView() {
   return (
     <div className="relative h-full w-screen max-w-[820px] bg-[#CBCBCB] text-[16px] font-light text-[#383838] laptop:text-[15px]">
       <div
-        className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
+        className="targeting-action absolute right-[16px] top-[24px] -m-[10px] p-[10px]"
         onClick={() => {
           dispatch(closeModal(ModalEnum.FoundryDiscountRules));
         }}

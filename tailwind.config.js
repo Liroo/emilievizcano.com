@@ -24,6 +24,7 @@ module.exports = {
       tablet: '640px',
       laptop: '1024px',
       desktop: '1440px',
+      'touch-device': { raw: '(pointer: fine)' },
     },
   },
   plugins: [],

@@ -53,7 +53,7 @@ export default function FoundryCartView() {
   return (
     <div className="relative h-full w-screen max-w-[820px] bg-[#252527] text-[16px] font-light text-white laptop:text-[15px]">
       <div
-        className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
+        className="targeting-action absolute right-[16px] top-[24px] -m-[10px] p-[10px]"
         onClick={() => {
           dispatch(closeModal(ModalEnum.FoundryCart));
         }}
@@ -123,7 +123,7 @@ export default function FoundryCartView() {
             <button
               onClick={onClickCheckout}
               disabled={cartEntries.length === 0}
-              className={`flex select-none items-center rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white outline-none transition-all ${cartEntries.length > 0 ? 'cursor-pointer hover:bg-white hover:text-black' : ' cursor-not-allowed'}`}
+              className={`flex select-none items-center rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white outline-none transition-all ${cartEntries.length > 0 ? 'targeting-action hover:bg-white hover:text-black' : ' cursor-not-allowed'}`}
             >
               <p className="text-[18px]">Checkout</p>
               <RightArrowSvg className="ml-[30px] w-[20px] fill-current" />

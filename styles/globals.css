@@ -12,6 +12,11 @@ body,
   @apply h-full;
   @apply w-full;
   position: relative;
+  cursor: none !important;
+}
+
+a {
+  cursor: none;
 }
 
 *::-webkit-scrollbar {

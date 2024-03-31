@@ -24,9 +24,6 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
     };
 
     galleryScrollElement.current.addEventListener('wheel', handleWheel);
-    return () => {
-      galleryScrollElement.current.removeEventListener('wheel', handleWheel);
-    };
   }, []);
 
   return (

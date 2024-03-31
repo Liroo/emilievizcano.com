@@ -26,7 +26,7 @@ const UIFormInputRadio = (
 ) => {
   return (
     <label
-      className="flex cursor-pointer items-center justify-center"
+      className="targeting-action flex items-center justify-center"
       htmlFor={props.name}
       onClick={onClick}
     >

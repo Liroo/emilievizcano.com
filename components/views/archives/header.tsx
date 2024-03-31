@@ -11,7 +11,7 @@ export default function ArchiveHeader() {
         <p className="uppercase">Archives</p>
       </div>
       <Link
-        className="absolute right-0 m-[-10px] cursor-pointer p-[10px] pr-[26px] laptop:pr-[40px]"
+        className="targeting-action absolute right-0 m-[-10px] p-[10px] pr-[26px] laptop:pr-[40px]"
         href="/"
       >
         <UIIconsCross className="h-[16px] w-[16px] rotate-45" />

@@ -47,7 +47,7 @@ export default function SharedTypefaceSpecimen({
           </div>
           <div className="mt-[8px] grid grid-cols-3 text-[14px] uppercase">
             <p
-              className="cursor-pointer select-none place-self-start"
+              className="targeting-action select-none place-self-start"
               onClick={() => {
                 setGalleryIndex(
                   (galleryIndex + gallery.length - 1) % gallery.length,
@@ -60,7 +60,7 @@ export default function SharedTypefaceSpecimen({
               {galleryIndex + 1}/{gallery.length}
             </p>
             <p
-              className="cursor-pointer select-none place-self-end"
+              className="targeting-action select-none place-self-end"
               onClick={() => {
                 setGalleryIndex((galleryIndex + 1) % gallery.length);
               }}

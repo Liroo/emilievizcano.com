@@ -25,7 +25,7 @@ export default function LayoutFoundry({ children }: LayoutFoundryProps) {
         </p>
       </Link>
       <div
-        className="absolute right-[16px] top-[20px] m-[-10px] cursor-pointer p-[10px] laptop:right-[30px] laptop:top-[26px]"
+        className="targeting-action absolute right-[16px] top-[20px] m-[-10px] p-[10px] laptop:right-[30px] laptop:top-[26px]"
         onClick={() => {
           dispatch(openModal(ModalEnum.FoundryMenu));
         }}

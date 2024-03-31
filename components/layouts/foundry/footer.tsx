@@ -13,7 +13,7 @@ export default function LayoutFoundryFooter() {
           <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
         </Link>
         <a
-          className="col-start-3 flex cursor-pointer items-center laptop:col-auto laptop:items-start"
+          className="targeting-action col-start-3 flex items-center laptop:col-auto laptop:items-start"
           target="_blank"
           href="/eula_2024.pdf"
         >

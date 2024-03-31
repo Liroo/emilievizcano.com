@@ -39,7 +39,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
       <div className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
         <Link href="/">
           <div
-            className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
+            className="targeting-action absolute right-[16px] top-[24px] -m-[10px] p-[10px]"
             onClick={() => {}}
           >
             <UIIconsCross className="rotate-45" />
@@ -76,7 +76,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
             <div className=" hidden laptop:block">
               <div
-                className="absolute bottom-[30px] grid h-[30px] w-[30px] cursor-pointer select-none place-content-center rounded-full bg-white laptop:bottom-[50px]"
+                className="targeting-action absolute bottom-[30px] grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white laptop:bottom-[50px]"
                 onClick={() => setGalleryOpen(!galleryOpen)}
               >
                 <RightArrowSvg className="w-[15px] shrink-0 rotate-180 fill-current text-[#383838]" />

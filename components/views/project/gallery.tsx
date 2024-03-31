@@ -27,7 +27,6 @@ export default function ProjectGallery({
     setCurrentIndex(prevIndex);
   };
 
-  console.log(gallery[currentIndex]);
   return (
     <div className="w-full">
       <div className=" mb-[10px] h-[110vw] w-full laptop:h-auto ">
@@ -53,7 +52,7 @@ export default function ProjectGallery({
       </div>
       <div className="grid select-none grid-cols-3 items-center laptop:ml-auto laptop:w-[88px]">
         <div
-          className="m-[-10px] cursor-pointer p-[10px]"
+          className="targeting-action m-[-10px] p-[10px]"
           onClick={() => handleArrowPrev()}
         >
           <RightArrowSvg className=" w-[15px] rotate-180 fill-current text-white" />
@@ -62,7 +61,7 @@ export default function ProjectGallery({
           {currentIndex + 1}/{gallery.length}
         </p>
         <div
-          className="m-[-10px] cursor-pointer justify-self-end p-[10px]"
+          className="targeting-action m-[-10px] justify-self-end p-[10px]"
           onClick={() => handleArrowNext()}
         >
           <RightArrowSvg className=" w-[15px] fill-current text-white" />

@@ -26,7 +26,7 @@ export default function FoundryDiscountAlert({
         <>
           <div
             onClick={onClickDiscount}
-            className="mt-[40px] cursor-pointer rounded-full bg-white px-[40px] py-[14px]"
+            className="targeting-action mt-[40px] rounded-full bg-white px-[40px] py-[14px]"
           >
             <p className="text-center text-[20px]">{discount}</p>
           </div>

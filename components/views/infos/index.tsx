@@ -11,7 +11,7 @@ export default function InfosView() {
     <div className="relative h-full w-screen bg-[#252527] text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
       <Link href="/">
         <div
-          className="absolute right-[16px] top-[24px] -m-[10px] cursor-pointer p-[10px]"
+          className="targeting-action absolute right-[16px] top-[24px] -m-[10px] p-[10px]"
           onClick={() => {}}
         >
           <UIIconsCross className="rotate-45" />

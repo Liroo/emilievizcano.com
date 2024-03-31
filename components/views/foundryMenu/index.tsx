@@ -35,7 +35,7 @@ export default function FoundryMenuView() {
   return (
     <div className="relative h-full w-screen overflow-y-scroll bg-[#CBCBCB] text-[16px] font-light text-[#898989] tablet:max-w-[350px] laptop:text-[15px]">
       <div
-        className="absolute right-[12px] top-[20px] -m-[10px] cursor-pointer p-[10px]"
+        className="targeting-action absolute right-[12px] top-[20px] -m-[10px] p-[10px]"
         onClick={() => {
           dispatch(closeModal(ModalEnum.FoundryMenu));
         }}
@@ -45,7 +45,7 @@ export default function FoundryMenuView() {
 
       <div className="mx-[16px] mt-[95px] text-[25px] leading-[25px] laptop:mx-[30px] laptop:mt-[120px] laptop:text-[35px] laptop:leading-[35px]">
         <div
-          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(openModal(ModalEnum.FoundryCart));
             dispatch(closeModal(ModalEnum.FoundryMenu));
@@ -62,7 +62,7 @@ export default function FoundryMenuView() {
 
         <Link
           href="/foundry"
-          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
@@ -73,7 +73,7 @@ export default function FoundryMenuView() {
 
         <Link
           href="/foundry/discount"
-          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
@@ -84,7 +84,7 @@ export default function FoundryMenuView() {
 
         <Link
           href="/foundry/licenses-eula"
-          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
@@ -95,7 +95,7 @@ export default function FoundryMenuView() {
 
         <Link
           href="/foundry/faq"
-          className="flex w-full cursor-pointer select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between border-b border-[#898989] py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}
@@ -106,7 +106,7 @@ export default function FoundryMenuView() {
 
         <Link
           href="/"
-          className="flex w-full cursor-pointer select-none items-center justify-between py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
+          className="targeting-action flex w-full select-none items-center justify-between py-[15px] transition-all hover:text-[#323232] laptop:py-[20px]"
           onClick={() => {
             dispatch(closeModal(ModalEnum.FoundryMenu));
           }}

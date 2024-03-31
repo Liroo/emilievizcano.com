@@ -41,7 +41,7 @@ export default function LayoutFoundryFooterDiscount() {
 
           <div className="col-start-3 flex laptop:col-start-4">
             <div
-              className="flex cursor-pointer select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]"
+              className="targeting-action flex select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]"
               onClick={() => {
                 dispatch(openModal(ModalEnum.FoundryDiscountRules));
               }}

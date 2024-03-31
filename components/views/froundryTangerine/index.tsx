@@ -28,7 +28,7 @@ export default function TangerineView() {
               <SharedTypefaceTester defaultValue="TANGERINE" />
             </div>
             <div
-              className="absolute bottom-[30px] grid h-[30px] w-[30px] cursor-pointer select-none place-content-center rounded-full bg-[#383838] laptop:bottom-[50px]"
+              className="targeting-action absolute bottom-[30px] grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-[#383838] laptop:bottom-[50px]"
               onClick={() =>
                 specimenRef.current.scrollIntoView({ behavior: 'smooth' })
               }
@@ -66,7 +66,7 @@ export default function TangerineView() {
             </SharedTypefaceSpecimen>
 
             <div
-              className="absolute bottom-[30px] right-[30px] hidden h-[30px] w-[30px] cursor-pointer select-none place-content-center rounded-full bg-[#383838] laptop:bottom-[50px] landscape:grid"
+              className="targeting-action absolute bottom-[30px] right-[30px] hidden h-[30px] w-[30px] select-none place-content-center rounded-full bg-[#383838] laptop:bottom-[50px] landscape:grid"
               onClick={() =>
                 glyphRef.current.scrollIntoView({ behavior: 'smooth' })
               }

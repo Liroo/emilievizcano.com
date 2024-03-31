@@ -61,7 +61,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
   return (
     <nav className="w-full max-w-[600px] select-none px-[16px] laptop:px-[30px]">
       <div
-        className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]"
+        className="targeting-action group mb-[24px] mt-[11px] flex items-center justify-between laptop:mb-[11px]"
         onClick={() => {
           setNavIndexOpen(navIndexOpen === 0 ? -1 : 0);
         }}
@@ -105,7 +105,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
                 onClick={() => onMouseLeave()}
               >
                 <div
-                  className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]"
+                  className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]"
                   onMouseEnter={() =>
                     !isTouchDevice() && onMouseEnter(generateUrl(index))
                   }
@@ -121,7 +121,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               </Link>
             ))}
             <Link href="/archives" onClick={() => onMouseLeave()}>
-              <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
+              <div className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
                 <div className="w-[21px]">
                   <p>{(projects.length + 1).toString().padStart(2, '0')}</p>
                 </div>
@@ -133,7 +133,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
       </div>
       <div className="h-px w-full bg-white" />
       <div
-        className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]"
+        className="targeting-action group mb-[24px] mt-[11px] flex items-center justify-between laptop:mb-[11px]"
         onClick={() => {
           setNavIndexOpen(navIndexOpen === 1 ? -1 : 1);
         }}
@@ -178,7 +178,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
                 key={index}
                 onClick={() => onMouseLeave()}
               >
-                <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
+                <div className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
                   </div>
@@ -187,7 +187,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
               </Link>
             ))}
             <Link href={`/foundry`} onClick={() => onMouseLeave()}>
-              <div className="mb-[6px] flex cursor-pointer text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
+              <div className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
                 <div className="w-[21px]">
                   <p>{(typefaces.length + 1).toString().padStart(2, '0')}</p>
                 </div>
@@ -199,7 +199,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
       </div>
       <div className="h-px w-full bg-white" />
       <Link href="/infos" onClick={() => onMouseLeave()}>
-        <div className="group mb-[24px] mt-[11px] flex cursor-pointer items-center justify-between laptop:mb-[11px]">
+        <div className="targeting-action group mb-[24px] mt-[11px] flex items-center justify-between laptop:mb-[11px]">
           <div className="flex">
             <div className="mr-[11px] hidden h-[60px] w-0 overflow-hidden transition-all group-hover:w-[60px] laptop:block">
               <NextImage
