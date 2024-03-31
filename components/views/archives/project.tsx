@@ -3,6 +3,7 @@ import { PortableText } from '@portabletext/react';
 import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
 import RightArrowSvg from 'icons/right-arrow.svg';
+import { useEffect, useRef } from 'react';
 import { Project } from 'types/project';
 
 type ArchiveProjectProps = {
@@ -10,6 +11,22 @@ type ArchiveProjectProps = {
 };
 
 export default function ArchiveProject({ project }: ArchiveProjectProps) {
+  const galleryScrollElement = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // galleryScrollElement is an horizantal scroll but we want the vertical scroll to trigger the horizontal scroll
+    const handleWheel = (e: WheelEvent) => {
+      if (galleryScrollElement.current) {
+        galleryScrollElement.current.scrollLeft += e.deltaY;
+      }
+    };
+
+    galleryScrollElement.current.addEventListener('wheel', handleWheel);
+    return () => {
+      galleryScrollElement.current.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
   return (
     <div className="flex w-full flex-col justify-between text-[16px] laptop:h-[calc(100dvh-30px)] laptop:max-h-[620px] laptop:flex-row laptop:text-[15px]">
       <div className="mx-[16px] mt-[20px] laptop:mx-[30px] laptop:mt-[30px]">
@@ -72,7 +89,10 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
         </div>
       </div>
 
-      <div className="mt-[20px] flex w-full overflow-auto laptop:mt-0 laptop:w-[60vw] laptop:min-w-[60vw]">
+      <div
+        ref={galleryScrollElement}
+        className="mt-[20px] flex w-full overflow-auto laptop:mt-0 laptop:w-[60vw] laptop:min-w-[60vw]"
+      >
         {project.gallery.map((asset, index) => {
           if (asset._type === 'image')
             return (
