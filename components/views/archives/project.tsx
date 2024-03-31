@@ -16,8 +16,10 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
   useEffect(() => {
     // galleryScrollElement is an horizantal scroll but we want the vertical scroll to trigger the horizontal scroll
     const handleWheel = (e: WheelEvent) => {
+      if (!e.deltaY) return;
       if (galleryScrollElement.current) {
-        galleryScrollElement.current.scrollLeft += e.deltaY;
+        galleryScrollElement.current.scrollLeft += e.deltaY + e.deltaX;
+        e.preventDefault();
       }
     };
 
