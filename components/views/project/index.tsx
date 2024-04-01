@@ -1,14 +1,14 @@
 import UIIconsCross from 'components/ui/icons/cross';
-import { UIImageSanity } from 'components/ui/image/sanity';
 import UIPill from 'components/ui/pill';
 import { selectProjectBySlug } from 'flux/project/selector';
 import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 
-import MuxPlayer from '@mux/mux-player-react';
 import { PortableText } from '@portabletext/react';
+import { urlForImage } from 'lib/sanity.image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import ProjectAnimation from './animation';
 import ProjectGallery from './gallery';
 
 type ProjectViewProps = {
@@ -20,45 +20,19 @@ export default function ProjectView({ slug }: ProjectViewProps) {
   const [galleryOpen, setGalleryOpen] = useState<boolean>(true);
   const [index, setIndex] = useState<number>(0);
 
-  const handleIndexChange = (index: number) => {
-    setIndex(index);
-  };
+  useEffect(() => {
+    // precache sanity images
+    project.gallery.forEach((asset) => {
+      if (asset._type === 'image') {
+        const img = new Image();
+        img.src = urlForImage(asset).width(2048).quality(75).url();
+      }
+    });
+  }, []);
 
   return (
     <>
-      <div
-        className={`hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
-      >
-        <div className="h-full w-[600px] min-w-[600px]">
-          {project.gallery[index]._type === 'image' ? (
-            <UIImageSanity
-              asset={project.gallery[index]}
-              className="h-full w-full object-cover"
-              alt="Caroussel image"
-            />
-          ) : (
-            <div
-              style={{
-                aspectRatio: project.gallery[index].data.aspect_ratio.replace(
-                  ':',
-                  '/',
-                ),
-              }}
-              className="relative left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
-            >
-              <MuxPlayer
-                style={{
-                  aspectRatio: project.gallery[index].data.aspect_ratio.replace(
-                    ':',
-                    '/',
-                  ),
-                }}
-                playbackId={project.gallery[index].playbackId}
-              />
-            </div>
-          )}
-        </div>
-      </div>
+      <ProjectAnimation show={galleryOpen} project={project} index={index} />
       <div className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
         <Link href="/">
           <div
@@ -90,7 +64,8 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             <div className="flex items-end laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
               <ProjectGallery
                 gallery={project.gallery}
-                IndexChange={handleIndexChange}
+                index={index}
+                setIndex={setIndex}
               />
             </div>
             <div className="mr-[20px] mt-[30px] leading-[24px] laptop:col-span-7 laptop:row-start-1 laptop:mt-[20px] laptop:leading-[20px]">
