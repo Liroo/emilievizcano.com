@@ -16,6 +16,7 @@ export default function ProjectAnimation({ show, project, index }: Props) {
   const animatedIndexRef = useRef<number>(0);
 
   useEffect(() => {
+    // if go through a full rotation of the gallery, wype the array of animated indexes to avoid have a full rotation of animation
     if (animatedIndexArray.current[0] === index)
       animatedIndexArray.current = [];
     animatedIndexArray.current.push(index);
