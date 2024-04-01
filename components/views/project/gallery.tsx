@@ -32,8 +32,9 @@ export default function ProjectGallery({
       <div className=" mb-[10px] h-[110vw] w-full laptop:h-auto ">
         {gallery[currentIndex]._type === 'image' ? (
           <UIImageSanity
+            key={currentIndex}
             asset={gallery[currentIndex]}
-            className="h-full w-full object-cover laptop:h-auto  "
+            className="h-full w-full object-cover laptop:h-auto"
             alt="Caroussel image"
           />
         ) : (
@@ -46,7 +47,15 @@ export default function ProjectGallery({
               ),
             }}
           >
-            <MuxPlayer playbackId={gallery[currentIndex].playbackId} />
+            <MuxPlayer
+              style={{
+                aspectRatio: gallery[currentIndex].data.aspect_ratio.replace(
+                  ':',
+                  '/',
+                ),
+              }}
+              playbackId={gallery[currentIndex].playbackId}
+            />
           </div>
         )}
       </div>

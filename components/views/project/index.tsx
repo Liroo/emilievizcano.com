@@ -5,6 +5,7 @@ import { selectProjectBySlug } from 'flux/project/selector';
 import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
 
+import MuxPlayer from '@mux/mux-player-react';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -16,9 +17,9 @@ type ProjectViewProps = {
 
 export default function ProjectView({ slug }: ProjectViewProps) {
   const project = useAppSelector(selectProjectBySlug(slug));
-
-  const [galleryOpen, setGalleryOpen] = useState<boolean>(false);
+  const [galleryOpen, setGalleryOpen] = useState<boolean>(true);
   const [index, setIndex] = useState<number>(0);
+
   const handleIndexChange = (index: number) => {
     setIndex(index);
   };
@@ -29,11 +30,33 @@ export default function ProjectView({ slug }: ProjectViewProps) {
         className={`hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${galleryOpen ? 'w-[600px]' : 'w-0'} h-screen`}
       >
         <div className="h-full w-[600px] min-w-[600px]">
-          <UIImageSanity
-            asset={project.gallery[index]}
-            className="h-full"
-            alt="gallery image"
-          />
+          {project.gallery[index]._type === 'image' ? (
+            <UIImageSanity
+              asset={project.gallery[index]}
+              className="h-full w-full object-cover"
+              alt="Caroussel image"
+            />
+          ) : (
+            <div
+              style={{
+                aspectRatio: project.gallery[index].data.aspect_ratio.replace(
+                  ':',
+                  '/',
+                ),
+              }}
+              className="relative left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
+            >
+              <MuxPlayer
+                style={{
+                  aspectRatio: project.gallery[index].data.aspect_ratio.replace(
+                    ':',
+                    '/',
+                  ),
+                }}
+                playbackId={project.gallery[index].playbackId}
+              />
+            </div>
+          )}
         </div>
       </div>
       <div className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
@@ -63,7 +86,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
             </h2>
           </div>
 
-          <div className="grid h-[calc(100dvh-56px)] overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
+          <div className="grid h-[calc(100dvh-56px)] content-baseline overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
             <div className="flex items-end laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
               <ProjectGallery
                 gallery={project.gallery}
@@ -76,7 +99,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
             <div className=" hidden laptop:block">
               <div
-                className="targeting-action absolute bottom-[30px] grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white laptop:bottom-[50px]"
+                className={`targeting-action absolute bottom-[30px] grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white transition-all duration-300 laptop:bottom-[50px] ${galleryOpen ? 'translate-x-[-600px] rotate-180' : ''}`}
                 onClick={() => setGalleryOpen(!galleryOpen)}
               >
                 <RightArrowSvg className="w-[15px] shrink-0 rotate-180 fill-current text-[#383838]" />
