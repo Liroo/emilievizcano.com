@@ -74,7 +74,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
             <div className=" hidden laptop:block">
               <div
-                className={`targeting-action absolute bottom-[30px] grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white transition-all duration-300 laptop:bottom-[50px] ${galleryOpen ? 'translate-x-[-600px] rotate-180' : ''}`}
+                className={`targeting-action absolute bottom-[30px] z-30 grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white transition-all duration-300 laptop:bottom-[50px] ${galleryOpen ? 'translate-x-[-600px] rotate-180' : ''}`}
                 onClick={() => setGalleryOpen(!galleryOpen)}
               >
                 <RightArrowSvg className="w-[15px] shrink-0 rotate-180 fill-current text-[#383838]" />

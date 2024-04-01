@@ -1,5 +1,6 @@
 import MuxPlayer from '@mux/mux-player-react';
 import { UIImageSanity } from 'components/ui/image/sanity';
+import { useEffect, useRef, useState } from 'react';
 import { Project } from 'types/project';
 
 type Props = {
@@ -9,46 +10,124 @@ type Props = {
 };
 
 export default function ProjectAnimation({ show, project, index }: Props) {
-  const poster =
-    project.gallery[index]._type === 'image'
-      ? project.gallery[index]
-      : `https://image.mux.com/${project.gallery[index].playbackId}/thumbnail.jpg`;
+  const [animatedIndex, setAnimatedIndex] = useState<number>(0);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const animatedIndexArray = useRef<number[]>([]);
+  const animatedIndexRef = useRef<number>(0);
 
-  console.log(poster);
+  useEffect(() => {
+    if (animatedIndexArray.current[0] === index)
+      animatedIndexArray.current = [];
+    animatedIndexArray.current.push(index);
+  }, [index]);
+
+  useEffect(() => {
+    animatedIndexRef.current = animatedIndex;
+  }, [animatedIndex]);
+
+  useEffect(() => {
+    if (isAnimating) return;
+
+    // recursive function to animate the index
+    const animateIndex = () => {
+      if (animatedIndexArray.current.length === 0) return;
+      setIsAnimating(true);
+      const shifted = animatedIndexArray.current.shift();
+      setAnimatedIndex(shifted);
+      setTimeout(() => {
+        setIsAnimating(false);
+        animateIndex();
+      }, 500);
+    };
+
+    animateIndex();
+  }, [index, animatedIndex, isAnimating]);
+
+  const prevIndex =
+    (animatedIndex + project.gallery.length - 1) % project.gallery.length;
+  const nextIndex = (animatedIndex + 1) % project.gallery.length;
 
   return (
     <div
-      className={`hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-[600px]' : 'w-0'} h-screen`}
+      className={`relative hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-[600px]' : 'w-0'} h-screen`}
     >
-      <div className="h-full w-[600px] min-w-[600px]">
-        {project.gallery[index]._type === 'image' ? (
-          <UIImageSanity
-            asset={project.gallery[index]}
-            className="h-full w-full object-cover"
-            alt="Caroussel image"
-          />
-        ) : (
+      {project.gallery.map((asset, i) => {
+        let style = null;
+        let insideStyle = null;
+        if (i === prevIndex) {
+          style = {
+            transform: `translateX(-100%)`,
+          };
+          insideStyle = {
+            transform: `scaleX(2) scaleY(1.2)`,
+          };
+        } else if (i === nextIndex) {
+          style = {
+            transform: `translateX(100%)`,
+          };
+          insideStyle = {
+            transform: `scaleX(2) scaleY(1.2)`,
+          };
+        } else if (i === animatedIndex) {
+          style = {
+            transform: `translateX(0)`,
+          };
+          insideStyle = {
+            transform: `scale(1)`,
+          };
+        }
+
+        return (
           <div
-            style={{
-              aspectRatio: project.gallery[index].data.aspect_ratio.replace(
-                ':',
-                '/',
-              ),
-            }}
-            className="relative left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
+            key={i}
+            className="absolute left-0 top-0 z-20 h-full w-[600px] min-w-[600px] overflow-hidden transition-transform duration-500"
+            style={
+              style !== null
+                ? {
+                    ...style,
+                  }
+                : {
+                    display: 'none',
+                  }
+            }
           >
-            <MuxPlayer
-              style={{
-                aspectRatio: project.gallery[index].data.aspect_ratio.replace(
-                  ':',
-                  '/',
-                ),
-              }}
-              playbackId={project.gallery[index].playbackId}
-            />
+            <div
+              className="h-full w-full transition-transform duration-500 ease-in-out"
+              style={
+                insideStyle !== null
+                  ? {
+                      ...insideStyle,
+                    }
+                  : {
+                      display: 'none',
+                    }
+              }
+            >
+              {asset._type === 'image' ? (
+                <UIImageSanity
+                  asset={asset}
+                  className="h-full w-full object-cover"
+                  alt="Caroussel image"
+                />
+              ) : (
+                <div
+                  style={{
+                    aspectRatio: asset.data.aspect_ratio.replace(':', '/'),
+                  }}
+                  className="relative left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
+                >
+                  <MuxPlayer
+                    style={{
+                      aspectRatio: asset.data.aspect_ratio.replace(':', '/'),
+                    }}
+                    playbackId={asset.playbackId}
+                  />
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
+        );
+      })}
     </div>
   );
 }
