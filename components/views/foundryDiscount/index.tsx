@@ -48,7 +48,7 @@ export default function FoundryDiscountView() {
   >([0, 0]);
   const [isAnimated, setIsAnimated] = useState<boolean>(false);
   const getImageSize = (img: HTMLImageElement) => {
-    const ratio = img.naturalWidth / img.naturalHeight;
+    const ratio = 1;
     let width = img.height * ratio;
     let height = img.height;
     if (width > img.width) {
