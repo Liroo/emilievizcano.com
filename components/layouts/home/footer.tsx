@@ -14,40 +14,49 @@ export default function HomeFooter() {
         } grid grid-cols-6 items-center justify-between gap-[20px] px-[16px] transition-all duration-200 laptop:grid-cols-5 laptop:gap-[30px] laptop:px-[30px] desktop:grid-cols-6`}
       >
         <EVSvg className="w-[22px] fill-current text-white laptop:w-[37px]" />
-        <div className="col-span-2 col-start-2 flex items-center laptop:col-span-1 laptop:col-start-auto laptop:items-start">
-          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-white laptop:w-[17px]" />
+
+        <div className="pointer-coarse:text-white col-span-2 col-start-2 flex items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:col-span-1 laptop:col-start-auto laptop:items-start">
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             © emilie vizcano
             <br />
             ALL RIGHTS RESERVED
           </p>
         </div>
-        <div className="col-span-2 col-start-4 flex items-center laptop:col-span-1 laptop:col-start-auto laptop:items-start">
-          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-white laptop:w-[17px]" />
+        <div className="pointer-coarse:text-white col-span-2 col-start-4 flex items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:col-span-1 laptop:col-start-auto laptop:items-start">
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             currently working
             <br />
             as Freelancer
           </p>
         </div>
-        <div className="hidden items-center laptop:flex laptop:items-start">
-          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-white laptop:w-[17px]" />
+        <a
+          href="https://www.les-graphiquants.fr/"
+          target="_blank"
+          className="targeting-action pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:flex laptop:items-start"
+        >
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             previously working
             <br />
             at les graphiquants
           </p>
-        </div>
-        <div className="hidden items-center laptop:items-start desktop:flex">
-          <RightArrowSvg className="w-[10px] shrink-0 fill-current text-white laptop:w-[17px]" />
+        </a>
+        <a
+          href="https://generaux.services/"
+          target="_blank"
+          className="targeting-action pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:items-start desktop:flex"
+        >
+          <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             previously working
             <br />
             at services généraux
           </p>
-        </div>
-        <div className="hidden items-center laptop:flex laptop:items-start laptop:justify-end">
-          <RightArrowSvg className="w-[10px] fill-current text-white laptop:w-[17px]" />
+        </a>
+        <div className="pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:flex laptop:items-start laptop:justify-end">
+          <RightArrowSvg className="w-[10px] fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             <a
               className="targeting-action"
@@ -85,22 +94,30 @@ export default function HomeFooter() {
         >
           <RightArrowSvg className="w-[12px] rotate-180 fill-current text-black" />
         </div>
-        <div className="col-span-2 col-start-2 flex">
+        <a
+          href="https://www.les-graphiquants.fr/"
+          target="_blank"
+          className="targeting-action col-span-2 col-start-2 flex"
+        >
           <RightArrowSvg className="w-[10px] fill-current text-white" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px]">
             previously working
             <br />
             at les graphiquants
           </p>
-        </div>
-        <div className="col-span-3 col-start-4 ml-[20px] flex">
+        </a>
+        <a
+          href="https://generaux.services/"
+          target="_blank"
+          className="targeting-action col-span-3 col-start-4 ml-[20px] flex"
+        >
           <RightArrowSvg className="w-[10px] fill-current text-white" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px]">
             previously working
             <br />
             at services généraux
           </p>
-        </div>
+        </a>
       </div>
       <div className="w-[22px]" />
     </div>

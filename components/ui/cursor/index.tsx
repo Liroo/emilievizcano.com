@@ -27,7 +27,7 @@ export default function UICursor() {
 
   return (
     <div
-      className="touch-device:block pointer-events-none fixed z-60 hidden"
+      className="pointer-fine:block pointer-events-none fixed z-60 hidden"
       style={{
         transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
         opacity: mouseInWindow ? 1 : 0,
