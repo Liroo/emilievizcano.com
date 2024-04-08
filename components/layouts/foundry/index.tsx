@@ -15,10 +15,10 @@ export default function LayoutFoundry({ children }: LayoutFoundryProps) {
 
   return (
     <div className="fixed left-0 top-0 flex h-dvh min-h-full w-full flex-col overflow-y-scroll font-light text-[#383838]">
-      <Link href="/">
+      <Link href="/" className="targeting-action">
         <EmilieVizcanoSvg className="mx-auto mt-[22px] w-[70px] shrink-0 fill-current text-[#383838] laptop:w-[110px]" />
       </Link>
-      <Link href="/foundry">
+      <Link href="/foundry" className="targeting-action">
         <p className="text-center font-romie text-[20px] laptop:text-[35px]">
           T<span className="ss01">y</span>pe Foundr
           <span className="ss01">y</span>

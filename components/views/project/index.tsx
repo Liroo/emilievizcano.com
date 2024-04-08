@@ -61,7 +61,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
           </div>
 
           <div className="grid h-[calc(100dvh-56px)] content-baseline overflow-y-scroll pb-[16px] laptop:grid-cols-7 laptop:grid-rows-[auto_1fr] laptop:gap-[20px] laptop:pb-[46px]">
-            <div className="flex items-end laptop:col-span-3 laptop:col-start-5 laptop:row-span-1">
+            <div className="flex items-end laptop:col-span-4 laptop:col-start-4 laptop:row-span-1">
               <ProjectGallery
                 gallery={project.gallery}
                 index={index}
@@ -74,7 +74,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
 
             <div className=" hidden laptop:block">
               <div
-                className={`targeting-action absolute bottom-[30px] z-30 grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white transition-all duration-300 laptop:bottom-[50px] ${galleryOpen ? 'translate-x-[-600px] rotate-180' : ''}`}
+                className={`targeting-action absolute bottom-[30px] z-30 grid h-[30px] w-[30px] select-none place-content-center rounded-full bg-white transition-all duration-300 laptop:bottom-[50px] ${galleryOpen ? '-translate-x-[min(calc(100vw-820px-50px),76vh)] rotate-180' : ''}`}
                 onClick={() => setGalleryOpen(!galleryOpen)}
               >
                 <RightArrowSvg className="w-[15px] shrink-0 rotate-180 fill-current text-[#383838]" />

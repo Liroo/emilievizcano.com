@@ -123,7 +123,7 @@ export default function FoundryCartView() {
             <button
               onClick={onClickCheckout}
               disabled={cartEntries.length === 0}
-              className={`flex select-none items-center rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white outline-none transition-all ${cartEntries.length > 0 ? 'targeting-action hover:bg-white hover:text-black' : ' cursor-not-allowed'}`}
+              className={`targeting-action flex select-none items-center rounded-full border border-white px-[30px] py-[8px] font-romie text-[18px] text-white outline-none transition-all ${cartEntries.length > 0 ? 'targeting-action hover:bg-white hover:text-black' : ''}`}
             >
               <p className="text-[18px]">Checkout</p>
               <RightArrowSvg className="ml-[30px] w-[20px] fill-current" />

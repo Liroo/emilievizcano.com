@@ -50,12 +50,19 @@ export default function ProjectAnimation({ show, project, index }: Props) {
 
   return (
     <div
-      className={`relative hidden overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-[600px]' : 'w-0'} h-screen`}
+      className={`relative hidden max-w-[min(calc(100vw-820px),76vh)] overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-screen' : 'w-0'} h-screen`}
     >
       {project.gallery.map((asset, i) => {
         let style = null;
         let insideStyle = null;
-        if (i === prevIndex) {
+        if (i === animatedIndex) {
+          style = {
+            transform: `translateX(0)`,
+          };
+          insideStyle = {
+            transform: `scale(1)`,
+          };
+        } else if (i === prevIndex) {
           style = {
             transform: `translateX(-100%)`,
           };
@@ -69,19 +76,12 @@ export default function ProjectAnimation({ show, project, index }: Props) {
           insideStyle = {
             transform: `scaleX(2) scaleY(1.2)`,
           };
-        } else if (i === animatedIndex) {
-          style = {
-            transform: `translateX(0)`,
-          };
-          insideStyle = {
-            transform: `scale(1)`,
-          };
         }
 
         return (
           <div
             key={i}
-            className="absolute left-0 top-0 z-20 h-full w-[600px] min-w-[600px] overflow-hidden transition-transform duration-500"
+            className="absolute left-0 top-0 z-20 h-full w-screen max-w-[min(calc(100vw-820px),76vh)] overflow-hidden transition-transform duration-500"
             style={
               style !== null
                 ? {

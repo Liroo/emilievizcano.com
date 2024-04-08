@@ -54,7 +54,10 @@ export default function InfosView() {
             <br />
             <br />
             For projects inquiries, write at{' '}
-            <a href="mailto:contact@emilievizcano.com" className="underline">
+            <a
+              href="mailto:contact@emilievizcano.com"
+              className="targeting-action underline"
+            >
               contact@emilievizcano.com
             </a>
           </p>

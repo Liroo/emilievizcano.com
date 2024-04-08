@@ -15,8 +15,8 @@ body,
   cursor: none !important;
 }
 
-a {
-  cursor: none;
+* {
+  cursor: none !important;
 }
 
 *::-webkit-scrollbar {

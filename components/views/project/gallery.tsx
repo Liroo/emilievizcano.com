@@ -24,12 +24,12 @@ export default function ProjectGallery({
 
   return (
     <div className="w-full">
-      <div className=" mb-[10px] h-[110vw] w-full laptop:h-auto ">
+      <div className=" mb-[10px] h-[110vw] w-full overflow-hidden laptop:h-full laptop:max-h-[500px]">
         {gallery[index]._type === 'image' ? (
           <UIImageSanity
             key={index}
             asset={gallery[index]}
-            className="h-full w-full object-cover laptop:h-auto"
+            className="h-full w-full object-cover laptop:max-h-[500px] laptop:object-contain laptop:object-right-bottom"
             alt="Caroussel image"
           />
         ) : (

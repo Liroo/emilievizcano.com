@@ -53,7 +53,7 @@ export default function SharedTypefaceGlyphs({
       {lockedIndex >= 0 && (
         <div
           onClick={onClickGlyph}
-          className="fixed top-0 z-50 flex h-full w-full items-center justify-center bg-[#E8E8E8] laptop:hidden"
+          className="targeting-action fixed top-0 z-50 flex h-full w-full items-center justify-center bg-[#E8E8E8] laptop:hidden"
         >
           <span className="text-[300px]">{glyphs[lockedIndex]}</span>
         </div>

@@ -52,9 +52,16 @@ export default function FoundryDiscountRulesView() {
             <br />
             <br />
             The slot machine's reels contain custom illustrations realized by
-            the talented Erika Garcia*. Each associated with a different prize.
-            To win, the player must land three identical illustrations aligned
-            on the payline.
+            the talented{' '}
+            <a
+              href="https://www.instagram.com/erikagrc/"
+              target="_blank"
+              className="targeting-action underline"
+            >
+              Erika Garcia*
+            </a>
+            . Each associated with a different prize. To win, the player must
+            land three identical illustrations aligned on the payline.
             <br />
             <br />
             Each illustration has a specific prize, which comes in the form of a
@@ -86,7 +93,7 @@ export default function FoundryDiscountRulesView() {
             <a
               href="https://www.instagram.com/erikagrc/"
               target="_blank"
-              className="underline"
+              className="targeting-action underline"
             >
               Erika Garcia
             </a>

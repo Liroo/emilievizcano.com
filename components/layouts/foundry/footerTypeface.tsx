@@ -21,7 +21,7 @@ export default function LayoutFoundryFooterTypeface({
         <div
           className={`absolute left-0 top-0 grid h-full w-full grid-cols-6 items-center justify-between gap-[20px] px-[16px] transition-all duration-200 laptop:gap-[30px] laptop:px-[30px]`}
         >
-          <Link href="/">
+          <Link href="/" className="targeting-action">
             <EVSvg className="w-[22px] fill-current text-[#383838] laptop:w-[37px]" />
           </Link>
           <a
@@ -54,7 +54,7 @@ export default function LayoutFoundryFooterTypeface({
           </div>
 
           <div
-            className="col-span-2 col-start-5 flex justify-end laptop:col-auto laptop:justify-start"
+            className="targeting-action col-span-2 col-start-5 flex justify-end laptop:col-auto laptop:justify-start"
             onClick={onClickBuyTheFont}
           >
             <div className="targeting-action flex select-none items-center justify-center rounded-full bg-[#383838] px-[15px] py-[6px] text-white laptop:px-[20px]">
@@ -68,11 +68,16 @@ export default function LayoutFoundryFooterTypeface({
           <div className="col-span-2 col-start-4 hidden items-center laptop:col-auto laptop:flex laptop:items-start laptop:justify-end">
             <RightArrowSvg className="w-[10px] shrink-0 fill-current text-[#383838] laptop:w-[17px]" />
             <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
-              <a href="https://www.instagram.com/emilievizcano" target="_blank">
+              <a
+                className="targeting-action"
+                href="https://www.instagram.com/emilievizcano"
+                target="_blank"
+              >
                 Instagram
               </a>
               <br />
               <a
+                className="targeting-action"
                 href="https://www.linkedin.com/in/emilievizcano"
                 target="_blank"
               >

@@ -27,7 +27,7 @@ export default function HomeFooter() {
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             currently working
             <br />
-            at Ledger
+            as Freelancer
           </p>
         </div>
         <div className="hidden items-center laptop:flex laptop:items-start">
@@ -49,17 +49,25 @@ export default function HomeFooter() {
         <div className="hidden items-center laptop:flex laptop:items-start laptop:justify-end">
           <RightArrowSvg className="w-[10px] fill-current text-white laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
-            <a href="https://www.instagram.com/emilievizcano" target="_blank">
+            <a
+              className="targeting-action"
+              href="https://www.instagram.com/emilievizcano"
+              target="_blank"
+            >
               Instagram
             </a>
             <br />
-            <a href="https://www.linkedin.com/in/emilievizcano" target="_blank">
+            <a
+              className="targeting-action"
+              href="https://www.linkedin.com/in/emilievizcano"
+              target="_blank"
+            >
               Linkedin
             </a>
           </p>
         </div>
         <div
-          className="flex h-[20px] w-[20px] items-center justify-center justify-self-end rounded-full bg-white laptop:hidden"
+          className="targeting-action flex h-[20px] w-[20px] items-center justify-center justify-self-end rounded-full bg-white laptop:hidden"
           onClick={() => setScrolled(true)}
         >
           <RightArrowSvg className="w-[12px] fill-current text-black" />
@@ -72,7 +80,7 @@ export default function HomeFooter() {
         } grid grid-cols-6 items-center justify-between px-[16px] transition-all duration-200`}
       >
         <div
-          className=" flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white"
+          className="targeting-action flex h-[20px] w-[20px] items-center justify-center rounded-full bg-white"
           onClick={() => setScrolled(false)}
         >
           <RightArrowSvg className="w-[12px] rotate-180 fill-current text-black" />

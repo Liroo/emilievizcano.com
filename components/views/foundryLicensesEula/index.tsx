@@ -16,7 +16,7 @@ export default function FoundryLicensesEulaView() {
           Our products are licensed for your use as an end user, rather than
           being sold outright. This End User License Agreement (EULA) governs
           the use of our Digital Font, as showcased on the{' '}
-          <Link href="/" className="underline">
+          <Link href="/" className="targeting-action underline">
             www.emilievizcano.com
           </Link>{' '}
           website and/or any catalogs associated with Emilie Vizcano. It
@@ -30,7 +30,11 @@ export default function FoundryLicensesEulaView() {
           stated above and below, please refrain from purchasing, accessing,
           downloading, installing, or using our Digital Font.
         </p>
-        <a className="mt-[10px] flex" target="_blank" href="/eula_2024.pdf">
+        <a
+          className="targeting-action mt-[10px] flex"
+          target="_blank"
+          href="/eula_2024.pdf"
+        >
           <RightArrowSvg className="w-[17px] fill-current" />
           <p className="ml-[6px] underline">Download EULA</p>
         </a>

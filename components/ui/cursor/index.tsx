@@ -30,7 +30,6 @@ export default function UICursor() {
       className="touch-device:block pointer-events-none fixed z-60 hidden"
       style={{
         transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-        transition: 'transform 0.05s',
         opacity: mouseInWindow ? 1 : 0,
       }}
     >
