@@ -74,7 +74,7 @@ export default function FoundryDiscountView() {
     return () => {
       window.removeEventListener('resize', onResize);
     };
-  }, []);
+  }, [machineRef.current]);
 
   const onClickPull = async () => {
     if (isAnimated) return;
