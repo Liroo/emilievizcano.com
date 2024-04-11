@@ -17,7 +17,9 @@ export const UIImageSanity = ({
   alt,
   className,
 }: UIImageSanityProps) => {
-  const imageProps = useNextSanityImage(getSanityImageConfig(), asset);
+  const imageProps = useNextSanityImage(getSanityImageConfig(), asset, {
+    imageBuilder: (imageUrlBuilder) => imageUrlBuilder.width(2048).quality(75),
+  });
 
   if (!imageProps) return null;
 

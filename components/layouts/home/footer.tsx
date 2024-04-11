@@ -15,7 +15,7 @@ export default function HomeFooter() {
       >
         <EVSvg className="w-[22px] fill-current text-white laptop:w-[37px]" />
 
-        <div className="pointer-coarse:text-white col-span-2 col-start-2 flex items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:col-span-1 laptop:col-start-auto laptop:items-start">
+        <div className="pointer-coarse:text-white col-span-2 col-start-2 flex items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:col-span-1 laptop:col-start-auto laptop:items-start">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             © emilie vizcano
@@ -23,7 +23,7 @@ export default function HomeFooter() {
             ALL RIGHTS RESERVED
           </p>
         </div>
-        <div className="pointer-coarse:text-white col-span-2 col-start-4 flex items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:col-span-1 laptop:col-start-auto laptop:items-start">
+        <div className="pointer-coarse:text-white col-span-2 col-start-4 flex items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:col-span-1 laptop:col-start-auto laptop:items-start">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             currently working
@@ -34,7 +34,7 @@ export default function HomeFooter() {
         <a
           href="https://www.les-graphiquants.fr/"
           target="_blank"
-          className="targeting-action pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:flex laptop:items-start"
+          className="targeting-action pointer-coarse:text-white hidden items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:flex laptop:items-start"
         >
           <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
@@ -46,7 +46,7 @@ export default function HomeFooter() {
         <a
           href="https://generaux.services/"
           target="_blank"
-          className="targeting-action pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:items-start desktop:flex"
+          className="targeting-action pointer-coarse:text-white hidden items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:items-start desktop:flex"
         >
           <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
@@ -55,7 +55,7 @@ export default function HomeFooter() {
             at services généraux
           </p>
         </a>
-        <div className="pointer-coarse:text-white hidden items-center text-[#5F5F5F] transition-colors duration-200 hover:text-white laptop:flex laptop:items-start laptop:justify-end">
+        <div className="pointer-coarse:text-white hidden items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:flex laptop:items-start laptop:justify-end">
           <RightArrowSvg className="w-[10px] fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             <a
