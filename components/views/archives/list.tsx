@@ -56,13 +56,17 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
             onClick={() => onChangeProject(index === openIndex ? -1 : index)}
           >
             <div className="flex w-[16px] min-w-[16px] items-center justify-center laptop:w-[30px] laptop:min-w-[30px]">
-              <UIIconsCross
-                className="h-[4px] w-[4px] laptop:h-[6px] laptop:w-[6px]"
-                classNameLines={twMerge(
-                  'group-hover:bg-black',
-                  openIndex === index ? 'bg-black' : '',
-                )}
-              />
+              {openIndex === index ? (
+                <p>=</p>
+              ) : (
+                <UIIconsCross
+                  className="h-[4px] w-[4px] laptop:h-[6px] laptop:w-[6px]"
+                  classNameLines={twMerge(
+                    'group-hover:bg-black',
+                    openIndex === index ? 'bg-black' : '',
+                  )}
+                />
+              )}
             </div>
             <div className="flex w-[50vw] min-w-[50vw] laptop:w-[35vw] laptop:min-w-[35vw]">
               <p className="w-[30px] min-w-[30px] uppercase laptop:w-[120px] laptop:min-w-[120px]">

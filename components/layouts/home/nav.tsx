@@ -2,6 +2,9 @@ import { selectNotArchivedProjects } from 'flux/project/selector';
 import { useAppSelector } from 'flux/store';
 import useMousePosition from 'hooks/useMousePosition';
 import RightArrowSvg from 'icons/right-arrow.svg';
+import KorosuJpg from 'images/foundry/korosu/korosu1.jpg';
+import LapicideJpg from 'images/foundry/lapicide/lapicide5.jpg';
+import TangerineJpg from 'images/foundry/tangerine/tangerine3.jpg';
 import InfosJpg from 'images/infos.jpg';
 import ProjectsJpg from 'images/projects.jpg';
 import TypefacesJpg from 'images/typefaces.jpg';
@@ -19,14 +22,17 @@ const typefaces = [
   {
     label: 'Tangerine',
     id: 'tangerine',
+    preview: TangerineJpg.src,
   },
   {
     label: 'Korosu',
     id: 'korosu',
+    preview: KorosuJpg.src,
   },
   {
     label: 'Lapicide',
     id: 'lapicide',
+    preview: LapicideJpg.src,
   },
 ];
 
@@ -172,13 +178,17 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
         <div className="overflow-hidden">
           <div className="h-px w-full bg-white" />
           <div className="grid-flow-rows my-[24px] grid w-full max-w-[426px] grid-cols-1">
-            {typefaces.map(({ label, id }, index) => (
+            {typefaces.map(({ label, id, preview }, index) => (
               <Link
                 href={`/foundry/${id}`}
                 key={index}
                 onClick={() => onMouseLeave()}
               >
-                <div className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]">
+                <div
+                  className="targeting-action mb-[6px] flex text-[14px] leading-[17px] text-[#5F5F5F] transition-all hover:text-white laptop:mb-[4px] laptop:text-[17px] laptop:leading-[25px]"
+                  onMouseEnter={() => !isTouchDevice() && onMouseEnter(preview)}
+                  onMouseLeave={() => onMouseLeave()}
+                >
                   <div className="w-[21px]">
                     <p>{(index + 1).toString().padStart(2, '0')}</p>
                   </div>

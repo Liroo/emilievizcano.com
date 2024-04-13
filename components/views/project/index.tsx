@@ -25,14 +25,24 @@ export default function ProjectView({ slug }: ProjectViewProps) {
     project.gallery.forEach((asset) => {
       if (asset._type === 'image') {
         const img = new Image();
-        img.src = urlForImage(asset).width(2048).quality(75).url();
+        img.src = urlForImage(asset)
+          .width(2048)
+          .height(2048)
+          .quality(75)
+          .fit('max')
+          .url();
       }
     });
   }, []);
 
   return (
     <>
-      <ProjectAnimation show={galleryOpen} project={project} index={index} />
+      <ProjectAnimation
+        show={galleryOpen}
+        project={project}
+        index={index}
+        setIndex={setIndex}
+      />
       <div className="relative grid h-full w-screen bg-[#252527] font-sans text-[16px] font-light text-white laptop:w-[820px] laptop:text-[15px]">
         <Link href="/">
           <div

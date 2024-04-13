@@ -33,9 +33,9 @@ export default function UICursor() {
         opacity: mouseInWindow ? 1 : 0,
       }}
     >
-      <div className="absolute h-[14px] w-[14px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E790C4]"></div>
+      <div className="absolute h-[10px] w-[10px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E790C4]"></div>
       <div
-        className={`absolute ${isTargetingAction ? 'h-[34px] w-[34px]' : 'h-[24px] w-[24px]'} -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E790C4] bg-opacity-30 transition-all duration-150`}
+        className={`absolute ${isTargetingAction ? 'h-[45px] w-[45px]' : 'h-[25px] w-[25px]'} -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E790C4] bg-opacity-30 transition-all duration-150`}
       ></div>
     </div>
   );

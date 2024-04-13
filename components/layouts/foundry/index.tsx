@@ -25,12 +25,13 @@ export default function LayoutFoundry({ children }: LayoutFoundryProps) {
         </p>
       </Link>
       <div
-        className="targeting-action absolute right-[16px] top-[20px] m-[-10px] p-[10px] laptop:right-[30px] laptop:top-[26px]"
+        className="targeting-action absolute right-[16px] top-[20px] m-[-10px] p-[10px] laptop:right-[40px] laptop:top-[36px]"
         onClick={() => {
           dispatch(openModal(ModalEnum.FoundryMenu));
         }}
       >
         <div className="h-px w-[20px] bg-[#383838] laptop:w-[30px]" />
+        <div className="mt-[8px] h-px w-[20px] bg-[#383838] laptop:w-[30px]" />
         <div className="mt-[8px] h-px w-[20px] bg-[#383838] laptop:w-[30px]" />
       </div>
       {children}

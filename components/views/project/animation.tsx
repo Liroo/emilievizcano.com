@@ -7,9 +7,15 @@ type Props = {
   show: boolean;
   project: Project;
   index: number;
+  setIndex: (index: number) => void;
 };
 
-export default function ProjectAnimation({ show, project, index }: Props) {
+export default function ProjectAnimation({
+  show,
+  project,
+  index,
+  setIndex,
+}: Props) {
   const [animatedIndex, setAnimatedIndex] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const animatedIndexArray = useRef<number[]>([]);
@@ -50,7 +56,8 @@ export default function ProjectAnimation({ show, project, index }: Props) {
 
   return (
     <div
-      className={`relative hidden max-w-[min(calc(100vw-820px),76vh)] overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-screen' : 'w-0'} h-screen`}
+      className={`targeting-action relative hidden max-w-[min(calc(100vw-820px),76vh)] overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-screen' : 'w-0'} h-screen`}
+      onClick={() => setIndex((index + 1) % project.gallery.length)}
     >
       {project.gallery.map((asset, i) => {
         let style = null;

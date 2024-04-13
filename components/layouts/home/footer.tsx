@@ -15,7 +15,7 @@ export default function HomeFooter() {
       >
         <EVSvg className="w-[22px] fill-current text-white laptop:w-[37px]" />
 
-        <div className="pointer-coarse:text-white col-span-2 col-start-2 flex items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:col-span-1 laptop:col-start-auto laptop:items-start">
+        <div className="pointer-coarse:text-white col-span-2 col-start-2 flex items-center text-white laptop:col-span-1 laptop:col-start-auto laptop:items-start">
           <RightArrowSvg className="w-[10px] shrink-0 fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             © emilie vizcano
@@ -55,11 +55,11 @@ export default function HomeFooter() {
             at services généraux
           </p>
         </a>
-        <div className="pointer-coarse:text-white hidden items-center text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F] laptop:flex laptop:items-start laptop:justify-end">
+        <div className="pointer-coarse:text-white hidden items-center text-[#FFFFFF] laptop:flex laptop:items-start laptop:justify-end">
           <RightArrowSvg className="w-[10px] fill-current laptop:w-[17px]" />
           <p className="pl-[8px] text-right text-[9px] uppercase leading-[11px] laptop:text-[12px] laptop:leading-[15px]">
             <a
-              className="targeting-action"
+              className="targeting-action text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F]"
               href="https://www.instagram.com/emilievizcano"
               target="_blank"
             >
@@ -67,7 +67,7 @@ export default function HomeFooter() {
             </a>
             <br />
             <a
-              className="targeting-action"
+              className="targeting-action text-[#FFFFFF] transition-colors duration-200 hover:text-[#5F5F5F]"
               href="https://www.linkedin.com/in/emilievizcano"
               target="_blank"
             >

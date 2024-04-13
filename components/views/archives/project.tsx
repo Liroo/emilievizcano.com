@@ -80,7 +80,7 @@ export default function ArchiveProject({ project }: ArchiveProjectProps) {
             <div className="mt-[20px] flex items-start first:mt-0">
               <RightArrowSvg className="mt-[4px] w-[16px] fill-current text-white" />
               <div className="ml-[6px] flex flex-col leading-[15px]">
-                <p className="text-[8px]">WORKING AS</p>
+                <p className="text-[8px]">WORKING</p>
                 <p>{project.workingAs}</p>
               </div>
             </div>
