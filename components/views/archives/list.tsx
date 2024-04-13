@@ -57,7 +57,7 @@ export default function ArchiveList({ projetcs }: ArchiveListProps) {
           >
             <div className="flex w-[16px] min-w-[16px] items-center justify-center laptop:w-[30px] laptop:min-w-[30px]">
               {openIndex === index ? (
-                <p>=</p>
+                <p>-</p>
               ) : (
                 <UIIconsCross
                   className="h-[4px] w-[4px] laptop:h-[6px] laptop:w-[6px]"
