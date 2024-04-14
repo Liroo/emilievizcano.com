@@ -159,7 +159,7 @@ export default function HomeNav({ setNavOpen }: HomeNavProps) {
             />
           </div>
           <p className="text-[20px] leading-[24px] laptop:text-[30px] laptop:leading-[45px]">
-            Typefaces
+            Type Foundry
           </p>
         </div>
         <RightArrowSvg
