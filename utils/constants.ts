@@ -32,7 +32,7 @@ export const CONSTANT_FORMAT_LICENSES = {
   Print: {
     xs: 'XS Independent & Freelance',
     s: 'S license (1-5 employees)',
-    m: 'L license (6-9 employees)',
+    m: 'M license (6-9 employees)',
     l: 'L license (10-20 employees)',
     xl: 'XL license (> 20 employees)',
   },
@@ -60,7 +60,7 @@ export const CONSTANT_FORMAT_LICENSES = {
   Branding: {
     xs: 'XS Independent & Freelance',
     s: 'S license (1-5 employees)',
-    m: 'L license (6-9 employees)',
+    m: 'M license (6-9 employees)',
     l: 'L license (10-20 employees)',
     xl: 'XL license (> 20 employees)',
   },
