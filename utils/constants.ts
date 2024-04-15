@@ -57,7 +57,7 @@ export const CONSTANT_FORMAT_LICENSES = {
   //   l: 'Up to 100k Followers/months',
   //   xl: 'Up to 250k Followers/months',
   // },
-  Logo: {
+  Branding: {
     xs: 'XS Independent & Freelance',
     s: 'S license (1-5 employees)',
     m: 'L license (6-9 employees)',
