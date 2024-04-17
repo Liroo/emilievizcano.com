@@ -64,28 +64,30 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
       );
     });
 
-    linesAdd(
-      selectedVariants
-        .filter(
-          (variant) =>
-            !lines.some((line) => line.merchandise.id === variant.node.id),
-        )
-        .map((variant) => {
-          return {
-            attributes: [
-              {
-                key: 'License Type',
-                value: `${variant.node.selectedOptions[0].value} - ${variant.node.selectedOptions[1].value} - ${
-                  CONSTANT_FORMAT_LICENSES[
-                    variant.node.selectedOptions[1].value
-                  ][variant.node.selectedOptions[2].value]
-                }`,
-              },
-            ],
-            merchandiseId: variant.node.id,
-          };
-        }),
-    );
+    const variants = selectedVariants
+      .filter(
+        (variant) =>
+          !lines.some((line) => line.merchandise.id === variant.node.id),
+      )
+      .map((variant) => {
+        return {
+          attributes: [
+            {
+              key: 'License Type',
+              value: `${variant.node.selectedOptions[0].value} - ${variant.node.selectedOptions[1].value} - ${
+                CONSTANT_FORMAT_LICENSES[variant.node.selectedOptions[1].value][
+                  variant.node.selectedOptions[2].value
+                ]
+              }`,
+            },
+          ],
+          merchandiseId: variant.node.id,
+        };
+      });
+
+    if (!variants.length) return;
+
+    linesAdd(variants);
 
     dispatch(openModal(ModalEnum.FoundryCart));
     dispatch(closeModal(ModalEnum.FoundryProduct));
@@ -142,7 +144,7 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
         </fieldset>
         <fieldset className="mt-[30px]">
           <div
-            className="mt-[10px] grid gap-x-[25px] gap-y-[5px] max-laptop:!grid-cols-1"
+            className="max-laptop:!grid-cols-1 mt-[10px] grid gap-x-[25px] gap-y-[5px]"
             style={{
               gridTemplateColumns: `repeat(${usagesArray.length}, minmax(0, 1fr))`,
             }}
@@ -195,7 +197,7 @@ export default function FoundryProduct({ handle }: FroundryProductProps) {
         <div className="mt-[30px] flex flex-col items-start laptop:flex-row laptop:items-center laptop:justify-end">
           <p className="font-romie text-[15px]">Subtotal: {totalPrice}€</p>
           <button
-            className="mt-[30px] flex h-[50px] items-center justify-between whitespace-nowrap rounded-full bg-[#383838] px-[15px] text-[15px] text-white laptop:ml-[35px] laptop:mt-0"
+            className="targeting-action mt-[30px] flex h-[50px] items-center justify-between whitespace-nowrap rounded-full bg-[#383838] px-[15px] text-[15px] text-white laptop:ml-[35px] laptop:mt-0"
             type="submit"
           >
             Add to cart
