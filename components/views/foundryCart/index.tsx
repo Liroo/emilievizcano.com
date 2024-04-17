@@ -117,7 +117,7 @@ export default function FoundryCartView() {
             ) : null}
           </div>
           <div className="mt-[30px] flex items-center justify-between">
-            <p className="text-[12px] laptop:text-[15px]">
+            <p className="pr-[16px] text-[12px] laptop:text-[15px]">
               Taxes are calculated at checkout
             </p>
             <button
