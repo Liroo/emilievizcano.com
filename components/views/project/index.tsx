@@ -26,10 +26,10 @@ export default function ProjectView({ slug }: ProjectViewProps) {
       if (asset._type === 'image') {
         const img = new Image();
         img.src = urlForImage(asset)
-          .width(2048)
-          .height(2048)
-          .quality(75)
           .fit('max')
+          .maxWidth(1440)
+          .maxHeight(1440)
+          .quality(75)
           .url();
       }
     });

@@ -19,7 +19,7 @@ export const UIImageSanity = ({
 }: UIImageSanityProps) => {
   const imageProps = useNextSanityImage(getSanityImageConfig(), asset, {
     imageBuilder: (imageUrlBuilder) =>
-      imageUrlBuilder.maxWidth(2048).maxHeight(2048).quality(75).fit('max'),
+      imageUrlBuilder.fit('max').maxWidth(1440).maxHeight(1440).quality(75),
   });
 
   if (!imageProps) return null;
