@@ -125,6 +125,8 @@ export default function ProjectAnimation({
                   className="relative left-1/2 top-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2"
                 >
                   <MuxPlayer
+                    nohotkeys
+                    className="animation-carroussel"
                     style={{
                       aspectRatio: asset.data.aspect_ratio.replace(':', '/'),
                     }}
