@@ -1,3 +1,6 @@
+import 'styles/globals.css';
+import 'tailwindcss/tailwind.css';
+
 import {
   CartProvider,
   ShopifyProvider,
@@ -14,8 +17,6 @@ import { AppProps } from 'next/app';
 import localFont from 'next/font/local';
 import { ReactElement, ReactNode, useEffect } from 'react';
 import { Provider } from 'react-redux';
-import 'styles/globals.css';
-import 'tailwindcss/tailwind.css';
 
 const brutGrotesque = localFont({
   src: [
