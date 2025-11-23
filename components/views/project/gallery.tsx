@@ -45,6 +45,9 @@ export default function ProjectGallery({
                 aspectRatio: gallery[index].data.aspect_ratio.replace(':', '/'),
               }}
               playbackId={gallery[index].playbackId}
+              autoPlay={true}
+              muted={false}
+              loop={true}
             />
           </div>
         )}
