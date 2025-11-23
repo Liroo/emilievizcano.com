@@ -57,7 +57,10 @@ export default function ProjectAnimation({
   return (
     <div
       className={`targeting-action relative hidden max-w-[min(calc(100vw-820px),76vh)] overflow-hidden bg-black transition-all duration-300 laptop:flex ${show ? 'w-screen' : 'w-0'} h-screen`}
-      onClick={() => setIndex((index + 1) % project.gallery.length)}
+      onClick={() => {
+        if (project.gallery[index]._type === 'image')
+          setIndex((index + 1) % project.gallery.length);
+      }}
     >
       {project.gallery.map((asset, i) => {
         let style = null;

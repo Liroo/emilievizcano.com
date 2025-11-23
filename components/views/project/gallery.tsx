@@ -24,7 +24,7 @@ export default function ProjectGallery({
 
   return (
     <div className="w-full">
-      <div className=" mb-[10px] h-[110vw] w-full overflow-hidden laptop:h-full laptop:max-h-[500px]">
+      <div className=" mb-[10px] flex h-[110vw] w-full items-center justify-center overflow-hidden laptop:h-full laptop:max-h-[500px]">
         {gallery[index]._type === 'image' ? (
           <UIImageSanity
             key={index}
@@ -38,6 +38,7 @@ export default function ProjectGallery({
             style={{
               aspectRatio: gallery[index].data.aspect_ratio.replace(':', '/'),
             }}
+            className="flex items-center justify-center"
           >
             <MuxPlayer
               style={{

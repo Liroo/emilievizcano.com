@@ -23,11 +23,11 @@ export default function UICursor() {
 
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('mouseout', handleMouseOut);
-  }, []);
+  }, [mouseInWindow]);
 
   return (
     <div
-      className="pointer-fine:block pointer-events-none fixed z-60 hidden"
+      className="pointer-events-none fixed z-60 hidden pointer-fine:block"
       style={{
         transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
         opacity: mouseInWindow ? 1 : 0,
