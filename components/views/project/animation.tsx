@@ -127,9 +127,6 @@ export default function ProjectAnimation({
                   <MuxPlayer
                     nohotkeys
                     className="animation-carroussel"
-                    style={{
-                      aspectRatio: asset.data.aspect_ratio.replace(':', '/'),
-                    }}
                     playbackId={asset.playbackId}
                   />
                 </div>

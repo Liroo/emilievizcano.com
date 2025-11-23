@@ -1,16 +1,16 @@
+import { PortableText } from '@portabletext/react';
 import UIIconsCross from 'components/ui/icons/cross';
 import UIPill from 'components/ui/pill';
 import { selectProjectBySlug } from 'flux/project/selector';
 import { useAppSelector } from 'flux/store';
 import RightArrowSvg from 'icons/right-arrow.svg';
-
-import { PortableText } from '@portabletext/react';
 import { urlForImage } from 'lib/sanity.image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+
 import ProjectAnimation from './animation';
 import ProjectGallery from './gallery';
-
+export const revalidate = 0;
 type ProjectViewProps = {
   slug?: string;
 };
@@ -33,7 +33,7 @@ export default function ProjectView({ slug }: ProjectViewProps) {
           .url();
       }
     });
-  }, []);
+  }, [project.gallery]);
 
   return (
     <>
